@@ -5,53 +5,53 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark racing background
+        // Fond doux et lumineux
         ink: {
-          950: "#000000",
-          900: "#0a0a0f",
-          800: "#121218",
-          700: "#1a1a24",
-          600: "#252533",
+          950: "#1a1a2e",
+          900: "#16213e",
+          800: "#0f3460",
+          700: "#1e3a5f",
+          600: "#2d4f7c",
         },
-        // Racing red (primary)
+        // Orange vibrant (moto racing)
         racing: {
-          900: "#8b0000",
-          800: "#b30000",
-          700: "#dc0000",
-          600: "#ff0000",
-          500: "#ff1a1a",
-          400: "#ff3333",
-          300: "#ff6666",
+          900: "#ff6b35",
+          800: "#ff7b4a",
+          700: "#ff8c5f",
+          600: "#ff9d74",
+          500: "#ffae88",
+          400: "#ffbe9d",
+          300: "#ffcfb2",
         },
-        // Electric blue (accent)
+        // Turquoise électrique
         electric: {
-          900: "#001a3d",
-          800: "#002d66",
-          700: "#00408f",
-          600: "#0066ff",
-          500: "#0080ff",
-          400: "#3399ff",
-          300: "#66b3ff",
+          900: "#00d9ff",
+          800: "#1adfff",
+          700: "#33e5ff",
+          600: "#4debff",
+          500: "#66f0ff",
+          400: "#80f5ff",
+          300: "#99faff",
         },
-        // Neon yellow (highlights)
+        // Jaune citron fun
         neon: {
-          900: "#665500",
-          800: "#997700",
-          700: "#ccaa00",
-          600: "#ffdd00",
-          500: "#ffee00",
-          400: "#fff333",
-          300: "#fff866",
+          900: "#ffd93d",
+          800: "#ffe04d",
+          700: "#ffe75c",
+          600: "#ffee6c",
+          500: "#fff47b",
+          400: "#fffb8b",
+          300: "#ffff9a",
         },
-        // Chrome silver (metallic)
+        // Rose vif pour accents
         chrome: {
-          900: "#4a4a4a",
-          800: "#5f5f5f",
-          700: "#7a7a7a",
-          600: "#9a9a9a",
-          500: "#c0c0c0",
-          400: "#d4d4d4",
-          300: "#e8e8e8",
+          900: "#ff006e",
+          800: "#ff1a7f",
+          700: "#ff3390",
+          600: "#ff4da1",
+          500: "#ff66b2",
+          400: "#ff80c3",
+          300: "#ff99d4",
         },
       },
       backgroundImage: {
