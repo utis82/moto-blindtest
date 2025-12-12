@@ -187,11 +187,11 @@ export const YouTubeClip = ({ playback }: Props) => {
   })();
 
   return (
-    <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 p-1 shadow-2xl">
+    <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 p-0.5 shadow-lg">
       {/* Border glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-electric-600 to-neon-600 opacity-50 blur-xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-electric-600 to-neon-600 opacity-50 blur-lg"></div>
 
-      <div className="relative rounded-xl bg-ink-950 p-6">
+      <div className="relative rounded-lg bg-ink-950 p-3">
         {/* Hidden video player */}
         <div
           ref={containerRef}
@@ -199,22 +199,22 @@ export const YouTubeClip = ({ playback }: Props) => {
         />
 
         {/* Audio-only interface */}
-        <div className="flex flex-col items-center justify-center gap-6 py-12">
+        <div className="flex flex-col items-center justify-center gap-3 py-4">
           {statusLabel && (
-            <div className="flex items-center gap-2 text-electric-400 animate-pulse">
-              <div className="w-2 h-2 rounded-full bg-electric-500"></div>
-              <p className="text-sm font-medium">{statusLabel}</p>
+            <div className="flex items-center gap-1.5 text-electric-400 animate-pulse">
+              <div className="w-1.5 h-1.5 rounded-full bg-electric-500"></div>
+              <p className="text-[10px] font-medium">{statusLabel}</p>
             </div>
           )}
 
           {ready && (
             <>
               {/* Visualizer bars */}
-              <div className="flex items-end gap-1 h-24">
+              <div className="flex items-end gap-0.5 h-12">
                 {[...Array(playing ? 12 : 12)].map((_, i) => (
                   <div
                     key={i}
-                    className={`w-3 rounded-t-full transition-all duration-300 ${
+                    className={`w-2 rounded-t-full transition-all duration-300 ${
                       playing
                         ? 'bg-gradient-to-t from-racing-600 to-neon-500 animate-pulse'
                         : 'bg-chrome-700'
@@ -234,23 +234,23 @@ export const YouTubeClip = ({ playback }: Props) => {
                 type="button"
                 onClick={playing ? handleStop : handlePlay}
                 className={`
-                  group relative px-12 py-4 rounded-full font-bold text-lg
+                  group relative px-6 py-2.5 rounded-full font-bold text-sm
                   transition-all duration-300 transform hover:scale-105
                   ${playing
-                    ? 'bg-gradient-to-r from-electric-600 to-electric-500 text-white shadow-lg shadow-electric-600/50'
-                    : 'bg-gradient-to-r from-racing-600 to-racing-500 text-white shadow-lg shadow-racing-600/50 hover:shadow-racing-500/70'
+                    ? 'bg-gradient-to-r from-electric-600 to-electric-500 text-white shadow-md shadow-electric-600/50'
+                    : 'bg-gradient-to-r from-racing-600 to-racing-500 text-white shadow-md shadow-racing-600/50 hover:shadow-racing-500/70'
                   }
                 `}
               >
-                <span className="flex items-center gap-3">
+                <span className="flex items-center gap-2">
                   {playing ? (
                     <>
-                      <span className="text-2xl">⏸</span>
+                      <span className="text-lg">⏸</span>
                       PAUSE
                     </>
                   ) : (
                     <>
-                      <span className="text-2xl">▶</span>
+                      <span className="text-lg">▶</span>
                       ÉCOUTER LE RUGISSEMENT
                     </>
                   )}
@@ -259,10 +259,10 @@ export const YouTubeClip = ({ playback }: Props) => {
 
               {/* Info text */}
               <div className="text-center">
-                <p className="text-xs uppercase tracking-[0.3em] text-neon-500 font-bold mb-1">
+                <p className="text-[9px] uppercase tracking-[0.2em] text-neon-500 font-bold mb-0.5">
                   🔊 Mode Audio Only
                 </p>
-                <p className="text-xs text-chrome-400">
+                <p className="text-[9px] text-chrome-400">
                   Concentre-toi sur le son • 10-20 secondes de pur plaisir mécanique
                 </p>
               </div>

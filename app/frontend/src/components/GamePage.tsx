@@ -155,42 +155,47 @@ export const GamePage = () => {
         {/* Left Column - Player & Form */}
         <div className="flex flex-col gap-2 min-h-0">
           {/* Video Player - COMPACT */}
-          <div className="flex-shrink-0 relative rounded-xl overflow-hidden bg-gradient-to-br from-racing-900 via-ink-900 to-electric-900 p-0.5 shadow-lg">
-            <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-neon-500 to-electric-600 opacity-50 blur-sm"></div>
-            <div className="relative rounded-lg bg-ink-950 p-2">
-              <div className="overflow-hidden rounded-lg border border-white/5 bg-black/60" style={{maxHeight: '180px'}}>
-                {roundData ? (
-                  <YouTubeClip playback={roundData.source.playback} />
-                ) : (
+          <div className="flex-shrink-0">
+            {roundData ? (
+              <div>
+                <YouTubeClip playback={roundData.source.playback} />
+                <div className="mt-2 relative rounded-xl overflow-hidden bg-gradient-to-br from-racing-900 via-ink-900 to-electric-900 p-0.5 shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-neon-500 to-electric-600 opacity-50 blur-sm"></div>
+                  <div className="relative rounded-lg bg-ink-950 p-2">
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-1 h-1 rounded-full bg-racing-500 animate-pulse"></div>
+                          <span className="text-[10px] uppercase tracking-wider text-chrome-500 font-semibold">
+                            Durée
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-bold text-neon-500">
+                          {roundData.source.duration}s
+                        </span>
+                      </div>
+                      <div className="relative h-2 rounded-full bg-ink-800 overflow-hidden border border-chrome-800/30">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-racing-600 via-neon-500 to-electric-600 transition-[width] shadow-md shadow-racing-500/50"
+                          style={{ width: `${Math.round(progress * 100)}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-racing-900 via-ink-900 to-electric-900 p-0.5 shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-neon-500 to-electric-600 opacity-50 blur-sm"></div>
+                <div className="relative rounded-lg bg-ink-950 p-4">
                   <div className="p-3 text-center text-xs text-slate-400">
                     {loading
                       ? "Préparation..."
                       : "Aucune manche."}
                   </div>
-                )}
-              </div>
-              {roundData && (
-                <div className="mt-2 space-y-1">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1 h-1 rounded-full bg-racing-500 animate-pulse"></div>
-                      <span className="text-[10px] uppercase tracking-wider text-chrome-500 font-semibold">
-                        Durée
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-bold text-neon-500">
-                      {roundData.source.duration}s
-                    </span>
-                  </div>
-                  <div className="relative h-2 rounded-full bg-ink-800 overflow-hidden border border-chrome-800/30">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-racing-600 via-neon-500 to-electric-600 transition-[width] shadow-md shadow-racing-500/50"
-                      style={{ width: `${Math.round(progress * 100)}%` }}
-                    />
-                  </div>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           {/* Form - COMPACT */}
