@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../backend/node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Moto {
+  id           Int       @id @default(autoincrement())
+  name         String
+  manufacturer String
+  slug         String    @unique
+  engine       String?
+  era          String?
+  funFact      String?
+  cylinders    String?
+  year         String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  sources Source[]
+}
+
+model Source {
+  id           Int       @id @default(autoincrement())
+  url          String    @unique
+  videoId      String
+  title        String?
+  channel      String?
+  thumbnailUrl String?
+  startSeconds Int       @default(0)
+  endSeconds   Int
+  duration     Int       @default(15)
+  motoId       Int?
+  aiConfidence Float     @default(0.5)
+  aiMetadata   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  rounds Round[]
+  moto   Moto?     @relation(fields: [motoId], references: [id])
+}
+
+model Round {
+  id          Int          @id @default(autoincrement())
+  sourceId    Int
+  status      String       @default("PENDING")
+  difficulty  Int          @default(1)
+  hintLevel   Int          @default(0)
+  createdAt   DateTime     @default(now())
+  completedAt DateTime?
+
+  source  Source @relation(fields: [sourceId], references: [id])
+  guesses Guess[]
+}
+
+model Guess {
+  id         Int      @id @default(autoincrement())
+  roundId    Int
+  playerName String   @default("Solo rider")
+  guessText  String
+  score      Float
+  correct    Boolean  @default(false)
+  breakdown  String?
+  createdAt  DateTime @default(now())
+
+  round Round @relation(fields: [roundId], references: [id])
+}

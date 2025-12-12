@@ -1,0 +1,1508 @@
+{
+  "motorcycles": [
+    {
+      "manufacturer": "Ducati",
+      "model": "Panigale V4",
+      "variants": [
+        "Panigale V4S",
+        "Panigale V4R",
+        "Panigale V4 SP",
+        "V4",
+        "Pannigale",
+        "Panigalle"
+      ],
+      "engine": "V4",
+      "cylinders": "4",
+      "years": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "Monster",
+      "variants": [
+        "Monster 821",
+        "Monster 797",
+        "Monster 1200",
+        "Monster +",
+        "Monster 937"
+      ],
+      "engine": "L-Twin",
+      "cylinders": "2",
+      "years": [
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "916",
+      "variants": [
+        "916 Senna",
+        "916 SPS",
+        "916 Biposto"
+      ],
+      "engine": "L-Twin",
+      "cylinders": "2",
+      "years": [
+        "1994",
+        "1995",
+        "1996",
+        "1997",
+        "1998"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "996",
+      "variants": [
+        "996 SPS",
+        "996 Biposto",
+        "996R"
+      ],
+      "engine": "L-Twin",
+      "cylinders": "2",
+      "years": [
+        "1999",
+        "2000",
+        "2001",
+        "2002"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "998",
+      "variants": [
+        "998S",
+        "998R",
+        "998 Bostrom"
+      ],
+      "engine": "L-Twin",
+      "cylinders": "2",
+      "years": [
+        "2002",
+        "2003",
+        "2004"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "Streetfighter V4",
+      "variants": [
+        "Streetfighter V4S",
+        "Streetfighter V4 SP"
+      ],
+      "engine": "V4",
+      "cylinders": "4",
+      "years": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "YZF-R1",
+      "variants": [
+        "R1",
+        "R1M",
+        "YZF-R1M"
+      ],
+      "engine": "Crossplane Inline-4",
+      "cylinders": "4",
+      "years": [
+        "1998",
+        "1999",
+        "2000",
+        "2004",
+        "2006",
+        "2009",
+        "2015",
+        "2020",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "YZF-R6",
+      "variants": [
+        "R6"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "1999",
+        "2003",
+        "2006",
+        "2008",
+        "2017",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "MT-09",
+      "variants": [
+        "MT09",
+        "MT-09 SP"
+      ],
+      "engine": "CP3 Triple",
+      "cylinders": "3",
+      "years": [
+        "2014",
+        "2017",
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "MT-07",
+      "variants": [
+        "MT07"
+      ],
+      "engine": "CP2 Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2014",
+        "2018",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "MT-10",
+      "variants": [
+        "MT10",
+        "MT-10 SP"
+      ],
+      "engine": "Crossplane Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2016",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Ninja H2",
+      "variants": [
+        "H2",
+        "H2R",
+        "Ninja H2R",
+        "H2 SX"
+      ],
+      "engine": "Inline-4 Supercharged",
+      "cylinders": "4",
+      "years": [
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Ninja ZX-10R",
+      "variants": [
+        "ZX-10R",
+        "ZX-10RR",
+        "ZX10R"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2004",
+        "2006",
+        "2011",
+        "2016",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Ninja ZX-6R",
+      "variants": [
+        "ZX-6R",
+        "ZX6R"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2000",
+        "2005",
+        "2009",
+        "2013",
+        "2019"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Z900",
+      "variants": [
+        "Z 900"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2017",
+        "2020",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "CBR1000RR",
+      "variants": [
+        "CBR1000RR Fireblade",
+        "Fireblade",
+        "CBR 1000RR",
+        "CBR1000RR-R"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2004",
+        "2008",
+        "2012",
+        "2017",
+        "2020",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "CBR600RR",
+      "variants": [
+        "CBR 600RR"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2003",
+        "2007",
+        "2013",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "CBR",
+      "variants": [
+        "CBR500R",
+        "CBR650R"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2013",
+        "2019",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Suzuki",
+      "model": "GSX-R1000",
+      "variants": [
+        "GSX-R1000R",
+        "GSXR1000"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2001",
+        "2005",
+        "2009",
+        "2012",
+        "2017",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Suzuki",
+      "model": "GSX-R750",
+      "variants": [
+        "GSXR750"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2000",
+        "2004",
+        "2006",
+        "2011",
+        "2018"
+      ]
+    },
+    {
+      "manufacturer": "Suzuki",
+      "model": "Hayabusa",
+      "variants": [
+        "GSX1300R",
+        "GSX-1300R"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "1999",
+        "2008",
+        "2021",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "S1000RR",
+      "variants": [
+        "S 1000 RR",
+        "S1000RR M"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2009",
+        "2015",
+        "2019",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "R1250GS",
+      "variants": [
+        "R 1250 GS",
+        "R1250GS Adventure"
+      ],
+      "engine": "Boxer Twin",
+      "cylinders": "2",
+      "years": [
+        "2019",
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "M1000RR",
+      "variants": [
+        "M 1000 RR"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Aprilia",
+      "model": "RSV4",
+      "variants": [
+        "RSV4 Factory",
+        "RSV4 RF",
+        "RSV4 RR"
+      ],
+      "engine": "V4",
+      "cylinders": "4",
+      "years": [
+        "2009",
+        "2015",
+        "2019",
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Aprilia",
+      "model": "RS 660",
+      "variants": [
+        "RS660"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2021",
+        "2022",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "KTM",
+      "model": "1290 Super Duke R",
+      "variants": [
+        "Super Duke R",
+        "1290 SDR"
+      ],
+      "engine": "LC8 V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2014",
+        "2017",
+        "2020",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "KTM",
+      "model": "Duke",
+      "variants": [
+        "390 Duke",
+        "690 Duke",
+        "790 Duke",
+        "890 Duke"
+      ],
+      "engine": "Single/Parallel Twin",
+      "cylinders": "1-2",
+      "years": [
+        "2013",
+        "2017",
+        "2018",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Triumph",
+      "model": "Street Triple",
+      "variants": [
+        "Street Triple R",
+        "Street Triple RS"
+      ],
+      "engine": "Triple",
+      "cylinders": "3",
+      "years": [
+        "2007",
+        "2013",
+        "2017",
+        "2020",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Triumph",
+      "model": "Daytona 675",
+      "variants": [
+        "Daytona 675R"
+      ],
+      "engine": "Triple",
+      "cylinders": "3",
+      "years": [
+        "2006",
+        "2009",
+        "2013"
+      ]
+    },
+    {
+      "manufacturer": "MV Agusta",
+      "model": "F4",
+      "variants": [
+        "F4 RR",
+        "F4 RC"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "1998",
+        "2010",
+        "2016",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "MV Agusta",
+      "model": "Brutale",
+      "variants": [
+        "Brutale 800",
+        "Brutale 1000",
+        "Brutale 1000 RR"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2013",
+        "2016",
+        "2019",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Harley-Davidson",
+      "model": "Sportster",
+      "variants": [
+        "Sportster S",
+        "Iron 883",
+        "Forty-Eight"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "1957",
+        "2004",
+        "2014",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Harley-Davidson",
+      "model": "Street",
+      "variants": [
+        "Street 750",
+        "Street Rod"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2014",
+        "2017"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "Diavel",
+      "variants": [
+        "Diavel V4",
+        "Diavel 1260",
+        "XDiavel"
+      ],
+      "engine": "V-Twin/V4",
+      "cylinders": "2-4",
+      "years": [
+        "2011",
+        "2015",
+        "2019",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "Multistrada",
+      "variants": [
+        "Multistrada V4",
+        "Multistrada 1260",
+        "Multistrada V2"
+      ],
+      "engine": "V-Twin/V4",
+      "cylinders": "2-4",
+      "years": [
+        "2010",
+        "2015",
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "Scrambler",
+      "variants": [
+        "Scrambler 800",
+        "Scrambler Icon",
+        "Scrambler Desert Sled"
+      ],
+      "engine": "L-Twin",
+      "cylinders": "2",
+      "years": [
+        "2015",
+        "2019",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "Supersport",
+      "variants": [
+        "Supersport 950",
+        "Supersport S"
+      ],
+      "engine": "L-Twin",
+      "cylinders": "2",
+      "years": [
+        "2017",
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Ducati",
+      "model": "Hypermotard",
+      "variants": [
+        "Hypermotard 950",
+        "Hypermotard SP"
+      ],
+      "engine": "L-Twin",
+      "cylinders": "2",
+      "years": [
+        "2013",
+        "2019",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "YZF-R3",
+      "variants": [
+        "R3"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2015",
+        "2019",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "YZF-R7",
+      "variants": [
+        "R7"
+      ],
+      "engine": "CP2 Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2022",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "VMAX",
+      "variants": [
+        "V-Max",
+        "VMax 1700"
+      ],
+      "engine": "V4",
+      "cylinders": "4",
+      "years": [
+        "1985",
+        "2009",
+        "2017"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "FZ",
+      "variants": [
+        "FZ-07",
+        "FZ-09",
+        "FZ-10",
+        "FZ1"
+      ],
+      "engine": "Inline-4/Triple/Twin",
+      "cylinders": "2-4",
+      "years": [
+        "2006",
+        "2014",
+        "2017"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "XSR",
+      "variants": [
+        "XSR700",
+        "XSR900"
+      ],
+      "engine": "Parallel Twin/Triple",
+      "cylinders": "2-3",
+      "years": [
+        "2016",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "Tracer",
+      "variants": [
+        "Tracer 7",
+        "Tracer 9",
+        "Tracer 900"
+      ],
+      "engine": "Parallel Twin/Triple",
+      "cylinders": "2-3",
+      "years": [
+        "2015",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model": "Ténéré",
+      "variants": [
+        "Ténéré 700",
+        "T7"
+      ],
+      "engine": "CP2 Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2019",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Ninja 400",
+      "variants": [
+        "Ninja 300",
+        "Ninja 250"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2008",
+        "2013",
+        "2018"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Ninja 650",
+      "variants": [
+        "Ninja 500"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2006",
+        "2012",
+        "2017",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Z650",
+      "variants": [
+        "Z 650"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2017",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Z1000",
+      "variants": [
+        "Z 1000"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2003",
+        "2010",
+        "2014"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Z800",
+      "variants": [
+        "Z 800"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2013",
+        "2016"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "ZX-14R",
+      "variants": [
+        "ZX14",
+        "ZX-14"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2006",
+        "2012",
+        "2016"
+      ]
+    },
+    {
+      "manufacturer": "Kawasaki",
+      "model": "Versys",
+      "variants": [
+        "Versys 650",
+        "Versys 1000"
+      ],
+      "engine": "Parallel Twin/Inline-4",
+      "cylinders": "2-4",
+      "years": [
+        "2007",
+        "2015",
+        "2019"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "CB1000R",
+      "variants": [
+        "CB 1000 R",
+        "CB1000R+"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2008",
+        "2018",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "CB650R",
+      "variants": [
+        "CB 650 R",
+        "CB650F"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2014",
+        "2019",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "CB500",
+      "variants": [
+        "CB500F",
+        "CB500X"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2013",
+        "2019",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "NC750X",
+      "variants": [
+        "NC750",
+        "NC700X"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2012",
+        "2016",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "Africa Twin",
+      "variants": [
+        "CRF1000L",
+        "CRF1100L"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2016",
+        "2020",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "VFR",
+      "variants": [
+        "VFR800",
+        "VFR1200"
+      ],
+      "engine": "V4",
+      "cylinders": "4",
+      "years": [
+        "1998",
+        "2014",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Honda",
+      "model": "CBR300R",
+      "variants": [
+        "CBR250R"
+      ],
+      "engine": "Single",
+      "cylinders": "1",
+      "years": [
+        "2011",
+        "2015"
+      ]
+    },
+    {
+      "manufacturer": "Suzuki",
+      "model": "GSX-R600",
+      "variants": [
+        "GSXR600"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "1997",
+        "2004",
+        "2006",
+        "2011"
+      ]
+    },
+    {
+      "manufacturer": "Suzuki",
+      "model": "GSX-S",
+      "variants": [
+        "GSX-S750",
+        "GSX-S1000"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2015",
+        "2018",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Suzuki",
+      "model": "SV650",
+      "variants": [
+        "SV 650",
+        "SV650X"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "1999",
+        "2017",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Suzuki",
+      "model": "V-Strom",
+      "variants": [
+        "V-Strom 650",
+        "V-Strom 1000"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2004",
+        "2014",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Suzuki",
+      "model": "Katana",
+      "variants": [
+        "GSX-S1000 Katana"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "1981",
+        "2019",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "S1000R",
+      "variants": [
+        "S 1000 R"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2014",
+        "2017",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "S1000XR",
+      "variants": [
+        "S 1000 XR"
+      ],
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "years": [
+        "2015",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "R1200GS",
+      "variants": [
+        "R 1200 GS",
+        "R1200GS Adventure"
+      ],
+      "engine": "Boxer Twin",
+      "cylinders": "2",
+      "years": [
+        "2004",
+        "2013",
+        "2017"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "F900R",
+      "variants": [
+        "F 900 R",
+        "F900XR"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2020",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "F850GS",
+      "variants": [
+        "F 850 GS",
+        "F750GS"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2018",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "BMW",
+      "model": "R nineT",
+      "variants": [
+        "R nine T",
+        "R9T"
+      ],
+      "engine": "Boxer Twin",
+      "cylinders": "2",
+      "years": [
+        "2014",
+        "2017",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "KTM",
+      "model": "RC",
+      "variants": [
+        "RC 390",
+        "RC 200",
+        "RC 125"
+      ],
+      "engine": "Single",
+      "cylinders": "1",
+      "years": [
+        "2014",
+        "2017",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "KTM",
+      "model": "890 Duke",
+      "variants": [
+        "890 Duke R"
+      ],
+      "engine": "LC8c Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "KTM",
+      "model": "890 Adventure",
+      "variants": [
+        "890 Adventure R"
+      ],
+      "engine": "LC8c Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "KTM",
+      "model": "1290 Super Adventure",
+      "variants": [
+        "1290 Super Adventure R",
+        "1290 Super Adventure S"
+      ],
+      "engine": "LC8 V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2015",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Triumph",
+      "model": "Speed Triple",
+      "variants": [
+        "Speed Triple 1200",
+        "Speed Triple RS"
+      ],
+      "engine": "Triple",
+      "cylinders": "3",
+      "years": [
+        "1994",
+        "2011",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Triumph",
+      "model": "Rocket",
+      "variants": [
+        "Rocket 3",
+        "Rocket III"
+      ],
+      "engine": "Inline-3",
+      "cylinders": "3",
+      "years": [
+        "2004",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Triumph",
+      "model": "Tiger",
+      "variants": [
+        "Tiger 900",
+        "Tiger 1200"
+      ],
+      "engine": "Triple",
+      "cylinders": "3",
+      "years": [
+        "2011",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Triumph",
+      "model": "Bonneville",
+      "variants": [
+        "Bonneville T120",
+        "Bonneville Bobber"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2001",
+        "2016",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Triumph",
+      "model": "Trident",
+      "variants": [
+        "Trident 660"
+      ],
+      "engine": "Triple",
+      "cylinders": "3",
+      "years": [
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Aprilia",
+      "model": "Tuono V4",
+      "variants": [
+        "Tuono V4 1100",
+        "Tuono V4 Factory"
+      ],
+      "engine": "V4",
+      "cylinders": "4",
+      "years": [
+        "2011",
+        "2015",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Aprilia",
+      "model": "RS 125",
+      "variants": [
+        "RS125"
+      ],
+      "engine": "Single",
+      "cylinders": "1",
+      "years": [
+        "1993",
+        "2012"
+      ]
+    },
+    {
+      "manufacturer": "Aprilia",
+      "model": "Tuono 660",
+      "variants": [],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "MV Agusta",
+      "model": "F3",
+      "variants": [
+        "F3 800",
+        "F3 675"
+      ],
+      "engine": "Inline-3",
+      "cylinders": "3",
+      "years": [
+        "2012",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "MV Agusta",
+      "model": "Dragster",
+      "variants": [
+        "Dragster 800",
+        "Dragster RR"
+      ],
+      "engine": "Inline-3",
+      "cylinders": "3",
+      "years": [
+        "2014",
+        "2019"
+      ]
+    },
+    {
+      "manufacturer": "MV Agusta",
+      "model": "Superveloce",
+      "variants": [
+        "Superveloce 800"
+      ],
+      "engine": "Inline-3",
+      "cylinders": "3",
+      "years": [
+        "2020",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Harley-Davidson",
+      "model": "Fat Boy",
+      "variants": [
+        "Fat Boy 114"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "1990",
+        "2018",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Harley-Davidson",
+      "model": "Road King",
+      "variants": [],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "1994",
+        "2017"
+      ]
+    },
+    {
+      "manufacturer": "Harley-Davidson",
+      "model": "Street Glide",
+      "variants": [],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2006",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Harley-Davidson",
+      "model": "LiveWire",
+      "variants": [],
+      "engine": "Electric",
+      "cylinders": "0",
+      "years": [
+        "2019",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Harley-Davidson",
+      "model": "Pan America",
+      "variants": [
+        "Pan America 1250"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2021",
+        "2023"
+      ]
+    },
+    {
+      "manufacturer": "Indian",
+      "model": "Scout",
+      "variants": [
+        "Scout Bobber",
+        "Scout Rogue"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2015",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Indian",
+      "model": "FTR",
+      "variants": [
+        "FTR 1200"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2019",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Indian",
+      "model": "Chieftain",
+      "variants": [],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2014",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Royal Enfield",
+      "model": "Interceptor",
+      "variants": [
+        "Interceptor 650"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2018",
+        "2022"
+      ]
+    },
+    {
+      "manufacturer": "Royal Enfield",
+      "model": "Continental GT",
+      "variants": [
+        "Continental GT 650"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2013",
+        "2018"
+      ]
+    },
+    {
+      "manufacturer": "Royal Enfield",
+      "model": "Himalayan",
+      "variants": [],
+      "engine": "Single",
+      "cylinders": "1",
+      "years": [
+        "2016",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Benelli",
+      "model": "TRK 502",
+      "variants": [
+        "TRK 502X"
+      ],
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "years": [
+        "2017",
+        "2020"
+      ]
+    },
+    {
+      "manufacturer": "Benelli",
+      "model": "TNT",
+      "variants": [
+        "TNT 300",
+        "TNT 600"
+      ],
+      "engine": "Single/Inline-4",
+      "cylinders": "1-4",
+      "years": [
+        "2014",
+        "2019"
+      ]
+    },
+    {
+      "manufacturer": "Norton",
+      "model": "Commando",
+      "variants": [
+        "Commando 961",
+        "V4 RR"
+      ],
+      "engine": "Parallel Twin/V4",
+      "cylinders": "2-4",
+      "years": [
+        "1967",
+        "2018",
+        "2023"
+      ]
+    }
+  ]
+}
