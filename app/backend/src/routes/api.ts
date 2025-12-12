@@ -6,7 +6,7 @@ import {
   scoreToPercentage,
 } from "../../../services/scoring";
 import { nextHint } from "../../../services/hints";
-import { ensureCatalogIngested } from "../utils/catalogIngest";
+// import { ensureCatalogIngested } from "../utils/catalogIngest";
 import { MetadataExtractorService } from "../services/metadata-extractor";
 
 const router = Router();
@@ -44,7 +44,8 @@ const expandRound = () =>
 
 router.get("/rounds/next", async (req, res) => {
   try {
-    await ensureCatalogIngested();
+    // Le catalogue est déjà ingéré dans la DB, pas besoin de le faire à chaque requête
+    // await ensureCatalogIngested();
     const skipRequested = req.query.skip === "true";
     if (skipRequested) {
       const active = await prisma.round.findFirst({
@@ -63,41 +64,61 @@ router.get("/rounds/next", async (req, res) => {
     }
     let round = await expandRound();
     if (!round) {
-      // Sélectionner une source valide avec confiance >= 90%
-      const sources = await prisma.source.findMany({
+      // Récupérer toutes les sources qui ont déjà une moto associée
+      // (donc déjà validées lors de l'ingestion)
+      const usedSourceIds = await prisma.round.findMany({
+        select: { sourceId: true },
+      });
+      const usedIds = usedSourceIds.map((r) => r.sourceId);
+
+      // Trouver une source non utilisée avec une moto associée
+      const availableSource = await prisma.source.findFirst({
+        where: {
+          id: { notIn: usedIds },
+          motoId: { not: null }, // Doit avoir une moto associée
+        },
         include: { moto: true },
-        orderBy: { createdAt: "desc" },
       });
 
-      let validSource = null;
-      for (const source of sources) {
-        // Valider avec le système d'extraction hybride
-        if (!source.title) continue;
-        const validation = await metadataExtractor.validateVideo(source.title);
-        if (validation.valid && validation.confidence >= 0.90) {
-          validSource = source;
-          break;
-        }
-      }
+      // Si toutes les sources ont été utilisées, recommencer depuis le début
+      if (!availableSource) {
+        const firstSource = await prisma.source.findFirst({
+          where: { motoId: { not: null } },
+          include: { moto: true },
+        });
 
-      if (!validSource) {
-        return res.status(404).json({
-          error: "Aucune source disponible avec confiance suffisante (>= 90%)"
+        if (!firstSource) {
+          return res.status(404).json({
+            error: "Aucune source disponible dans la base de données"
+          });
+        }
+
+        round = await prisma.round.create({
+          data: {
+            sourceId: firstSource.id,
+            status: ROUND_STATUS.ACTIVE,
+          },
+          include: {
+            source: { include: { moto: true } },
+            guesses: {
+              orderBy: { createdAt: "desc" },
+            },
+          },
+        });
+      } else {
+        round = await prisma.round.create({
+          data: {
+            sourceId: availableSource.id,
+            status: ROUND_STATUS.ACTIVE,
+          },
+          include: {
+            source: { include: { moto: true } },
+            guesses: {
+              orderBy: { createdAt: "desc" },
+            },
+          },
         });
       }
-
-      round = await prisma.round.create({
-        data: {
-          sourceId: validSource.id,
-          status: ROUND_STATUS.ACTIVE,
-        },
-        include: {
-          source: { include: { moto: true } },
-          guesses: {
-            orderBy: { createdAt: "desc" },
-          },
-        },
-      });
     } else if (round.status === ROUND_STATUS.PENDING) {
       round = await prisma.round.update({
         where: { id: round.id },

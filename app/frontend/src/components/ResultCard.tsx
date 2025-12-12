@@ -5,8 +5,6 @@ interface Props {
   onClose: () => void;
 }
 
-const formatPercent = (value: number) => `${Math.round(value)}%`;
-
 export const ResultCard = ({ result, onClose }: Props) => {
   if (!result) return null;
   const { breakdown, solution, total } = result;
@@ -17,6 +15,40 @@ export const ResultCard = ({ result, onClose }: Props) => {
 
   const isCorrect = breakdown.correct;
   const scorePercent = Math.round(total);
+
+  // Tableau comparatif
+  const comparisons = [
+    {
+      label: "🏭 Marque",
+      userAnswer: result.guess.answers?.manufacturer || "—",
+      correctAnswer: solution?.manufacturer || "?",
+      score: breakdown.brandScore,
+    },
+    {
+      label: "🏍️ Modèle",
+      userAnswer: result.guess.answers?.model || "—",
+      correctAnswer: solution?.name || "?",
+      score: breakdown.modelScore,
+    },
+    {
+      label: "🔧 Cylindres",
+      userAnswer: result.guess.answers?.cylinders || "—",
+      correctAnswer: solution?.cylinders || "?",
+      score: breakdown.cylindersScore,
+    },
+    {
+      label: "⚙️ Architecture",
+      userAnswer: result.guess.answers?.engine || "—",
+      correctAnswer: solution?.engine || "?",
+      score: breakdown.engineScore,
+    },
+    {
+      label: "📅 Année",
+      userAnswer: result.guess.answers?.year || "—",
+      correctAnswer: solution?.year || solution?.era || "?",
+      score: breakdown.yearScore,
+    },
+  ];
 
   return (
     <>
@@ -72,6 +104,36 @@ export const ResultCard = ({ result, onClose }: Props) => {
                 <p className="text-xs text-chrome-400 mt-2">
                   {scorePercent >= 90 ? "Excellent !" : scorePercent >= 70 ? "Bien joué !" : scorePercent >= 50 ? "Pas mal !" : "Continue d'essayer !"}
                 </p>
+              </div>
+
+              {/* Comparison Table */}
+              <div className="mb-4 rounded-xl bg-gradient-to-br from-ink-800 to-ink-900 p-3 border border-white/10">
+                <p className="text-[10px] uppercase tracking-wider text-electric-500 font-bold mb-3">
+                  📊 Détails du Score
+                </p>
+                <div className="space-y-2">
+                  {comparisons.map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex items-center justify-between gap-2 p-2 rounded-lg bg-ink-900/50"
+                    >
+                      <span className="text-[9px] text-chrome-400 w-16 flex-shrink-0">{item.label}</span>
+                      <span className={`flex-1 text-xs font-bold truncate ${
+                        item.score >= 0.95
+                          ? "text-neon-500"
+                          : item.score >= 0.5
+                          ? "text-electric-500"
+                          : "text-racing-500"
+                      }`}>
+                        {item.userAnswer}
+                      </span>
+                      <span className="text-chrome-600 text-xs">→</span>
+                      <span className="flex-1 text-xs font-bold text-white text-right truncate">
+                        {item.correctAnswer}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Solution */}
