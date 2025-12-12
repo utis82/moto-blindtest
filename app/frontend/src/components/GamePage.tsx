@@ -118,7 +118,7 @@ export const GamePage = () => {
   const guesses = roundData?.guesses ?? [];
 
   return (
-    <section className="h-screen flex flex-col overflow-hidden p-3">
+    <section className="min-h-screen flex flex-col overflow-y-auto p-3">
       {/* Compact Header */}
       <div className="flex-shrink-0 relative rounded-xl overflow-hidden bg-gradient-to-br from-racing-900 via-ink-900 to-electric-900 p-1 shadow-lg mb-2">
         <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-neon-500 to-electric-600 opacity-75 blur-sm animate-pulse-slow"></div>

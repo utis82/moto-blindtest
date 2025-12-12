@@ -192,10 +192,10 @@ export const YouTubeClip = ({ playback }: Props) => {
       <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-electric-600 to-neon-600 opacity-50 blur-lg"></div>
 
       <div className="relative rounded-lg bg-ink-950 p-3">
-        {/* Video player - visible for debugging */}
+        {/* Video player - hidden again */}
         <div
           ref={containerRef}
-          className="w-full"
+          className="absolute opacity-0 pointer-events-none"
         />
 
         {/* Audio-only interface */}
