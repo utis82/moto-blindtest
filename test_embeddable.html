@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Embed YouTube</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .test { margin: 20px 0; padding: 10px; border: 1px solid #ddd; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>Test des vidéos embeddables</h1>
+    <div id="results"></div>
+    
+    <script>
+        const videos = [
+            { id: "6fVjQbtzICM", name: "Ducati Panigale V4S" },
+            { id: "zsznxlIOov0", name: "Yamaha R1" },
+            { id: "bPBcVWI6Mi4", name: "Harley-Davidson" },
+            { id: "QzjHMv7w3v0", name: "Test 4" },
+            { id: "dFlTHQx7fU8", name: "Test 5" },
+            { id: "mQ_f7OXGnn0", name: "Test 6" },
+            { id: "Pv8KFLKs6sM", name: "Test 7" },
+            { id: "0Y7JW6Y0Vao", name: "Test 8" },
+            { id: "kD9TlEjRlL8", name: "Test 9" },
+            { id: "PJP9xQrAr7k", name: "Test 10" }
+        ];
+        
+        const results = document.getElementById('results');
+        
+        videos.forEach(video => {
+            const div = document.createElement('div');
+            div.className = 'test';
+            div.innerHTML = `
+                <h3>${video.name} (${video.id})</h3>
+                <iframe 
+                    width="320" 
+                    height="180" 
+                    src="https://www.youtube.com/embed/${video.id}?autoplay=0&controls=1"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    onload="this.parentElement.className += ' success'"
+                    onerror="this.parentElement.className += ' error'"
+                ></iframe>
+                <p>Si tu vois la vidéo = ✅ Embeddable | Si erreur = ❌ Non embeddable</p>
+            `;
+            results.appendChild(div);
+        });
+    </script>
+</body>
+</html>

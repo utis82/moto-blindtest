@@ -17,6 +17,13 @@ const EMBEDDABLE_VIDEO_IDS = [
   "6fVjQbtzICM", // Ducati Panigale V4S
   "zsznxlIOov0", // Yamaha R1
   "bPBcVWI6Mi4", // Harley-Davidson
+  "QzjHMv7w3v0", // Kawasaki Ninja H2R
+  "dFlTHQx7fU8", // Honda CBR1000RR
+  "mQ_f7OXGnn0", // BMW S1000RR
+  "Pv8KFLKs6sM", // Yamaha MT-09
+  "0Y7JW6Y0Vao", // KTM 1290 Super Duke R
+  "kD9TlEjRlL8", // Aprilia RS 660
+  "PJP9xQrAr7k", // Suzuki GSX-R1000
 ];
 
 const ROUND_STATUS = {
