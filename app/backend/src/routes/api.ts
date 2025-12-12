@@ -12,6 +12,13 @@ import { MetadataExtractorService } from "../services/metadata-extractor";
 const router = Router();
 const metadataExtractor = new MetadataExtractorService(0.90);
 
+// Liste des vidéos embeddables connues (YouTube bloque certaines vidéos)
+const EMBEDDABLE_VIDEO_IDS = [
+  "6fVjQbtzICM", // Ducati Panigale V4S
+  "zsznxlIOov0", // Yamaha R1
+  "bPBcVWI6Mi4", // Harley-Davidson
+];
+
 const ROUND_STATUS = {
   PENDING: "PENDING",
   ACTIVE: "ACTIVE",
@@ -71,11 +78,12 @@ router.get("/rounds/next", async (req, res) => {
       });
       const usedIds = usedSourceIds.map((r) => r.sourceId);
 
-      // Trouver une source non utilisée avec une moto associée
+      // Trouver une source non utilisée avec une moto associée ET embeddable
       const availableSource = await prisma.source.findFirst({
         where: {
           id: { notIn: usedIds },
           motoId: { not: null }, // Doit avoir une moto associée
+          videoId: { in: EMBEDDABLE_VIDEO_IDS }, // Seulement les vidéos embeddables
         },
         include: { moto: true },
       });
@@ -83,7 +91,10 @@ router.get("/rounds/next", async (req, res) => {
       // Si toutes les sources ont été utilisées, recommencer depuis le début
       if (!availableSource) {
         const firstSource = await prisma.source.findFirst({
-          where: { motoId: { not: null } },
+          where: {
+            motoId: { not: null },
+            videoId: { in: EMBEDDABLE_VIDEO_IDS },
+          },
           include: { moto: true },
         });
 
