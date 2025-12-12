@@ -40,6 +40,7 @@ export class MetadataExtractorService {
         this.scriptPath,
         '--title', title,
         '--min-confidence', this.minConfidence.toString(),
+        '--quiet',  // Mode silencieux pour sortie JSON propre
       ];
 
       if (!useAiFallback) {

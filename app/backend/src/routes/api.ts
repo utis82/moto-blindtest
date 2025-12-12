@@ -7,8 +7,10 @@ import {
 } from "../../../services/scoring";
 import { nextHint } from "../../../services/hints";
 import { ensureCatalogIngested } from "../utils/catalogIngest";
+import { MetadataExtractorService } from "../services/metadata-extractor";
 
 const router = Router();
+const metadataExtractor = new MetadataExtractorService(0.90);
 
 const ROUND_STATUS = {
   PENDING: "PENDING",
@@ -61,15 +63,32 @@ router.get("/rounds/next", async (req, res) => {
     }
     let round = await expandRound();
     if (!round) {
-      const source = await prisma.source.findFirst({
+      // Sélectionner une source valide avec confiance >= 90%
+      const sources = await prisma.source.findMany({
+        include: { moto: true },
         orderBy: { createdAt: "desc" },
       });
-      if (!source) {
-        return res.status(404).json({ error: "Aucune source disponible" });
+
+      let validSource = null;
+      for (const source of sources) {
+        // Valider avec le système d'extraction hybride
+        if (!source.title) continue;
+        const validation = await metadataExtractor.validateVideo(source.title);
+        if (validation.valid && validation.confidence >= 0.90) {
+          validSource = source;
+          break;
+        }
       }
+
+      if (!validSource) {
+        return res.status(404).json({
+          error: "Aucune source disponible avec confiance suffisante (>= 90%)"
+        });
+      }
+
       round = await prisma.round.create({
         data: {
-          sourceId: source.id,
+          sourceId: validSource.id,
           status: ROUND_STATUS.ACTIVE,
         },
         include: {
@@ -266,6 +285,35 @@ router.post("/hints", async (req, res) => {
       data: { hintLevel: hint.level },
     });
     return res.json(hint);
+  } catch (error) {
+    return res.status(500).json({ error: (error as Error).message });
+  }
+});
+
+router.post("/metadata/extract", async (req, res) => {
+  try {
+    const { title, useAiFallback = true } = req.body as {
+      title?: string;
+      useAiFallback?: boolean;
+    };
+    if (!title) {
+      return res.status(400).json({ error: "Titre manquant" });
+    }
+    const result = await metadataExtractor.extract(title, useAiFallback);
+    return res.json(result);
+  } catch (error) {
+    return res.status(500).json({ error: (error as Error).message });
+  }
+});
+
+router.post("/metadata/validate", async (req, res) => {
+  try {
+    const { title } = req.body as { title?: string };
+    if (!title) {
+      return res.status(400).json({ error: "Titre manquant" });
+    }
+    const validation = await metadataExtractor.validateVideo(title);
+    return res.json(validation);
   } catch (error) {
     return res.status(500).json({ error: (error as Error).message });
   }

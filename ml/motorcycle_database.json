@@ -1365,6 +1365,20 @@
     },
     {
       "manufacturer": "Harley-Davidson",
+      "model": "Breakout",
+      "variants": [
+        "Breakout 114"
+      ],
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "years": [
+        "2013",
+        "2018",
+        "2021"
+      ]
+    },
+    {
+      "manufacturer": "Harley-Davidson",
       "model": "LiveWire",
       "variants": [],
       "engine": "Electric",
