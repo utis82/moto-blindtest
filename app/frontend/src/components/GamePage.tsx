@@ -346,11 +346,6 @@ export const GamePage = () => {
                 </div>
               </div>
             )}
-            {result && (
-              <div className="mt-2 flex-1 overflow-auto min-h-0">
-                <ResultCard result={result} />
-              </div>
-            )}
             </div>
           </form>
         </div>
@@ -412,6 +407,14 @@ export const GamePage = () => {
           </div>
         </aside>
       </div>
+
+      {/* Result Modal */}
+      {result && (
+        <ResultCard
+          result={result}
+          onClose={() => setResult(null)}
+        />
+      )}
     </section>
   );
 };

@@ -2,164 +2,107 @@ import type { GuessResponse } from "../types";
 
 interface Props {
   result: GuessResponse | null;
+  onClose: () => void;
 }
 
 const formatPercent = (value: number) => `${Math.round(value)}%`;
 
-export const ResultCard = ({ result }: Props) => {
+export const ResultCard = ({ result, onClose }: Props) => {
   if (!result) return null;
   const { breakdown, solution, total } = result;
   const solutionLabel = solution
     ? [solution.manufacturer, solution.name].filter(Boolean).join(" ").trim() ||
       "Mystère"
     : "";
-  const lines = [
-    { label: "Marque", value: breakdown.brandScore },
-    { label: "Modèle", value: breakdown.modelScore },
-    { label: "Architecture", value: breakdown.engineScore },
-    { label: "Cylindres", value: breakdown.cylindersScore },
-    { label: "Année", value: breakdown.yearScore },
-    { label: "Vitesse", value: breakdown.speedBonus },
-  ];
-  const comparisons = [
-    {
-      label: "Marque",
-      expected: solution?.manufacturer,
-      actual: result.guess.answers?.manufacturer,
-      score: breakdown.brandScore,
-    },
-    {
-      label: "Modèle",
-      expected: solution?.name,
-      actual: result.guess.answers?.model,
-      score: breakdown.modelScore,
-    },
-    {
-      label: "Architecture",
-      expected: solution?.engine,
-      actual: result.guess.answers?.engine,
-      score: breakdown.engineScore,
-    },
-    {
-      label: "Cylindres",
-      expected: solution?.cylinders,
-      actual: result.guess.answers?.cylinders,
-      score: breakdown.cylindersScore,
-    },
-    {
-      label: "Année/Période",
-      expected: solution?.year ?? solution?.era,
-      actual: result.guess.answers?.year,
-      score: breakdown.yearScore,
-    },
-  ];
+
+  const isCorrect = breakdown.correct;
+  const scorePercent = Math.round(total);
+
   return (
-    <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-ink-800/90 p-6 shadow-2xl">
-      <div className="flex flex-col gap-1">
-        <p className="text-sm uppercase tracking-widest text-slate-400">
-          Résultat
-        </p>
-        <div className="flex items-baseline gap-4">
-          <p className="text-5xl font-black text-white">{formatPercent(total)}</p>
-          <span
-            className={`rounded-full px-3 py-1 text-sm font-semibold ${
-              breakdown.correct
-                ? "bg-emerald-500/20 text-emerald-300"
-                : "bg-rose-500/20 text-rose-200"
-            }`}
-          >
-            {breakdown.correct ? "Bonne réponse" : "Encore un effort"}
-          </span>
-        </div>
-        <div className="h-2 w-full rounded-full bg-white/5">
-          <div
-            className="h-full rounded-full bg-gradient-to-r from-accent-500 to-orange-400"
-            style={{ width: formatPercent(total) }}
-          />
-        </div>
-      </div>
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {lines.map((line) => (
-          <div
-            key={line.label}
-            className="rounded-xl bg-white/5 px-4 py-3 text-sm text-slate-200"
-          >
-            <p className="text-xs uppercase tracking-wider text-slate-400">
-              {line.label}
-            </p>
-            <p className="text-lg font-semibold text-white">
-              {formatPercent(line.value * 100)}
-            </p>
-          </div>
-        ))}
-      </div>
-      <div className="rounded-2xl border border-white/5 bg-ink-900/70 p-4">
-        <p className="text-sm uppercase tracking-widest text-slate-400">
-          Vérité
-        </p>
-        {solution ? (
-          <div className="mt-2 space-y-1 text-slate-50">
-            <p className="text-2xl font-bold">{solutionLabel}</p>
-            <p className="text-sm text-slate-400">
-              {solution.engine ?? "Architecture inconnue"} ·{" "}
-              {solution.cylinders ?? "?"} cyl ·{" "}
-              {solution.year ?? solution.era ?? "Année inconnue"}
-            </p>
-            {solution.funFact && (
-              <p className="mt-3 text-sm text-slate-300">
-                Fun fact&nbsp;: {solution.funFact}
-              </p>
-            )}
-          </div>
-        ) : (
-          <p className="text-sm text-slate-400">
-            Réponse complète indisponible pour ce clip.
-          </p>
-        )}
-      </div>
-      <div className="rounded-2xl bg-white/5 p-4 text-sm text-slate-200 space-y-3">
-        <div>
-          <p className="text-xs uppercase tracking-widest text-slate-400">
-            Comparatif
-          </p>
-          <div className="mt-2 divide-y divide-white/10 rounded-xl border border-white/10">
-            {comparisons.map((item) => (
-              <div
-                key={item.label}
-                className="flex flex-wrap items-center gap-2 px-4 py-3 text-sm"
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 animate-fade-in"
+        onClick={onClose}
+      />
+
+      {/* Modal */}
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+        <div className="pointer-events-auto max-w-lg w-full animate-scale-in">
+          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-racing-900 via-ink-900 to-electric-900 p-1 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-neon-500 to-electric-600 opacity-75 blur-lg animate-pulse-slow"></div>
+
+            <div className="relative rounded-xl bg-ink-950 p-6">
+              {/* Close button */}
+              <button
+                onClick={onClose}
+                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center text-white"
               >
-                <span className="w-32 text-xs uppercase tracking-widest text-slate-400">
-                  {item.label}
-                </span>
-                <span
-                  className={`flex-1 font-semibold ${
-                    item.score >= 0.95
-                      ? "text-emerald-300"
-                      : item.score >= 0.5
-                      ? "text-amber-300"
-                      : "text-rose-300"
-                  }`}
-                >
-                  {item.actual ?? "—"}
-                </span>
-                <span className="flex-1 text-right text-slate-300">
-                  {item.expected ?? "Inconnu"}
-                </span>
+                ✕
+              </button>
+
+              {/* Score principal */}
+              <div className="text-center mb-6">
+                <div className="mb-2">
+                  <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-bold ${
+                    isCorrect
+                      ? "bg-gradient-to-r from-neon-600 to-electric-600 text-white"
+                      : "bg-gradient-to-r from-racing-600 to-chrome-600 text-white"
+                  }`}>
+                    {isCorrect ? "🎉 BRAVO !" : "💪 CONTINUE !"}
+                  </span>
+                </div>
+
+                <div className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-racing-500 via-neon-500 to-electric-500 mb-3">
+                  {scorePercent}%
+                </div>
+
+                {/* Barre de progression */}
+                <div className="relative h-4 w-full rounded-full bg-ink-800 overflow-hidden border-2 border-chrome-800/30">
+                  <div
+                    className={`h-full rounded-full transition-all duration-1000 ${
+                      isCorrect
+                        ? "bg-gradient-to-r from-neon-600 via-electric-600 to-neon-500"
+                        : "bg-gradient-to-r from-racing-600 via-chrome-600 to-racing-500"
+                    } shadow-lg`}
+                    style={{ width: `${scorePercent}%` }}
+                  />
+                </div>
+
+                <p className="text-xs text-chrome-400 mt-2">
+                  {scorePercent >= 90 ? "Excellent !" : scorePercent >= 70 ? "Bien joué !" : scorePercent >= 50 ? "Pas mal !" : "Continue d'essayer !"}
+                </p>
               </div>
-            ))}
+
+              {/* Solution */}
+              {solution && (
+                <div className="mb-6 rounded-xl bg-gradient-to-br from-ink-800 to-ink-900 p-4 border border-white/10">
+                  <p className="text-[10px] uppercase tracking-wider text-neon-500 font-bold mb-2">
+                    🏍️ La Bête
+                  </p>
+                  <p className="text-2xl font-black text-white mb-1">{solutionLabel}</p>
+                  <p className="text-sm text-chrome-400">
+                    {solution.engine ?? "?"} · {solution.cylinders ?? "?"} cyl · {solution.year ?? solution.era ?? "?"}
+                  </p>
+                  {solution.funFact && (
+                    <p className="mt-3 text-xs text-electric-400 italic border-l-2 border-electric-600 pl-3">
+                      💡 {solution.funFact}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Bouton fermer */}
+              <button
+                onClick={onClose}
+                className="w-full py-3 rounded-lg font-bold text-sm bg-gradient-to-r from-electric-600 to-electric-500 text-white transition-all duration-300 hover:scale-105 shadow-lg shadow-electric-600/50"
+              >
+                CONTINUER
+              </button>
+            </div>
           </div>
         </div>
-        <div>
-          <p className="text-xs uppercase tracking-widest text-slate-400">
-            Analyse
-          </p>
-          <ul className="mt-2 list-disc space-y-1 pl-5">
-            {breakdown.explanation.map((entry) => (
-              <li key={entry}>{entry}</li>
-            ))}
-          </ul>
-        </div>
       </div>
-    </div>
+    </>
   );
 };
