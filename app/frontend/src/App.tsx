@@ -4,6 +4,7 @@ import { HomePage } from "./components/HomePage";
 import { GameSetupPage } from "./components/GameSetupPage";
 import { MultiplayerGamePage } from "./components/MultiplayerGamePage";
 import { ResultsPage } from "./components/ResultsPage";
+import { BrandLogosBackground } from "./components/BrandLogosBackground";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 50px, #fff 50px, #fff 51px)',
         }}></div>
       </div>
+
+      {/* Logos des marques en filigrane doré */}
+      <BrandLogosBackground />
 
       {/* Contenu */}
       <div className="relative z-10 h-screen flex flex-col">

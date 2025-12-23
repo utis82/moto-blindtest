@@ -53,6 +53,18 @@ export default {
           400: "#ff80c3",
           300: "#ff99d4",
         },
+        // Or pour filigrane et accents premium
+        gold: {
+          900: "#B8860B",
+          800: "#DAA520",
+          700: "#E8B923",
+          600: "#F4C430",
+          500: "#FFD700",
+          400: "#FFDF00",
+          300: "#FFE55C",
+          200: "#FFEB99",
+          100: "#FFF4CC",
+        },
       },
       backgroundImage: {
         'racing-gradient': 'linear-gradient(135deg, #ff0000 0%, #cc0000 100%)',
