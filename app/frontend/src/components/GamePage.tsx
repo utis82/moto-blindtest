@@ -8,7 +8,7 @@ import type {
   PlayerAnswers,
 } from "../types";
 import { ResultCard } from "./ResultCard";
-import { YouTubeClip } from "./YouTubeClip";
+import { AudioClip } from "./AudioClip";
 
 const emptyAnswers: PlayerAnswers = {
   manufacturer: "",
@@ -154,11 +154,11 @@ export const GamePage = () => {
       <div className="flex-1 grid gap-2 lg:grid-cols-[1.3fr,0.7fr] min-h-0">
         {/* Left Column - Player & Form */}
         <div className="flex flex-col gap-2 min-h-0">
-          {/* Video Player - COMPACT */}
+          {/* Audio Player - COMPACT */}
           <div className="flex-shrink-0">
             {roundData ? (
               <div>
-                <YouTubeClip playback={roundData.source.playback} />
+                <AudioClip audioFile={roundData.source.audioFile} />
                 <div className="mt-2 relative rounded-xl overflow-hidden bg-gradient-to-br from-racing-900 via-ink-900 to-electric-900 p-0.5 shadow-lg">
                   <div className="absolute inset-0 bg-gradient-to-r from-racing-600 via-neon-500 to-electric-600 opacity-50 blur-sm"></div>
                   <div className="relative rounded-lg bg-ink-950 p-2">

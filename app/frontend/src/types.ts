@@ -12,8 +12,9 @@ export interface PlaybackPayload {
 }
 
 export interface SourcePayload {
-  embedUrl: string;
-  playback: PlaybackPayload;
+  embedUrl?: string;
+  playback?: PlaybackPayload;
+  audioFile?: string;
   duration: number;
 }
 

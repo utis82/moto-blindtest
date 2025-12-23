@@ -81,6 +81,7 @@ const upsertEntry = async (url: string) => {
     where: { url },
     update: {
       videoId,
+      audioFile: entry.audioFile,
       title: meta.title,
       channel: meta.channel,
       thumbnailUrl: meta.thumbnailUrl,
@@ -94,6 +95,7 @@ const upsertEntry = async (url: string) => {
     create: {
       url,
       videoId,
+      audioFile: entry.audioFile,
       title: meta.title,
       channel: meta.channel,
       thumbnailUrl: meta.thumbnailUrl,

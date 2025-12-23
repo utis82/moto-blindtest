@@ -3,6 +3,7 @@ import data from "./catalog.data.json";
 export interface CatalogEntry {
   url: string;
   videoId?: string;
+  audioFile?: string;
   startSeconds?: number;
   endSeconds?: number;
   verified?: boolean;

@@ -2,8 +2,9 @@
   {
     "url": "https://www.youtube.com/watch?v=6fVjQbtzICM",
     "videoId": "6fVjQbtzICM",
-    "startSeconds": 24,
-    "endSeconds": 40,
+    "audioFile": "/sounds/ducati-panigale-v4s.mp3",
+    "startSeconds": 0,
+    "endSeconds": 14,
     "verified": true,
     "meta": {
       "title": "Ducati Panigale V4S Sound!",
@@ -16,14 +17,15 @@
       "engine": "V4",
       "cylinders": "4",
       "year": "2018",
-      "funFact": "Première superbike Ducati de série équipée d'un V4 issu du MotoGP."
+      "funFact": "Premi\u00e8re superbike Ducati de s\u00e9rie \u00e9quip\u00e9e d'un V4 issu du MotoGP."
     }
   },
   {
     "url": "https://www.youtube.com/watch?v=zsznxlIOov0",
     "videoId": "zsznxlIOov0",
-    "startSeconds": 18,
-    "endSeconds": 34,
+    "audioFile": "/sounds/yamaha-yzf-r1.mp3",
+    "startSeconds": 0,
+    "endSeconds": 13,
     "verified": true,
     "meta": {
       "title": "Yamaha R1 Akrapovic Cold Start",
@@ -42,6 +44,7 @@
   {
     "url": "https://www.youtube.com/watch?v=bPBcVWI6Mi4",
     "videoId": "bPBcVWI6Mi4",
+    "audioFile": "/sounds/harley-davidson-breakout-114.mp3",
     "startSeconds": 38,
     "endSeconds": 55,
     "verified": true,
@@ -56,147 +59,427 @@
       "engine": "Milwaukee-Eight V-Twin",
       "cylinders": "2",
       "year": "2018",
-      "funFact": "Le Milwaukee-Eight 114 délivre un couple massif à très bas régime."
+      "funFact": "Le Milwaukee-Eight 114 d\u00e9livre un couple massif \u00e0 tr\u00e8s bas r\u00e9gime."
     }
   },
   {
-    "url": "https://www.youtube.com/watch?v=QzjHMv7w3v0",
-    "videoId": "QzjHMv7w3v0",
-    "startSeconds": 10,
-    "endSeconds": 25,
+    "url": "https://www.youtube.com/watch?v=L--R81xW_7w",
+    "videoId": "L--R81xW_7w",
+    "audioFile": "/sounds/kawasaki-ninja-h2.mp3",
+    "startSeconds": 254,
+    "endSeconds": 269,
     "verified": true,
     "meta": {
-      "title": "Kawasaki Ninja H2R Sound",
-      "channel": "Moto Sounds",
-      "thumbnailUrl": "https://img.youtube.com/vi/QzjHMv7w3v0/hqdefault.jpg"
+      "title": "PURESOUND KAWASAKI H2 + SUPERCHARGER SOUND!",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/L--R81xW_7w/hqdefault.jpg"
     },
     "fallback": {
       "manufacturer": "Kawasaki",
-      "model": "Ninja H2R",
-      "engine": "Inline-4 Supercharged",
+      "model": "Ninja H2",
+      "engine": "Supercharged Inline-4",
       "cylinders": "4",
-      "year": "2020",
-      "funFact": "La seule moto de série avec compresseur et 310 chevaux."
+      "year": "2015",
+      "funFact": "Premi\u00e8re moto de s\u00e9rie avec compresseur volum\u00e9trique."
     }
   },
   {
-    "url": "https://www.youtube.com/watch?v=dFlTHQx7fU8",
-    "videoId": "dFlTHQx7fU8",
-    "startSeconds": 15,
-    "endSeconds": 30,
+    "url": "https://www.youtube.com/watch?v=2nGpc4i3mtM",
+    "videoId": "2nGpc4i3mtM",
+    "audioFile": "/sounds/bmw-s1000rr.mp3",
+    "startSeconds": 21,
+    "endSeconds": 36,
     "verified": true,
     "meta": {
-      "title": "Honda CBR1000RR Fireblade Sound",
-      "channel": "Bike World",
-      "thumbnailUrl": "https://img.youtube.com/vi/dFlTHQx7fU8/hqdefault.jpg"
-    },
-    "fallback": {
-      "manufacturer": "Honda",
-      "model": "CBR1000RR-R Fireblade",
-      "engine": "Inline-4",
-      "cylinders": "4",
-      "year": "2020",
-      "funFact": "Moteur dérivé de la RC213V de MotoGP."
-    }
-  },
-  {
-    "url": "https://www.youtube.com/watch?v=mQ_f7OXGnn0",
-    "videoId": "mQ_f7OXGnn0",
-    "startSeconds": 5,
-    "endSeconds": 20,
-    "verified": true,
-    "meta": {
-      "title": "BMW S1000RR Sound",
-      "channel": "SuperBike Sounds",
-      "thumbnailUrl": "https://img.youtube.com/vi/mQ_f7OXGnn0/hqdefault.jpg"
+      "title": "LOUD BMW S1000RR Akrapovic GP Exhaust System Sound (FLAME SPITTER) \ud83d\udd25",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/2nGpc4i3mtM/hqdefault.jpg"
     },
     "fallback": {
       "manufacturer": "BMW",
       "model": "S1000RR",
       "engine": "Inline-4",
       "cylinders": "4",
-      "year": "2021",
-      "funFact": "Première superbike BMW, développée pour la compétition."
+      "year": "2019",
+      "funFact": "D\u00e9veloppe plus de 200 ch et p\u00e8se moins de 200 kg."
     }
   },
   {
-    "url": "https://www.youtube.com/watch?v=Pv8KFLKs6sM",
-    "videoId": "Pv8KFLKs6sM",
-    "startSeconds": 20,
-    "endSeconds": 35,
+    "url": "https://www.youtube.com/watch?v=8BqHD8KxrS0",
+    "videoId": "8BqHD8KxrS0",
+    "audioFile": "/sounds/yamaha-mt-09.mp3",
+    "startSeconds": 106,
+    "endSeconds": 121,
     "verified": true,
     "meta": {
-      "title": "Yamaha MT-09 Sound",
-      "channel": "Triple Sound",
-      "thumbnailUrl": "https://img.youtube.com/vi/Pv8KFLKs6sM/hqdefault.jpg"
+      "title": "MT-09 - PURE SOUND - AKRAPOVIC (NO DB KILLER)",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/8BqHD8KxrS0/hqdefault.jpg"
     },
     "fallback": {
       "manufacturer": "Yamaha",
       "model": "MT-09",
-      "engine": "Triple CP3",
+      "engine": "CP3 Triple",
       "cylinders": "3",
-      "year": "2020",
-      "funFact": "Le 3-cylindres CP3 a un son unique et irrégulier."
+      "year": "2021",
+      "funFact": "Le 3-cylindres CP3 offre un couple g\u00e9n\u00e9reux d\u00e8s les bas r\u00e9gimes."
     }
   },
   {
-    "url": "https://www.youtube.com/watch?v=0Y7JW6Y0Vao",
-    "videoId": "0Y7JW6Y0Vao",
-    "startSeconds": 8,
-    "endSeconds": 23,
+    "url": "https://www.youtube.com/watch?v=jOJ7oMZSkak",
+    "videoId": "jOJ7oMZSkak",
+    "audioFile": "/sounds/ktm-1290-super-duke-r.mp3",
+    "startSeconds": 194,
+    "endSeconds": 209,
     "verified": true,
     "meta": {
-      "title": "KTM 1290 Super Duke R Sound",
-      "channel": "The Beast Channel",
-      "thumbnailUrl": "https://img.youtube.com/vi/0Y7JW6Y0Vao/hqdefault.jpg"
+      "title": "KTM 1290 Superduke R -- PURE SOUND",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/jOJ7oMZSkak/hqdefault.jpg"
     },
     "fallback": {
       "manufacturer": "KTM",
       "model": "1290 Super Duke R",
-      "engine": "V-Twin",
+      "engine": "LC8 V-Twin",
       "cylinders": "2",
       "year": "2020",
-      "funFact": "Surnommée 'The Beast' pour ses 180 chevaux."
+      "funFact": "Surnomm\u00e9e 'The Beast', elle d\u00e9veloppe 180 ch."
     }
   },
   {
-    "url": "https://www.youtube.com/watch?v=kD9TlEjRlL8",
-    "videoId": "kD9TlEjRlL8",
-    "startSeconds": 12,
-    "endSeconds": 27,
+    "url": "https://www.youtube.com/watch?v=-emcohcaNfY",
+    "videoId": "-emcohcaNfY",
+    "audioFile": "/sounds/aprilia-rs-660.mp3",
+    "startSeconds": 197,
+    "endSeconds": 212,
     "verified": true,
     "meta": {
-      "title": "Aprilia RS 660 Sound",
-      "channel": "Twins Sound",
-      "thumbnailUrl": "https://img.youtube.com/vi/kD9TlEjRlL8/hqdefault.jpg"
+      "title": "UNREAL SOUND! \ufe0f\u200d\ud83d\udd25\ud83d\udca5 | Aprilia RS 660 - SC PROJECT CRT  [4K POV]",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/-emcohcaNfY/hqdefault.jpg"
     },
     "fallback": {
       "manufacturer": "Aprilia",
       "model": "RS 660",
       "engine": "Parallel Twin",
       "cylinders": "2",
-      "year": "2021",
-      "funFact": "Premier twin sportif moderne d'Aprilia."
+      "year": "2020",
+      "funFact": "Premier bicylindre sportif moderne d'Aprilia."
     }
   },
   {
-    "url": "https://www.youtube.com/watch?v=PJP9xQrAr7k",
-    "videoId": "PJP9xQrAr7k",
-    "startSeconds": 18,
-    "endSeconds": 33,
+    "url": "https://www.youtube.com/watch?v=JIn5OSwz1VM",
+    "videoId": "JIn5OSwz1VM",
+    "audioFile": "/sounds/suzuki-gsx-r1000.mp3",
+    "startSeconds": 263,
+    "endSeconds": 278,
     "verified": true,
     "meta": {
-      "title": "Suzuki GSX-R1000 Sound",
-      "channel": "Gixxer Sounds",
-      "thumbnailUrl": "https://img.youtube.com/vi/PJP9xQrAr7k/hqdefault.jpg"
+      "title": "The Pure Sound of Suzuki GSXR 1000 \ud83d\udd25",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/JIn5OSwz1VM/hqdefault.jpg"
     },
     "fallback": {
       "manufacturer": "Suzuki",
       "model": "GSX-R1000",
       "engine": "Inline-4",
       "cylinders": "4",
+      "year": "2017",
+      "funFact": "\u00c9quip\u00e9e du syst\u00e8me VVT (Variable Valve Timing) inspir\u00e9 de la MotoGP."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=jyEd6huRJj8",
+    "videoId": "jyEd6huRJj8",
+    "audioFile": "/sounds/honda-cbr1000rr-fireblade.mp3",
+    "startSeconds": 325,
+    "endSeconds": 340,
+    "verified": true,
+    "meta": {
+      "title": "The Pure Sound of Honda CBR 1000 RR FireBlade (with Launch Control)",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/jyEd6huRJj8/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Honda",
+      "model": "CBR1000RR Fireblade",
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "year": "2020",
+      "funFact": "La Fireblade est l'une des superbikes les plus l\u00e9g\u00e8res du march\u00e9."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=GDa1-PT34Nc",
+    "videoId": "GDa1-PT34Nc",
+    "audioFile": "/sounds/mv-agusta-f4.mp3",
+    "startSeconds": 229,
+    "endSeconds": 244,
+    "verified": true,
+    "meta": {
+      "title": "MV AGUSTA PURE SOUND",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/GDa1-PT34Nc/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "MV Agusta",
+      "model": "F4",
+      "engine": "Inline-4",
+      "cylinders": "4",
       "year": "2019",
-      "funFact": "La légendaire Gixxer, reine des circuits."
+      "funFact": "MV Agusta est c\u00e9l\u00e8bre pour ses \u00e9chappements 4-en-1 \u00e0 la sonorit\u00e9 unique."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=Nmzi0kE5G3Y",
+    "videoId": "Nmzi0kE5G3Y",
+    "audioFile": "/sounds/triumph-street-triple-rs.mp3",
+    "startSeconds": 186,
+    "endSeconds": 201,
+    "verified": true,
+    "meta": {
+      "title": "Faster Triumph Street Triple 675R QUICKSHIFTER PURE Sound - MASS exhaust [RAW Onboard]",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/Nmzi0kE5G3Y/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Triumph",
+      "model": "Street Triple RS",
+      "engine": "Triple 765",
+      "cylinders": "3",
+      "year": "2020",
+      "funFact": "Le 3-cylindres Triumph offre un son caract\u00e9ristique et un couple lin\u00e9aire."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=W3o0n_txK6c",
+    "videoId": "W3o0n_txK6c",
+    "audioFile": "/sounds/kawasaki-zx-10r.mp3",
+    "startSeconds": 93,
+    "endSeconds": 108,
+    "verified": true,
+    "meta": {
+      "title": "[4K] 2022 Kawasaki Ninja ZX10R Pure Sound [ 299KMH ]",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/W3o0n_txK6c/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Kawasaki",
+      "model": "ZX-10R",
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "year": "2021",
+      "funFact": "Championne du monde Superbike \u00e0 de nombreuses reprises."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=EAUAuGQoXsI",
+    "videoId": "EAUAuGQoXsI",
+    "audioFile": "/sounds/indian-scout-bobber.mp3",
+    "startSeconds": 258,
+    "endSeconds": 273,
+    "verified": true,
+    "meta": {
+      "title": "Indian Scout Bobber Pure Sound - Radical Radius Exhaust",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/EAUAuGQoXsI/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Indian",
+      "model": "Scout Bobber",
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "year": "2019",
+      "funFact": "Le Scout est l'un des mod\u00e8les les plus populaires d'Indian depuis 1920."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=4PNT1EXEEUA",
+    "videoId": "4PNT1EXEEUA",
+    "audioFile": "/sounds/honda-africa-twin.mp3",
+    "startSeconds": 5,
+    "endSeconds": 11,
+    "verified": true,
+    "meta": {
+      "title": "Africa Twin 1100 Pure Sound POV",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/4PNT1EXEEUA/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Honda",
+      "model": "Africa Twin",
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "year": "2020",
+      "funFact": "L\u00e9gende du Paris-Dakar, l'Africa Twin est une r\u00e9f\u00e9rence en trail."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=NiY5TkvoLog",
+    "videoId": "NiY5TkvoLog",
+    "audioFile": "/sounds/bmw-r-ninet.mp3",
+    "startSeconds": 35,
+    "endSeconds": 50,
+    "verified": true,
+    "meta": {
+      "title": "BMW Rninet Scrambler Akrapovic Exhaust / 4K RAW Sound",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/NiY5TkvoLog/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "BMW",
+      "model": "R nineT",
+      "engine": "Boxer Twin",
+      "cylinders": "2",
+      "year": "2021",
+      "funFact": "Le moteur boxer \u00e0 plat offre un centre de gravit\u00e9 tr\u00e8s bas."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=637JZD1OSew",
+    "videoId": "637JZD1OSew",
+    "audioFile": "/sounds/ducati-monster-1200.mp3",
+    "startSeconds": 162,
+    "endSeconds": 177,
+    "verified": true,
+    "meta": {
+      "title": "2025 Ducati Monster with Termignoni Exhaust | Pure Sound",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/637JZD1OSew/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Ducati",
+      "model": "Monster 1200",
+      "engine": "L-Twin Testastretta",
+      "cylinders": "2",
+      "year": "2017",
+      "funFact": "Le Monster a r\u00e9volutionn\u00e9 le segment des roadsters naked en 1993."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=rwaXOoZTRfQ",
+    "videoId": "rwaXOoZTRfQ",
+    "audioFile": "/sounds/kawasaki-z900.mp3",
+    "startSeconds": 183,
+    "endSeconds": 198,
+    "verified": true,
+    "meta": {
+      "title": "Pure sound of Z900  (SC PROJECT) Full system Exhaust [4K]",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/rwaXOoZTRfQ/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Kawasaki",
+      "model": "Z900",
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "year": "2020",
+      "funFact": "La Z900 rend hommage \u00e0 la l\u00e9gendaire Z1 de 1972."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=CHRuO2oCTbU",
+    "videoId": "CHRuO2oCTbU",
+    "audioFile": "/sounds/suzuki-hayabusa.mp3",
+    "startSeconds": 96,
+    "endSeconds": 111,
+    "verified": true,
+    "meta": {
+      "title": "PURE SOUND : Suzuki HAYABUSA - AKRAPOVIC \ud83d\udd25",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/CHRuO2oCTbU/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Suzuki",
+      "model": "Hayabusa",
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "year": "2021",
+      "funFact": "Pendant longtemps la moto de s\u00e9rie la plus rapide au monde (312 km/h)."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=HJPe_0P3Av0",
+    "videoId": "HJPe_0P3Av0",
+    "audioFile": "/sounds/yamaha-t\u00e9n\u00e9r\u00e9-700.mp3",
+    "startSeconds": 98,
+    "endSeconds": 113,
+    "verified": true,
+    "meta": {
+      "title": "Pure Sound of Full Straight Through Exhaust on Yamaha Tenere 700",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/HJPe_0P3Av0/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Yamaha",
+      "model": "T\u00e9n\u00e9r\u00e9 700",
+      "engine": "CP2 Parallel Twin",
+      "cylinders": "2",
+      "year": "2019",
+      "funFact": "Inspir\u00e9e des Yamaha qui ont domin\u00e9 le Paris-Dakar dans les ann\u00e9es 80."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=TojRTHcgqfY",
+    "videoId": "TojRTHcgqfY",
+    "audioFile": "/sounds/ktm-890-duke-r.mp3",
+    "startSeconds": 9,
+    "endSeconds": 23,
+    "verified": true,
+    "meta": {
+      "title": "890 Duke R | Brutal sound",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/TojRTHcgqfY/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "KTM",
+      "model": "890 Duke R",
+      "engine": "LC8c Parallel Twin",
+      "cylinders": "2",
+      "year": "2020",
+      "funFact": "Le slogan 'Ready to Race' illustre l'ADN sportif de KTM."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=4DoeQ_mm5tI",
+    "videoId": "4DoeQ_mm5tI",
+    "audioFile": "/sounds/aprilia-tuono-v4-factory.mp3",
+    "startSeconds": 84,
+    "endSeconds": 99,
+    "verified": true,
+    "meta": {
+      "title": "[4K] Austin Racing GP1-R Pure Sound | Sunset Ride | Tuono V4",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/4DoeQ_mm5tI/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Aprilia",
+      "model": "Tuono V4 Factory",
+      "engine": "V4",
+      "cylinders": "4",
+      "year": "2021",
+      "funFact": "Le V4 Aprilia produit l'un des sons les plus agressifs du march\u00e9."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=ufAWXiR4TV0",
+    "videoId": "ufAWXiR4TV0",
+    "audioFile": "/sounds/royal-enfield-interceptor-650.mp3",
+    "startSeconds": 130,
+    "endSeconds": 145,
+    "verified": true,
+    "meta": {
+      "title": "ROYAL ENFIELD INTERCEPTOR 650 | RAW SOUND ONBOARD",
+      "channel": "YouTube",
+      "thumbnailUrl": "https://img.youtube.com/vi/ufAWXiR4TV0/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Royal Enfield",
+      "model": "Interceptor 650",
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "year": "2018",
+      "funFact": "Royal Enfield est le plus ancien constructeur de motos encore en activit\u00e9."
     }
   }
 ]

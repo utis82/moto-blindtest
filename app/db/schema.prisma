@@ -28,6 +28,7 @@ model Source {
   id           Int       @id @default(autoincrement())
   url          String    @unique
   videoId      String
+  audioFile    String?
   title        String?
   channel      String?
   thumbnailUrl String?

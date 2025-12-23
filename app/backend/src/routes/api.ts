@@ -196,6 +196,7 @@ router.get("/rounds/next", async (req, res) => {
           endSeconds: round.source.endSeconds,
         }),
         playback,
+        audioFile: round.source.audioFile,
         duration: round.source.duration,
       },
       guesses,
