@@ -1,5 +1,10 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import { GamePage } from "./components/GamePage";
+import { HomePage } from "./components/HomePage";
+import { GameSetupPage } from "./components/GameSetupPage";
+import { MultiplayerGamePage } from "./components/MultiplayerGamePage";
+import { ResultsPage } from "./components/ResultsPage";
 
 function App() {
   return (
@@ -20,7 +25,13 @@ function App() {
       {/* Contenu */}
       <div className="relative z-10 h-screen flex flex-col">
         <main className="flex-1 overflow-auto">
-          <GamePage />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/solo" element={<GamePage />} />
+            <Route path="/multiplayer/setup" element={<GameSetupPage />} />
+            <Route path="/multiplayer/game/:sessionId" element={<MultiplayerGamePage />} />
+            <Route path="/multiplayer/results/:sessionId" element={<ResultsPage />} />
+          </Routes>
         </main>
       </div>
     </div>
