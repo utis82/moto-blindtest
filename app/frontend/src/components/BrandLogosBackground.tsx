@@ -1,105 +1,134 @@
 import { useEffect, useState } from "react";
 
-// Logos SVG réalistes des marques de motos
+// Logos SVG simplifiés mais reconnaissables basés sur les vrais logos
 const BRAND_LOGOS = {
   Honda: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
-      {/* Logo Honda en forme de H avec ailes */}
-      <path d="M15,8 L15,32 M15,20 L35,20 M35,8 L35,32" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
-      <path d="M50,20 L55,8 L60,20 L65,8 L70,20 L75,8 L80,20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
-      <path d="M90,8 L90,32 M105,8 L105,32 M90,8 L105,8 M90,20 L105,20 M90,32 L105,32" stroke="currentColor" strokeWidth="2.5" fill="none"/>
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Aile Honda stylisée */}
+      <path d="M10,30 L25,10 L40,25 L50,15 L60,25 L75,10 L90,30" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round"/>
+      <path d="M25,10 L25,50 M75,10 L75,50" stroke="currentColor" strokeWidth="2"/>
+      <text x="50" y="45" fontSize="18" fontWeight="bold" textAnchor="middle" fill="currentColor">HONDA</text>
     </svg>
   ),
 
   Yamaha: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
-      {/* Trois diapasons Yamaha */}
-      <g transform="translate(25, 20)">
-        <circle cx="0" cy="0" r="3" />
-        <line x1="0" y1="3" x2="-8" y2="15" stroke="currentColor" strokeWidth="2"/>
-        <line x1="0" y1="3" x2="8" y2="15" stroke="currentColor" strokeWidth="2"/>
-      </g>
-      <g transform="translate(50, 20)">
-        <circle cx="0" cy="0" r="3" />
-        <line x1="0" y1="3" x2="-8" y2="15" stroke="currentColor" strokeWidth="2"/>
-        <line x1="0" y1="3" x2="8" y2="15" stroke="currentColor" strokeWidth="2"/>
-      </g>
-      <g transform="translate(75, 20)">
-        <circle cx="0" cy="0" r="3" />
-        <line x1="0" y1="3" x2="-8" y2="15" stroke="currentColor" strokeWidth="2"/>
-        <line x1="0" y1="3" x2="8" y2="15" stroke="currentColor" strokeWidth="2"/>
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Cercle Yamaha avec diapasons */}
+      <circle cx="50" cy="30" r="25" stroke="currentColor" strokeWidth="2.5"/>
+      <g transform="translate(50, 30)">
+        {/* 3 diapasons stylisés */}
+        <circle cx="-12" cy="-8" r="2.5" fill="currentColor"/>
+        <line x1="-12" y1="-5" x2="-18" y2="8" stroke="currentColor" strokeWidth="2"/>
+        <line x1="-12" y1="-5" x2="-6" y2="8" stroke="currentColor" strokeWidth="2"/>
+
+        <circle cx="0" cy="-8" r="2.5" fill="currentColor"/>
+        <line x1="0" y1="-5" x2="-6" y2="8" stroke="currentColor" strokeWidth="2"/>
+        <line x1="0" y1="-5" x2="6" y2="8" stroke="currentColor" strokeWidth="2"/>
+
+        <circle cx="12" cy="-8" r="2.5" fill="currentColor"/>
+        <line x1="12" y1="-5" x2="6" y2="8" stroke="currentColor" strokeWidth="2"/>
+        <line x1="12" y1="-5" x2="18" y2="8" stroke="currentColor" strokeWidth="2"/>
       </g>
     </svg>
   ),
 
   Ducati: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
-      {/* Triangle Ducati */}
-      <path d="M60,5 L100,35 L20,35 Z" stroke="currentColor" strokeWidth="2.5" fill="none"/>
-      <path d="M60,15 L80,30 L40,30 Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Triangle + bouclier Ducati */}
+      <path d="M50,8 L85,52 L15,52 Z" stroke="currentColor" strokeWidth="2.5" fill="currentColor" fillOpacity="0.1"/>
+      <path d="M50,20 L70,45 L30,45 Z" stroke="currentColor" strokeWidth="2"/>
+      <text x="50" y="42" fontSize="12" fontWeight="bold" textAnchor="middle" fill="currentColor">DUCATI</text>
     </svg>
   ),
 
   Kawasaki: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
-      {/* K stylisé de Kawasaki avec rivière */}
-      <path d="M15,8 L15,32 M15,20 L35,8 M15,20 L35,32" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
-      <path d="M45,15 Q50,10 55,15 Q60,20 65,15 Q70,10 75,15 Q80,20 85,15" stroke="currentColor" strokeWidth="2.5" fill="none"/>
-      <path d="M45,25 Q50,20 55,25 Q60,30 65,25 Q70,20 75,25 Q80,30 85,25" stroke="currentColor" strokeWidth="2.5" fill="none"/>
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* K stylisé + rivières vertes */}
+      <path d="M20,10 L20,50 M20,30 L45,10 M20,30 L45,50" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+      <path d="M55,20 Q60,15 65,20 Q70,25 75,20" stroke="currentColor" strokeWidth="2.5" fill="none"/>
+      <path d="M55,30 Q60,25 65,30 Q70,35 75,30" stroke="currentColor" strokeWidth="2.5" fill="none"/>
+      <path d="M55,40 Q60,35 65,40 Q70,45 75,40" stroke="currentColor" strokeWidth="2.5" fill="none"/>
     </svg>
   ),
 
   Suzuki: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
+    <svg viewBox="0 0 100 60" fill="none">
       {/* S stylisé de Suzuki */}
-      <path d="M30,12 Q40,8 50,12 Q60,16 60,22 Q60,28 50,28 Q40,28 30,32 Q20,36 20,28 Q20,22 30,22" stroke="currentColor" strokeWidth="3" fill="none"/>
-      <circle cx="80" cy="20" r="12" stroke="currentColor" strokeWidth="2.5" fill="none"/>
-      <line x1="92" y1="20" x2="105" y2="20" stroke="currentColor" strokeWidth="2.5"/>
+      <path d="M25,20 Q35,12 45,20 Q50,25 50,30 Q50,35 45,38 Q35,40 30,45 Q25,50 35,50" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+      <text x="70" y="35" fontSize="16" fontWeight="bold" fill="currentColor">SUZUKI</text>
     </svg>
   ),
 
   KTM: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
-      {/* Logo KTM angulaire */}
-      <path d="M15,8 L15,32 M15,20 L30,8 M15,20 L30,32" stroke="currentColor" strokeWidth="3.5" fill="none" strokeLinecap="square"/>
-      <path d="M45,8 L55,8 L55,32 M55,8 L45,32" stroke="currentColor" strokeWidth="3.5" fill="none" strokeLinecap="square"/>
-      <path d="M70,8 L70,32 M70,8 L85,20 L70,32 M85,8 L85,32" stroke="currentColor" strokeWidth="3.5" fill="none" strokeLinecap="square"/>
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Logo KTM angulaire et orangé */}
+      <rect x="10" y="15" width="80" height="30" stroke="currentColor" strokeWidth="3" rx="2"/>
+      <text x="50" y="38" fontSize="24" fontWeight="black" textAnchor="middle" fill="currentColor">KTM</text>
     </svg>
   ),
 
   BMW: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
+    <svg viewBox="0 0 100 60" fill="none">
       {/* Roundel BMW classique */}
-      <circle cx="60" cy="20" r="16" stroke="currentColor" strokeWidth="2.5" fill="none"/>
-      <path d="M60,4 L60,36 M44,20 L76,20" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M44,4 Q60,4 60,20 Q60,4 76,4" fill="currentColor" opacity="0.3"/>
-      <path d="M44,36 Q60,36 60,20 Q60,36 76,36" fill="currentColor" opacity="0.3"/>
+      <circle cx="50" cy="30" r="24" stroke="currentColor" strokeWidth="3"/>
+      <path d="M50,6 L50,54 M26,30 L74,30" stroke="currentColor" strokeWidth="2"/>
+      <path d="M26,6 A24,24 0 0,1 50,30 L50,6 Z" fill="currentColor" fillOpacity="0.15"/>
+      <path d="M50,30 A24,24 0 0,1 74,54 L50,30 Z" fill="currentColor" fillOpacity="0.15"/>
+      <text x="50" y="58" fontSize="10" fontWeight="bold" textAnchor="middle" fill="currentColor">BMW</text>
     </svg>
   ),
 
   Aprilia: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
-      {/* A stylisé Aprilia */}
-      <path d="M30,32 L45,8 L60,32 M35,24 L55,24" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
-      <path d="M70,8 L70,32 M70,8 L90,8 Q100,8 100,18 Q100,28 90,28 L70,28" stroke="currentColor" strokeWidth="2.5" fill="none"/>
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* A stylisé rouge d'Aprilia */}
+      <path d="M30,50 L50,10 L70,50 M35,38 L65,38" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"/>
+      <rect x="20" y="8" width="60" height="5" fill="currentColor"/>
     </svg>
   ),
 
   Harley: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
-      {/* Logo Bar & Shield Harley-Davidson */}
-      <rect x="30" y="5" width="60" height="30" rx="3" stroke="currentColor" strokeWidth="2.5" fill="none"/>
-      <path d="M35,12 L85,12 M35,20 L85,20 M35,28 L85,28" stroke="currentColor" strokeWidth="1.5"/>
-      <circle cx="60" cy="20" r="8" stroke="currentColor" strokeWidth="2" fill="none"/>
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Bar & Shield Harley-Davidson */}
+      <path d="M50,10 L65,15 L70,30 L65,45 L50,50 L35,45 L30,30 L35,15 Z" stroke="currentColor" strokeWidth="2.5" fill="currentColor" fillOpacity="0.1"/>
+      <rect x="25" y="8" width="50" height="8" fill="currentColor"/>
+      <rect x="25" y="44" width="50" height="8" fill="currentColor"/>
+      <text x="50" y="33" fontSize="11" fontWeight="bold" textAnchor="middle" fill="currentColor">HARLEY</text>
     </svg>
   ),
 
   Triumph: () => (
-    <svg viewBox="0 0 120 40" fill="currentColor">
-      {/* Logo Triumph avec cercle et lettres */}
-      <circle cx="60" cy="20" r="15" stroke="currentColor" strokeWidth="2.5" fill="none"/>
-      <path d="M50,15 L50,25 M55,15 L55,25 M60,15 L60,25 M65,15 L65,25 M70,15 L70,25" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M48,15 L72,15 M48,20 L72,20 M48,25 L72,25" stroke="currentColor" strokeWidth="1"/>
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Badge circulaire Triumph */}
+      <circle cx="50" cy="30" r="24" stroke="currentColor" strokeWidth="2.5"/>
+      <path d="M30,20 L70,20 M40,30 L60,30 M30,40 L70,40" stroke="currentColor" strokeWidth="2"/>
+      <text x="50" y="53" fontSize="10" fontWeight="bold" textAnchor="middle" fill="currentColor">TRIUMPH</text>
+    </svg>
+  ),
+
+  MV_Agusta: () => (
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Logo MV Agusta avec couronne */}
+      <circle cx="50" cy="28" r="20" stroke="currentColor" strokeWidth="2"/>
+      <path d="M50,8 L53,15 L50,12 L47,15 Z" fill="currentColor"/>
+      <text x="50" y="32" fontSize="14" fontWeight="bold" textAnchor="middle" fill="currentColor">MV</text>
+    </svg>
+  ),
+
+  Benelli: () => (
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Lion stylisé de Benelli */}
+      <circle cx="50" cy="28" r="22" stroke="currentColor" strokeWidth="2.5"/>
+      <path d="M35,25 L50,18 L65,25 L50,32 Z" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.15"/>
+      <text x="50" y="48" fontSize="9" fontWeight="bold" textAnchor="middle" fill="currentColor">BENELLI</text>
+    </svg>
+  ),
+
+  Royal_Enfield: () => (
+    <svg viewBox="0 0 100 60" fill="none">
+      {/* Couronne Royal Enfield */}
+      <path d="M50,12 L55,20 L50,18 L45,20 Z M40,20 L60,20" stroke="currentColor" strokeWidth="2" fill="currentColor"/>
+      <circle cx="50" cy="32" r="18" stroke="currentColor" strokeWidth="2.5"/>
+      <text x="50" y="36" fontSize="11" fontWeight="bold" textAnchor="middle" fill="currentColor">RE</text>
     </svg>
   ),
 };
@@ -122,20 +151,20 @@ export function BrandLogosBackground() {
 
     // Créer 4 rangées de logos qui défilent
     const rows = 4;
-    const logosPerRow = 6;
+    const logosPerRow = 5;
     const initialLogos: Logo[] = [];
 
     for (let row = 0; row < rows; row++) {
       for (let i = 0; i < logosPerRow; i++) {
         const brand = brands[Math.floor(Math.random() * brands.length)];
         initialLogos.push({
-          id: `${row}-${i}`,
+          id: `${row}-${i}-${Date.now()}`,
           brand,
-          x: (i / logosPerRow) * 150 + (row % 2 === 0 ? 0 : -50), // Décalage alterné
-          y: 15 + row * 22, // 4 rangées espacées
-          size: 50 + Math.random() * 30, // 50-80px
-          speed: 25 + Math.random() * 20 + row * 5, // Vitesses variées par rangée
-          delay: i * 3, // Délai séquentiel
+          x: (i / logosPerRow) * 140 + (row % 2 === 0 ? 0 : -40), // Décalage alterné
+          y: 12 + row * 24, // 4 rangées espacées
+          size: 60 + Math.random() * 25, // 60-85px
+          speed: 30 + Math.random() * 25 + row * 5, // Vitesses variées
+          delay: i * 4 + row * 2, // Délai séquentiel
         });
       }
     }
@@ -155,11 +184,11 @@ export function BrandLogosBackground() {
               left: `${logo.x}%`,
               top: `${logo.y}%`,
               width: `${logo.size}px`,
-              height: `${logo.size * 0.33}px`,
-              color: '#DAA520', // Or direct
-              opacity: 0.12,
+              height: `${logo.size * 0.6}px`,
+              color: '#DAA520', // Or goldenrod
+              opacity: 0.1,
               animation: `scrollHorizontal ${logo.speed}s linear ${logo.delay}s infinite`,
-              filter: 'drop-shadow(0 0 6px rgba(218, 165, 32, 0.25))',
+              filter: 'drop-shadow(0 0 4px rgba(218, 165, 32, 0.2))',
             }}
           >
             <LogoComponent />
@@ -173,7 +202,7 @@ export function BrandLogosBackground() {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-150vw);
+            transform: translateX(-140vw);
           }
         }
       `}</style>
