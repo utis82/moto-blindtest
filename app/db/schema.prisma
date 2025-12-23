@@ -41,8 +41,9 @@ model Source {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
-  rounds Round[]
-  moto   Moto?     @relation(fields: [motoId], references: [id])
+  rounds       Round[]
+  moto         Moto?         @relation(fields: [motoId], references: [id])
+  playerRounds PlayerRound[]
 }
 
 model Round {
@@ -69,4 +70,70 @@ model Guess {
   createdAt  DateTime @default(now())
 
   round Round @relation(fields: [roundId], references: [id])
+}
+
+// ============================================
+// Nouveaux modèles pour le système multijoueur
+// ============================================
+
+model GameSession {
+  id           Int       @id @default(autoincrement())
+  status       String    @default("SETUP") // SETUP | ACTIVE | COMPLETED
+  currentRound Int       @default(1)
+  totalRounds  Int       @default(10)
+  createdAt    DateTime  @default(now())
+  completedAt  DateTime?
+
+  players      Player[]
+  playerRounds PlayerRound[]
+}
+
+model Player {
+  id            Int      @id @default(autoincrement())
+  gameSessionId Int
+  name          String
+  position      Int // Ordre d'affichage (1-6)
+  totalScore    Int      @default(0)
+  createdAt     DateTime @default(now())
+
+  session      GameSession   @relation(fields: [gameSessionId], references: [id])
+  playerRounds PlayerRound[]
+
+  @@unique([gameSessionId, position])
+}
+
+model PlayerRound {
+  id            Int       @id @default(autoincrement())
+  gameSessionId Int
+  playerId      Int
+  roundNumber   Int // 1 à totalRounds
+  sourceId      Int // Quelle moto ce joueur doit deviner
+  status        String    @default("PENDING") // PENDING | ACTIVE | GUESSED | SKIPPED
+  score         Int       @default(0)
+  jokerUsed     String? // NULL | "hint" | "reveal_manufacturer" | "reveal_model" | etc.
+  jokerPenalty  Int       @default(0)
+  createdAt     DateTime  @default(now())
+  guessedAt     DateTime?
+
+  session      GameSession   @relation(fields: [gameSessionId], references: [id])
+  player       Player        @relation(fields: [playerId], references: [id])
+  source       Source        @relation(fields: [sourceId], references: [id])
+  fieldAnswers FieldAnswer[]
+
+  @@unique([gameSessionId, playerId, roundNumber])
+}
+
+model FieldAnswer {
+  id            Int      @id @default(autoincrement())
+  playerRoundId Int
+  fieldName     String // "manufacturer" | "model" | "engine" | "cylinders" | "year"
+  responseType  String // "expert" | "qcm" | "fifty_fifty"
+  answer        String // Réponse du joueur
+  correct       Boolean  @default(false)
+  score         Int      @default(0) // Points obtenus pour ce champ
+  createdAt     DateTime @default(now())
+
+  playerRound PlayerRound @relation(fields: [playerRoundId], references: [id])
+
+  @@unique([playerRoundId, fieldName])
 }

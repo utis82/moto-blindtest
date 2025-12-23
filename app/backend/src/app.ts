@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs";
 import dotenv from "dotenv";
 import apiRouter from "./routes/api";
+import gameSessionRouter from "./routes/gameSession";
 
 const envCandidates = [
   process.env.APP_ENV_FILE,
@@ -38,5 +39,6 @@ export const createServer = () => {
     res.json({ status: "ok" });
   });
   app.use("/api", apiRouter);
+  app.use("/api/game-session", gameSessionRouter);
   return app;
 };

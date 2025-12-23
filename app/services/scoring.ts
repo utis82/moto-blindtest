@@ -41,7 +41,7 @@ const similarity = (expected: string, actual: string) => {
   return 1 - distance / maxLen;
 };
 
-const fuzzySimilarity = (expected: string, actual: string) => {
+export const fuzzySimilarity = (expected: string, actual: string) => {
   const cleanExpected = normalize(expected);
   const cleanActual = normalize(actual);
   if (!cleanExpected || !cleanActual) return 0;
@@ -105,7 +105,7 @@ export interface EvaluateGuessInput {
   elapsedMs?: number;
 }
 
-const compareNumbers = (expected?: string | null, actual?: string) => {
+export const compareNumbers = (expected?: string | null, actual?: string) => {
   if (!expected || !actual) return 0;
   const exp = parseInt(expected, 10);
   const act = parseInt(actual, 10);
