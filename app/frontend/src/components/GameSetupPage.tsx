@@ -104,7 +104,7 @@ export function GameSetupPage() {
       }
 
       // Rediriger vers la page de jeu
-      navigate(`/multiplayer/game/${data.sessionId}`);
+      navigate(`/game/${data.sessionId}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur inconnue");
     } finally {
@@ -126,7 +126,7 @@ export function GameSetupPage() {
           </button>
 
           <h1 className="text-4xl font-black bg-gradient-to-r from-electric-400 to-neon-400 bg-clip-text text-transparent">
-            Configuration Multijoueur
+            Configuration de la partie
           </h1>
 
           <div className="w-24"></div>
@@ -237,7 +237,9 @@ export function GameSetupPage() {
           {/* Infos */}
           <div className="mt-6 p-4 bg-ink-950/50 rounded-lg">
             <p className="text-chrome-400 text-sm text-center">
-              Chaque joueur recevra une moto différente à chaque tour.
+              {players.filter(p => p.name.trim() !== "").length > 1
+                ? "Chaque joueur recevra une moto différente à chaque tour."
+                : "Une moto différente à chaque tour."}
               <br />
               Modes: Expert (100%), QCM (60%), 50-50 (30%) • Jokers: Indice (-10pts), Révélation (-15pts)
             </p>

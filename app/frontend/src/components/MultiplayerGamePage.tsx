@@ -263,7 +263,7 @@ export function MultiplayerGamePage() {
 
       // Si la session est terminée, aller aux résultats
       if (data.sessionStatus === "COMPLETED") {
-        navigate(`/multiplayer/results/${sessionId}`);
+        navigate(`/results/${sessionId}`);
       } else {
         // Sinon, charger le tour suivant
         await loadCurrentTurn();

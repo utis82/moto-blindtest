@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { GamePage } from "./components/GamePage";
 import { HomePage } from "./components/HomePage";
 import { GameSetupPage } from "./components/GameSetupPage";
 import { MultiplayerGamePage } from "./components/MultiplayerGamePage";
@@ -27,10 +26,9 @@ function App() {
         <main className="flex-1 overflow-auto">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/solo" element={<GamePage />} />
-            <Route path="/multiplayer/setup" element={<GameSetupPage />} />
-            <Route path="/multiplayer/game/:sessionId" element={<MultiplayerGamePage />} />
-            <Route path="/multiplayer/results/:sessionId" element={<ResultsPage />} />
+            <Route path="/setup" element={<GameSetupPage />} />
+            <Route path="/game/:sessionId" element={<MultiplayerGamePage />} />
+            <Route path="/results/:sessionId" element={<ResultsPage />} />
           </Routes>
         </main>
       </div>

@@ -220,7 +220,7 @@ export function ResultsPage() {
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={() => navigate("/multiplayer/setup")}
+            onClick={() => navigate("/setup")}
             className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 text-white text-lg font-bold rounded-xl transition-all"
           >
             <RotateCcw className="w-5 h-5" />
