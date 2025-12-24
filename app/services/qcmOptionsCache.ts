@@ -2,10 +2,22 @@ import { PrismaClient } from "@prisma/client";
 import type { FieldName } from "../shared/gameConstraints";
 
 /**
+ * Structure pour stocker une moto avec ses champs
+ */
+interface MotoData {
+  manufacturer: string;
+  model: string;
+  engine: string;
+  cylinders: string;
+  year: string;
+}
+
+/**
  * Cache global des valeurs distinctes par champ pour génération QCM
  */
 class QCMOptionsCache {
   private cache: Map<FieldName, Set<string>> = new Map();
+  private motosData: MotoData[] = [];
   private initialized = false;
 
   /**
@@ -38,13 +50,24 @@ class QCMOptionsCache {
       const cylinders = new Set<string>();
       const years = new Set<string>();
 
-      // Remplir les sets avec les valeurs non nulles
+      // Remplir les sets avec les valeurs non nulles et stocker les motos complètes
       motos.forEach((moto) => {
         if (moto.manufacturer) manufacturers.add(moto.manufacturer);
         if (moto.name) models.add(moto.name);
         if (moto.engine) engines.add(moto.engine);
         if (moto.cylinders) cylinders.add(moto.cylinders);
         if (moto.year) years.add(moto.year);
+
+        // Stocker la moto complète pour générer des options cohérentes
+        if (moto.manufacturer && moto.name && moto.engine && moto.cylinders && moto.year) {
+          this.motosData.push({
+            manufacturer: moto.manufacturer,
+            model: moto.name,
+            engine: moto.engine,
+            cylinders: moto.cylinders,
+            year: moto.year,
+          });
+        }
       });
 
       // Stocker dans le cache
@@ -138,6 +161,65 @@ class QCMOptionsCache {
     }
 
     return allOptions.slice(0, 2);
+  }
+
+  /**
+   * Génère des options QCM cohérentes pour plusieurs champs (ex: manufacturer + model)
+   * Les options proposées seront des vraies combinaisons manufacturer/model qui existent
+   * @param correctMoto La moto correcte avec tous ses champs
+   * @param count Nombre d'options à générer
+   * @returns Tableau de motos alternatives + la bonne réponse, mélangé
+   */
+  generateCoherentOptions(
+    correctMoto: { manufacturer: string; model: string },
+    count: number = 4
+  ): MotoData[] {
+    if (!this.initialized) {
+      throw new Error(
+        "[QCMCache] Cache non initialisé. Appelez initialize() au démarrage du serveur."
+      );
+    }
+
+    // Trouver la moto correcte complète
+    const correctFullMoto = this.motosData.find(
+      (m) => m.manufacturer === correctMoto.manufacturer && m.model === correctMoto.model
+    );
+
+    if (!correctFullMoto) {
+      console.warn(
+        `[QCMCache] Moto non trouvée: ${correctMoto.manufacturer} ${correctMoto.model}`
+      );
+      // Fallback: retourner juste les données partielles
+      return [{
+        manufacturer: correctMoto.manufacturer,
+        model: correctMoto.model,
+        engine: "",
+        cylinders: "",
+        year: "",
+      }];
+    }
+
+    // Filtrer pour exclure la bonne moto
+    const otherMotos = this.motosData.filter(
+      (m) => !(m.manufacturer === correctMoto.manufacturer && m.model === correctMoto.model)
+    );
+
+    if (otherMotos.length === 0) {
+      console.warn("[QCMCache] Une seule moto dans le catalogue, impossible de générer QCM");
+      return [correctFullMoto];
+    }
+
+    // Sélectionner aléatoirement (count - 1) autres motos
+    const selectedWrong = this.selectRandom(
+      otherMotos,
+      Math.min(count - 1, otherMotos.length)
+    );
+
+    // Combiner avec la bonne moto
+    const options = [...selectedWrong, correctFullMoto];
+
+    // Mélanger
+    return this.shuffle(options);
   }
 
   /**

@@ -119,10 +119,10 @@ export function GameSetupPage() {
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 px-4 py-2 bg-ink-800 border border-chrome-700 rounded-lg hover:border-chrome-500 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-ink-800 border border-gold-700 rounded-lg hover:border-gold-500 transition-colors"
           >
-            <Home className="w-5 h-5 text-chrome-300" />
-            <span className="text-chrome-300">Retour</span>
+            <Home className="w-5 h-5 text-gold-300" />
+            <span className="text-gold-300">Retour</span>
           </button>
 
           <h1 className="text-4xl font-black bg-gradient-to-r from-electric-400 to-neon-400 bg-clip-text text-transparent">
@@ -133,7 +133,7 @@ export function GameSetupPage() {
         </div>
 
         {/* Carte de configuration */}
-        <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-chrome-700 rounded-2xl p-8">
+        <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-700 rounded-2xl p-8">
           {/* Section Joueurs */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
@@ -144,7 +144,7 @@ export function GameSetupPage() {
               <button
                 onClick={addPlayer}
                 disabled={players.length >= GAME_CONSTRAINTS.MAX_PLAYERS}
-                className="flex items-center gap-2 px-4 py-2 bg-electric-600 hover:bg-electric-500 disabled:bg-chrome-800 disabled:text-chrome-500 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-4 py-2 bg-electric-600 hover:bg-electric-500 disabled:bg-chrome-800 disabled:text-gold-500 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
               >
                 <Plus className="w-4 h-4" />
                 Ajouter
@@ -160,7 +160,7 @@ export function GameSetupPage() {
                       value={player.name}
                       onChange={(e) => updatePlayerName(index, e.target.value)}
                       placeholder={`Joueur ${index + 1}`}
-                      className="w-full px-4 py-3 bg-ink-950 border-2 border-chrome-700 rounded-lg text-white placeholder:text-chrome-600 focus:border-electric-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-ink-950 border-2 border-gold-700 rounded-lg text-white placeholder:text-gold-600 focus:border-electric-500 focus:outline-none transition-colors"
                       maxLength={20}
                     />
                   </div>
@@ -184,7 +184,7 @@ export function GameSetupPage() {
               <button
                 onClick={decrementRounds}
                 disabled={totalRounds <= GAME_CONSTRAINTS.MIN_ROUNDS}
-                className="p-3 bg-chrome-700 hover:bg-chrome-600 disabled:bg-chrome-900 disabled:text-chrome-700 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
+                className="p-3 bg-chrome-700 hover:bg-chrome-600 disabled:bg-chrome-900 disabled:text-gold-700 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
               >
                 <Minus className="w-6 h-6" />
               </button>
@@ -193,7 +193,7 @@ export function GameSetupPage() {
                 <div className="text-6xl font-black bg-gradient-to-r from-racing-400 to-electric-400 bg-clip-text text-transparent">
                   {totalRounds}
                 </div>
-                <div className="text-chrome-400 text-sm mt-1">
+                <div className="text-gold-400 text-sm mt-1">
                   ({GAME_CONSTRAINTS.MIN_ROUNDS}-{GAME_CONSTRAINTS.MAX_ROUNDS} tours)
                 </div>
               </div>
@@ -201,7 +201,7 @@ export function GameSetupPage() {
               <button
                 onClick={incrementRounds}
                 disabled={totalRounds >= GAME_CONSTRAINTS.MAX_ROUNDS}
-                className="p-3 bg-chrome-700 hover:bg-chrome-600 disabled:bg-chrome-900 disabled:text-chrome-700 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
+                className="p-3 bg-chrome-700 hover:bg-chrome-600 disabled:bg-chrome-900 disabled:text-gold-700 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
               >
                 <Plus className="w-6 h-6" />
               </button>
@@ -219,7 +219,7 @@ export function GameSetupPage() {
           <button
             onClick={startGame}
             disabled={isCreating}
-            className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 disabled:from-chrome-800 disabled:to-chrome-800 disabled:text-chrome-500 text-white text-xl font-bold rounded-xl transition-all disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 disabled:from-chrome-800 disabled:to-chrome-800 disabled:text-gold-500 text-white text-xl font-bold rounded-xl transition-all disabled:cursor-not-allowed"
           >
             {isCreating ? (
               <>
@@ -236,7 +236,7 @@ export function GameSetupPage() {
 
           {/* Infos */}
           <div className="mt-6 p-4 bg-ink-950/50 rounded-lg">
-            <p className="text-chrome-400 text-sm text-center">
+            <p className="text-gold-400 text-sm text-center">
               {players.filter(p => p.name.trim() !== "").length > 1
                 ? "Chaque joueur recevra une moto différente à chaque tour."
                 : "Une moto différente à chaque tour."}

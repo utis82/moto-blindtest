@@ -12,10 +12,10 @@ export function HomePage() {
           <h1 className="text-7xl font-black mb-6 bg-gradient-to-r from-racing-400 via-electric-400 to-neon-400 bg-clip-text text-transparent">
             MOTO BLIND TEST
           </h1>
-          <p className="text-2xl text-chrome-300 mb-8">
+          <p className="text-2xl text-gold-300 mb-8">
             Identifiez les motos au son de leur moteur
           </p>
-          <p className="text-lg text-chrome-400">
+          <p className="text-lg text-gold-400">
             Modes Expert, QCM, 50-50 • Système de jokers • 1 à 6 joueurs
           </p>
         </div>
@@ -23,7 +23,7 @@ export function HomePage() {
         {/* Bouton principal */}
         <button
           onClick={() => navigate("/setup")}
-          className="group relative overflow-hidden bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-chrome-700 rounded-2xl p-12 hover:border-electric-500 transition-all duration-300 hover:scale-105 w-full"
+          className="group relative overflow-hidden bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-700 rounded-2xl p-12 hover:border-electric-500 transition-all duration-300 hover:scale-105 w-full"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-electric-600/0 to-electric-600/0 group-hover:from-electric-600/20 group-hover:to-electric-600/5 transition-all duration-300"></div>
 
@@ -36,7 +36,7 @@ export function HomePage() {
               Commencer une partie
             </h2>
 
-            <p className="text-chrome-300 text-lg max-w-md text-center leading-relaxed">
+            <p className="text-gold-300 text-lg max-w-md text-center leading-relaxed">
               Jouez seul ou entre amis. Testez vos connaissances et grimpez au sommet du classement !
             </p>
           </div>
@@ -44,10 +44,10 @@ export function HomePage() {
 
         {/* Infos supplémentaires */}
         <div className="mt-12 text-center space-y-3">
-          <p className="text-chrome-400">
+          <p className="text-gold-400">
             23 motos disponibles • Audio haute qualité • Scoring précis
           </p>
-          <p className="text-chrome-500 text-sm">
+          <p className="text-gold-500 text-sm">
             Honda • Yamaha • Ducati • Kawasaki • Suzuki • KTM • BMW • Aprilia • Harley-Davidson et plus...
           </p>
         </div>

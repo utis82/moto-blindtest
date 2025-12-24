@@ -4,14 +4,10 @@ import * as SimpleIcons from "simple-icons";
 // Mapping des marques de motos disponibles dans simple-icons
 const BRAND_ICONS = {
   Honda: SimpleIcons.siHonda,
-  Yamaha: SimpleIcons.siYamaha,
   Ducati: SimpleIcons.siDucati,
-  Kawasaki: SimpleIcons.siKawasaki,
   Suzuki: SimpleIcons.siSuzuki,
   KTM: SimpleIcons.siKtm,
   BMW: SimpleIcons.siBmw,
-  Aprilia: SimpleIcons.siAprilia,
-  Triumph: SimpleIcons.siTriumph,
 };
 
 interface Logo {
@@ -22,6 +18,7 @@ interface Logo {
   size: number;
   speed: number;
   delay: number;
+  direction: 'left' | 'right';
 }
 
 export function BrandLogosBackground() {
@@ -32,20 +29,33 @@ export function BrandLogosBackground() {
 
     // Créer 4 rangées de logos qui défilent
     const rows = 4;
-    const logosPerRow = 6;
+    const logosPerRow = 8;
     const initialLogos: Logo[] = [];
 
+    // Créer un tableau de marques mélangées pour éviter les répétitions
+    const shuffledBrands: (keyof typeof BRAND_ICONS)[] = [];
+    for (let i = 0; i < rows * logosPerRow; i++) {
+      shuffledBrands.push(brands[i % brands.length]);
+    }
+    // Mélanger aléatoirement
+    for (let i = shuffledBrands.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledBrands[i], shuffledBrands[j]] = [shuffledBrands[j], shuffledBrands[i]];
+    }
+
+    let brandIndex = 0;
     for (let row = 0; row < rows; row++) {
+      const isEvenRow = row % 2 === 0;
       for (let i = 0; i < logosPerRow; i++) {
-        const brand = brands[Math.floor(Math.random() * brands.length)];
         initialLogos.push({
-          id: `${row}-${i}-${Date.now()}`,
-          brand,
-          x: (i / logosPerRow) * 140 + (row % 2 === 0 ? 0 : -40),
-          y: 12 + row * 24,
-          size: 50 + Math.random() * 30, // 50-80px
-          speed: 30 + Math.random() * 25 + row * 5,
-          delay: i * 4 + row * 2,
+          id: `${row}-${i}-${Date.now()}-${Math.random()}`,
+          brand: shuffledBrands[brandIndex++],
+          x: (i / logosPerRow) * 150 - 20, // Décalage pour commencer hors écran
+          y: 10 + row * 22,
+          size: 55 + Math.random() * 35,
+          speed: 35 + Math.random() * 20,
+          delay: 0, // Pas de délai, tout démarre immédiatement
+          direction: isEvenRow ? 'left' : 'right',
         });
       }
     }
@@ -54,9 +64,13 @@ export function BrandLogosBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
       {logos.map((logo) => {
         const icon = BRAND_ICONS[logo.brand];
+
+        if (!icon || !icon.path) {
+          return null;
+        }
 
         return (
           <div
@@ -67,9 +81,9 @@ export function BrandLogosBackground() {
               top: `${logo.y}%`,
               width: `${logo.size}px`,
               height: `${logo.size}px`,
-              opacity: 0.08,
-              animation: `scrollHorizontal ${logo.speed}s linear ${logo.delay}s infinite`,
-              filter: 'drop-shadow(0 0 4px rgba(218, 165, 32, 0.3))',
+              opacity: 0.12,
+              animation: `scroll${logo.direction === 'left' ? 'Left' : 'Right'} ${logo.speed}s linear ${logo.delay}s infinite`,
+              filter: 'drop-shadow(0 0 6px rgba(218, 165, 32, 0.4))',
             }}
           >
             <svg
@@ -83,12 +97,20 @@ export function BrandLogosBackground() {
       })}
 
       <style>{`
-        @keyframes scrollHorizontal {
+        @keyframes scrollLeft {
           0% {
-            transform: translateX(0);
+            transform: translateX(100vw);
           }
           100% {
-            transform: translateX(-140vw);
+            transform: translateX(-120vw);
+          }
+        }
+        @keyframes scrollRight {
+          0% {
+            transform: translateX(-120vw);
+          }
+          100% {
+            transform: translateX(100vw);
           }
         }
       `}</style>

@@ -280,27 +280,45 @@ router.get("/:sessionId/current-turn", async (req, res) => {
     }
 
     return res.json({
-      sessionId,
-      currentRound: activePlayerRound.roundNumber,
-      currentPlayer: {
-        id: activePlayerRound.player.id,
-        name: activePlayerRound.player.name,
-        position: activePlayerRound.player.position,
-      },
       playerRound: {
         id: activePlayerRound.id,
+        playerId: activePlayerRound.playerId,
+        roundNumber: activePlayerRound.roundNumber,
         sourceId: activePlayerRound.sourceId,
+        status: activePlayerRound.status,
+      },
+      player: {
+        id: activePlayerRound.player.id,
+        name: activePlayerRound.player.name,
+        totalScore: activePlayerRound.player.totalScore,
+        position: activePlayerRound.player.position,
+      },
+      source: {
+        id: activePlayerRound.source.id,
         audioFile: activePlayerRound.source.audioFile,
         duration:
           activePlayerRound.source.endSeconds -
           activePlayerRound.source.startSeconds,
+        moto: {
+          id: activePlayerRound.source.moto!.id,
+          manufacturer: activePlayerRound.source.moto!.manufacturer,
+          model: activePlayerRound.source.moto!.name,
+          engine: activePlayerRound.source.moto!.engine,
+          cylinders: activePlayerRound.source.moto!.cylinders,
+          year: activePlayerRound.source.moto!.year,
+        },
       },
       leaderboard: activePlayerRound.session.players.map((p, index) => ({
-        playerId: p.id,
+        id: p.id,
         name: p.name,
         totalScore: p.totalScore,
-        rank: index + 1,
+        position: index + 1,
       })),
+      session: {
+        id: activePlayerRound.session.id,
+        currentRound: activePlayerRound.session.currentRound,
+        totalRounds: activePlayerRound.session.totalRounds,
+      },
     });
   } catch (error) {
     console.error(
@@ -455,6 +473,7 @@ router.post("/submit-field-answers", async (req, res) => {
               playerName: nextPlayer!.name,
               roundNumber: nextPlayerRound.roundNumber,
             },
+            sessionStatus: "ACTIVE",
             gameCompleted: false,
           };
         } else {
@@ -469,6 +488,7 @@ router.post("/submit-field-answers", async (req, res) => {
 
           return {
             ...scoreResult,
+            sessionStatus: "COMPLETED",
             gameCompleted: true,
           };
         }
@@ -491,12 +511,88 @@ router.post("/submit-field-answers", async (req, res) => {
 });
 
 /**
+ * GET /api/game-session/:sessionId/coherent-options
+ * Génère des options cohérentes pour manufacturer+model (paires qui vont ensemble)
+ */
+router.get("/:sessionId/coherent-options", async (req, res) => {
+  try {
+    const { sourceId, count } = req.query;
+
+    if (!sourceId) {
+      return res.status(400).json({
+        error: "sourceId est requis",
+      });
+    }
+
+    const sourceIdNum = parseInt(sourceId as string, 10);
+    if (isNaN(sourceIdNum)) {
+      return res.status(400).json({ error: "sourceId invalide" });
+    }
+
+    const optionCount = count ? parseInt(count as string, 10) : 4;
+    if (isNaN(optionCount) || optionCount < 2 || optionCount > 4) {
+      return res.status(400).json({ error: "count doit être entre 2 et 4" });
+    }
+
+    // Charger la source avec la moto
+    const source = await prisma.source.findUnique({
+      where: { id: sourceIdNum },
+      include: { moto: true },
+    });
+
+    if (!source || !source.moto) {
+      return res.status(404).json({
+        error: "Source ou moto non trouvée",
+      });
+    }
+
+    // Générer les options cohérentes
+    try {
+      const coherentMotos = qcmCache.generateCoherentOptions(
+        {
+          manufacturer: source.moto.manufacturer,
+          model: source.moto.name,
+        },
+        optionCount
+      );
+
+      // Retourner les options avec manufacturer et model séparés
+      return res.json({
+        options: coherentMotos.map((moto) => ({
+          manufacturer: moto.manufacturer,
+          model: moto.model,
+        })),
+      });
+    } catch (cacheError) {
+      console.error("[GET /coherent-options] Erreur cache:", cacheError);
+      // Fallback: retourner juste la bonne réponse
+      return res.json({
+        options: [
+          {
+            manufacturer: source.moto.manufacturer,
+            model: source.moto.name,
+          },
+        ],
+      });
+    }
+  } catch (error) {
+    console.error(
+      "[GET /game-session/:sessionId/coherent-options] Erreur:",
+      error
+    );
+    return res.status(500).json({
+      error: "Erreur lors de la génération des options cohérentes",
+    });
+  }
+});
+
+/**
  * GET /api/game-session/:sessionId/qcm-options
  * Génère les options QCM pour un champ donné
  */
 router.get("/:sessionId/qcm-options", async (req, res) => {
   try {
-    const { fieldName, sourceId } = req.query;
+    const { fieldName, sourceId, count } = req.query;
 
     if (!fieldName || !sourceId) {
       return res.status(400).json({
@@ -507,6 +603,11 @@ router.get("/:sessionId/qcm-options", async (req, res) => {
     const sourceIdNum = parseInt(sourceId as string, 10);
     if (isNaN(sourceIdNum)) {
       return res.status(400).json({ error: "sourceId invalide" });
+    }
+
+    const optionCount = count ? parseInt(count as string, 10) : 4;
+    if (isNaN(optionCount) || optionCount < 2 || optionCount > 4) {
+      return res.status(400).json({ error: "count doit être entre 2 et 4" });
     }
 
     // Charger la source avec la moto
@@ -552,7 +653,7 @@ router.get("/:sessionId/qcm-options", async (req, res) => {
       const options = qcmCache.generateQCMOptions(
         fieldName as FieldName,
         correctAnswer,
-        4
+        optionCount
       );
 
       return res.json({ options });
@@ -608,32 +709,38 @@ router.get("/:sessionId/results", async (req, res) => {
       return res.status(404).json({ error: "Session non trouvée" });
     }
 
-    // Calculer les rangs
-    const players = session.players.map((player, index) => ({
+    // Préparer les joueurs avec leurs scores
+    const playersData = session.players.map((player, index) => ({
       id: player.id,
       name: player.name,
+      position: index + 1,
       totalScore: player.totalScore,
-      rank: index + 1,
-      rounds: player.playerRounds.map((pr) => ({
-        roundNumber: pr.roundNumber,
-        moto: {
-          manufacturer: pr.source.moto?.manufacturer || "?",
-          model: pr.source.moto?.name || "?",
-        },
-        score: pr.score,
-        fieldBreakdown: pr.fieldAnswers.map((fa) => ({
-          fieldName: fa.fieldName,
-          answer: fa.answer,
-          correct: fa.correct,
-          score: fa.score,
-        })),
-      })),
     }));
 
+    // Préparer les détails des rounds
+    const roundsData: any[] = [];
+    session.players.forEach((player) => {
+      player.playerRounds.forEach((pr) => {
+        roundsData.push({
+          roundNumber: pr.roundNumber,
+          playerName: player.name,
+          score: pr.score,
+          jokerUsed: pr.jokerUsed,
+          motorcycle: pr.source.moto
+            ? `${pr.source.moto.manufacturer} ${pr.source.moto.name}`
+            : "?",
+        });
+      });
+    });
+
     return res.json({
-      sessionId: session.id,
-      status: session.status,
-      players,
+      session: {
+        id: session.id,
+        status: session.status,
+        totalRounds: session.totalRounds,
+      },
+      players: playersData,
+      rounds: roundsData,
     });
   } catch (error) {
     console.error("[GET /game-session/:sessionId/results] Erreur:", error);

@@ -74,7 +74,7 @@ export function ResultsPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-neon-600/30 border-t-neon-600 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-chrome-300">Chargement des résultats...</p>
+          <p className="text-gold-300">Chargement des résultats...</p>
         </div>
       </div>
     );
@@ -110,7 +110,7 @@ export function ResultsPage() {
             </h1>
             <Trophy className="w-12 h-12 text-neon-400" />
           </div>
-          <p className="text-chrome-300 text-lg">
+          <p className="text-gold-300 text-lg">
             Partie terminée • {results.session.totalRounds} tours
           </p>
         </div>
@@ -150,7 +150,7 @@ export function ResultsPage() {
                     <div className="text-4xl font-black text-neon-400 mb-1">
                       {player.totalScore}
                     </div>
-                    <div className="text-chrome-400 text-sm">points</div>
+                    <div className="text-gold-400 text-sm">points</div>
                   </div>
                 </div>
               );
@@ -165,19 +165,19 @@ export function ResultsPage() {
               <Medal className="w-6 h-6 text-electric-400" />
               Classement complet
             </h2>
-            <div className="bg-gradient-to-br from-ink-800 to-ink-900 border border-chrome-700 rounded-xl overflow-hidden">
+            <div className="bg-gradient-to-br from-ink-800 to-ink-900 border border-gold-700 rounded-xl overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-chrome-700">
-                    <th className="px-6 py-3 text-left text-chrome-400 font-semibold">Position</th>
-                    <th className="px-6 py-3 text-left text-chrome-400 font-semibold">Joueur</th>
-                    <th className="px-6 py-3 text-right text-chrome-400 font-semibold">Score</th>
+                  <tr className="border-b border-gold-700">
+                    <th className="px-6 py-3 text-left text-gold-400 font-semibold">Position</th>
+                    <th className="px-6 py-3 text-left text-gold-400 font-semibold">Joueur</th>
+                    <th className="px-6 py-3 text-right text-gold-400 font-semibold">Score</th>
                   </tr>
                 </thead>
                 <tbody>
                   {sortedPlayers.slice(3).map((player, index) => (
                     <tr key={player.id} className="border-b border-chrome-800/50 last:border-0">
-                      <td className="px-6 py-4 text-chrome-300">#{index + 4}</td>
+                      <td className="px-6 py-4 text-gold-300">#{index + 4}</td>
                       <td className="px-6 py-4 text-white font-semibold">{player.name}</td>
                       <td className="px-6 py-4 text-right text-electric-400 font-bold">
                         {player.totalScore} pts
@@ -197,14 +197,14 @@ export function ResultsPage() {
             {results.rounds.map((round) => (
               <div
                 key={`${round.roundNumber}-${round.playerName}`}
-                className="bg-gradient-to-br from-ink-800 to-ink-900 border border-chrome-700 rounded-lg p-4 flex items-center justify-between"
+                className="bg-gradient-to-br from-ink-800 to-ink-900 border border-gold-700 rounded-lg p-4 flex items-center justify-between"
               >
                 <div className="flex items-center gap-4">
                   <div className="px-3 py-1 bg-racing-600/20 text-racing-300 rounded-lg font-bold">
                     Tour {round.roundNumber}
                   </div>
                   <div className="text-white font-semibold">{round.playerName}</div>
-                  <div className="text-chrome-400 text-sm">{round.motorcycle}</div>
+                  <div className="text-gold-400 text-sm">{round.motorcycle}</div>
                   {round.jokerUsed && (
                     <div className="px-2 py-1 bg-neon-600/20 text-neon-300 rounded text-xs">
                       Joker: {round.jokerUsed}
@@ -229,7 +229,7 @@ export function ResultsPage() {
 
           <button
             onClick={() => navigate("/")}
-            className="flex items-center justify-center gap-2 px-8 py-4 bg-ink-800 border-2 border-chrome-700 hover:border-chrome-500 text-chrome-300 text-lg font-bold rounded-xl transition-all"
+            className="flex items-center justify-center gap-2 px-8 py-4 bg-ink-800 border-2 border-gold-700 hover:border-gold-500 text-gold-300 text-lg font-bold rounded-xl transition-all"
           >
             <Home className="w-5 h-5" />
             Retour à l'accueil
