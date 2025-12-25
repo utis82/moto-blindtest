@@ -578,6 +578,27 @@ export function MultiplayerGamePage() {
               Résultats du tour
             </h2>
 
+            {/* Photo/Info de la moto */}
+            {roundResults.moto && (
+              <div className="mb-4 relative overflow-hidden rounded-xl border-2 border-gold-500">
+                {/* Gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-racing-600/30 via-electric-600/30 to-neon-600/30"></div>
+
+                {/* Moto info */}
+                <div className="relative p-6 text-center">
+                  <div className="text-3xl font-black text-white mb-2">
+                    {roundResults.moto.manufacturer}
+                  </div>
+                  <div className="text-xl font-bold text-gold-300">
+                    {roundResults.moto.name}
+                  </div>
+                  <div className="mt-3 text-sm text-gray-400 italic">
+                    C'était cette moto! 🏍️
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Score total */}
             <div className="text-center mb-4">
               <div className="text-4xl font-black text-neon-400 mb-1">

@@ -468,6 +468,11 @@ router.post("/submit-field-answers", async (req, res) => {
 
           return {
             ...scoreResult,
+            moto: {
+              manufacturer: playerRound.source.moto.manufacturer,
+              name: playerRound.source.moto.name,
+              slug: playerRound.source.moto.slug,
+            },
             nextTurn: {
               playerId: nextPlayer!.id,
               playerName: nextPlayer!.name,
@@ -488,6 +493,11 @@ router.post("/submit-field-answers", async (req, res) => {
 
           return {
             ...scoreResult,
+            moto: {
+              manufacturer: playerRound.source.moto.manufacturer,
+              name: playerRound.source.moto.name,
+              slug: playerRound.source.moto.slug,
+            },
             sessionStatus: "COMPLETED",
             gameCompleted: true,
           };
