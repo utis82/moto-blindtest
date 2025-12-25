@@ -603,12 +603,19 @@ export function MultiplayerGamePage() {
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-semibold text-white text-sm">
+                    <div className="flex-1">
+                      <div className="font-semibold text-white text-sm mb-1">
                         {FIELD_LABELS[field.fieldName as FieldName]}
                       </div>
-                      <div className="text-xs text-gold-300">
-                        {field.correct ? "✓ Correct" : "✗ Incorrect"}
+                      <div className="text-xs space-y-1">
+                        {!field.correct && field.userAnswer && (
+                          <div className="text-red-400">
+                            Ta réponse: <span className="font-medium">{field.userAnswer}</span>
+                          </div>
+                        )}
+                        <div className={field.correct ? "text-green-400" : "text-gold-300"}>
+                          {field.correct ? "✓" : "→"} Bonne réponse: <span className="font-medium">{field.correctAnswer}</span>
+                        </div>
                       </div>
                     </div>
                     <div className="text-xl font-bold text-electric-400">
