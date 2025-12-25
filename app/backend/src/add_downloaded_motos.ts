@@ -19,8 +19,9 @@ interface DownloadedMoto {
 }
 
 async function main() {
-  const jsonPath = path.join(__dirname, "downloaded_motos.json");
-  console.log(`📁 Lecture du fichier: downloaded_motos.json`);
+  const fileName = process.argv[2] || "downloaded_motos.json";
+  const jsonPath = path.join(__dirname, fileName);
+  console.log(`📁 Lecture du fichier: ${fileName}`);
   const data = JSON.parse(fs.readFileSync(jsonPath, "utf-8")) as DownloadedMoto[];
 
   console.log(`📋 ${data.length} motos à ajouter\n`);

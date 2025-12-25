@@ -1,0 +1,28 @@
+[
+  {
+    "manufacturer": "Norton",
+    "model": "Commando 961",
+    "engine": "Parallel Twin",
+    "cylinders": "2",
+    "year": "2018",
+    "funFact": "La Norton Commando est une icône britannique relancée en 2010.",
+    "audioFile": "/sounds/norton-commando-961.mp3",
+    "videoId": "existing",
+    "youtubeUrl": "existing",
+    "startSeconds": 0,
+    "endSeconds": 15
+  },
+  {
+    "manufacturer": "Buell",
+    "model": "XB12S Lightning",
+    "engine": "V-Twin",
+    "cylinders": "2",
+    "year": "2009",
+    "funFact": "Buell était la marque sportive de Harley-Davidson, connue pour son design innovant.",
+    "audioFile": "/sounds/buell-xb12s-lightning.mp3",
+    "videoId": "mXaeoQaDBM4",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mXaeoQaDBM4",
+    "startSeconds": 383,
+    "endSeconds": 398
+  }
+]

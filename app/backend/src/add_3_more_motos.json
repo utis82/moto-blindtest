@@ -1,0 +1,41 @@
+[
+  {
+    "manufacturer": "Harley-Davidson",
+    "model": "Street Bob",
+    "engine": "Milwaukee-Eight V-Twin",
+    "cylinders": "2",
+    "year": "2021",
+    "funFact": "Le Street Bob est un bobber minimaliste avec le moteur Milwaukee-Eight de 107ci.",
+    "audioFile": "/sounds/harley-davidson-street-bob.mp3",
+    "videoId": "EIexyJbiGWM",
+    "youtubeUrl": "https://www.youtube.com/watch?v=EIexyJbiGWM",
+    "startSeconds": 1196,
+    "endSeconds": 1211
+  },
+  {
+    "manufacturer": "Yamaha",
+    "model": "Ténéré 700",
+    "engine": "CP2 Parallel Twin",
+    "cylinders": "2",
+    "year": "2020",
+    "funFact": "La Ténéré 700 est une trail légère inspirée des rallye-raids.",
+    "audioFile": "/sounds/yamaha-ténéré-700.mp3",
+    "videoId": "existing",
+    "youtubeUrl": "existing",
+    "startSeconds": 0,
+    "endSeconds": 15
+  },
+  {
+    "manufacturer": "BMW",
+    "model": "R nineT",
+    "engine": "Boxer Twin",
+    "cylinders": "2",
+    "year": "2021",
+    "funFact": "La R nineT célèbre l'héritage BMW avec un flat-twin refroidi par air.",
+    "audioFile": "/sounds/bmw-r-ninet.mp3",
+    "videoId": "existing",
+    "youtubeUrl": "existing",
+    "startSeconds": 0,
+    "endSeconds": 15
+  }
+]
