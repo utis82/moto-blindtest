@@ -1,0 +1,422 @@
+[
+  {
+    "url": "https://www.youtube.com/watch?v=abc1",
+    "videoId": "abc1",
+    "audioFile": "/sounds/harley-davidson-fat-boy.mp3",
+    "startSeconds": 8,
+    "endSeconds": 23,
+    "verified": true,
+    "meta": {
+      "title": "Harley-Davidson Fat Boy Sound",
+      "channel": "Harley Official",
+      "thumbnailUrl": "https://img.youtube.com/vi/abc1/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Harley-Davidson",
+      "model": "Fat Boy",
+      "engine": "Milwaukee-Eight 114",
+      "cylinders": "2",
+      "year": "2020",
+      "funFact": "Le Fat Boy est apparu dans le film Terminator 2."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=def2",
+    "videoId": "def2",
+    "audioFile": "/sounds/ducati-streetfighter-v4.mp3",
+    "startSeconds": 10,
+    "endSeconds": 25,
+    "verified": true,
+    "meta": {
+      "title": "Ducati Streetfighter V4",
+      "channel": "Ducati Racing",
+      "thumbnailUrl": "https://img.youtube.com/vi/def2/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Ducati",
+      "model": "Streetfighter V4",
+      "engine": "Desmosedici Stradale V4",
+      "cylinders": "4",
+      "year": "2020",
+      "funFact": "Le V4 Ducati développe 208 ch en version standard."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=ghi3",
+    "videoId": "ghi3",
+    "audioFile": "/sounds/honda-gold-wing.mp3",
+    "startSeconds": 7,
+    "endSeconds": 22,
+    "verified": true,
+    "meta": {
+      "title": "Honda Gold Wing",
+      "channel": "Honda Touring",
+      "thumbnailUrl": "https://img.youtube.com/vi/ghi3/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Honda",
+      "model": "Gold Wing",
+      "engine": "Flat-Six",
+      "cylinders": "6",
+      "year": "2018",
+      "funFact": "La Gold Wing est la seule moto de tourisme avec un moteur 6 cylindres à plat."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=jkl4",
+    "videoId": "jkl4",
+    "audioFile": "/sounds/yamaha-r6.mp3",
+    "startSeconds": 9,
+    "endSeconds": 24,
+    "verified": true,
+    "meta": {
+      "title": "Yamaha YZF-R6",
+      "channel": "Yamaha Racing",
+      "thumbnailUrl": "https://img.youtube.com/vi/jkl4/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Yamaha",
+      "model": "YZF-R6",
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "year": "2017",
+      "funFact": "La R6 est l'une des supersport 600cc les plus iconiques."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=mno5",
+    "videoId": "mno5",
+    "audioFile": "/sounds/bmw-gs-adventure.mp3",
+    "startSeconds": 6,
+    "endSeconds": 21,
+    "verified": true,
+    "meta": {
+      "title": "BMW R 1250 GS Adventure",
+      "channel": "BMW Motorrad",
+      "thumbnailUrl": "https://img.youtube.com/vi/mno5/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "BMW",
+      "model": "R 1250 GS Adventure",
+      "engine": "Boxer Twin",
+      "cylinders": "2",
+      "year": "2019",
+      "funFact": "La GS est la moto de trail la plus vendue au monde."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=pqr6",
+    "videoId": "pqr6",
+    "audioFile": "/sounds/kawasaki-versys-1000.mp3",
+    "startSeconds": 8,
+    "endSeconds": 23,
+    "verified": true,
+    "meta": {
+      "title": "Kawasaki Versys 1000",
+      "channel": "Kawasaki Adventure",
+      "thumbnailUrl": "https://img.youtube.com/vi/pqr6/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Kawasaki",
+      "model": "Versys 1000",
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "year": "2019",
+      "funFact": "Le Versys combine confort de tourisme et agilité sportive."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=stu7",
+    "videoId": "stu7",
+    "audioFile": "/sounds/triumph-bonneville-t120.mp3",
+    "startSeconds": 10,
+    "endSeconds": 25,
+    "verified": true,
+    "meta": {
+      "title": "Triumph Bonneville T120",
+      "channel": "Triumph Heritage",
+      "thumbnailUrl": "https://img.youtube.com/vi/stu7/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Triumph",
+      "model": "Bonneville T120",
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "year": "2021",
+      "funFact": "La Bonneville est produite depuis 1959, un véritable classique."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=vwx8",
+    "videoId": "vwx8",
+    "audioFile": "/sounds/suzuki-sv650.mp3",
+    "startSeconds": 7,
+    "endSeconds": 22,
+    "verified": true,
+    "meta": {
+      "title": "Suzuki SV650",
+      "channel": "Suzuki Street",
+      "thumbnailUrl": "https://img.youtube.com/vi/vwx8/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Suzuki",
+      "model": "SV650",
+      "engine": "V-Twin",
+      "cylinders": "2",
+      "year": "2019",
+      "funFact": "La SV650 est réputée comme l'une des meilleures motos pour débuter."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=yza9",
+    "videoId": "yza9",
+    "audioFile": "/sounds/ktm-790-adventure.mp3",
+    "startSeconds": 9,
+    "endSeconds": 24,
+    "verified": true,
+    "meta": {
+      "title": "KTM 790 Adventure",
+      "channel": "KTM Adventure",
+      "thumbnailUrl": "https://img.youtube.com/vi/yza9/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "KTM",
+      "model": "790 Adventure",
+      "engine": "LC8c Parallel Twin",
+      "cylinders": "2",
+      "year": "2019",
+      "funFact": "La 790 Adventure a remporté plusieurs prix pour ses performances off-road."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=bcd10",
+    "videoId": "bcd10",
+    "audioFile": "/sounds/honda-cb650r.mp3",
+    "startSeconds": 8,
+    "endSeconds": 23,
+    "verified": true,
+    "meta": {
+      "title": "Honda CB650R",
+      "channel": "Honda Neo Sports",
+      "thumbnailUrl": "https://img.youtube.com/vi/bcd10/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Honda",
+      "model": "CB650R",
+      "engine": "Inline-4",
+      "cylinders": "4",
+      "year": "2019",
+      "funFact": "La CB650R fait partie de la gamme Neo Sports Café au design moderne."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=efg11",
+    "videoId": "efg11",
+    "audioFile": "/sounds/yamaha-tracer-900.mp3",
+    "startSeconds": 6,
+    "endSeconds": 21,
+    "verified": true,
+    "meta": {
+      "title": "Yamaha Tracer 900 GT",
+      "channel": "Yamaha Sport Touring",
+      "thumbnailUrl": "https://img.youtube.com/vi/efg11/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Yamaha",
+      "model": "Tracer 900 GT",
+      "engine": "CP3 Triple",
+      "cylinders": "3",
+      "year": "2018",
+      "funFact": "La Tracer 900 partage son moteur avec la MT-09."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=hij12",
+    "videoId": "hij12",
+    "audioFile": "/sounds/ducati-multistrada-v4.mp3",
+    "startSeconds": 11,
+    "endSeconds": 26,
+    "verified": true,
+    "meta": {
+      "title": "Ducati Multistrada V4",
+      "channel": "Ducati Touring",
+      "thumbnailUrl": "https://img.youtube.com/vi/hij12/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Ducati",
+      "model": "Multistrada V4",
+      "engine": "V4 Granturismo",
+      "cylinders": "4",
+      "year": "2021",
+      "funFact": "Première Multistrada avec un moteur V4 et radar adaptatif."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=klm13",
+    "videoId": "klm13",
+    "audioFile": "/sounds/kawasaki-ninja-650.mp3",
+    "startSeconds": 7,
+    "endSeconds": 22,
+    "verified": true,
+    "meta": {
+      "title": "Kawasaki Ninja 650",
+      "channel": "Kawasaki Sport",
+      "thumbnailUrl": "https://img.youtube.com/vi/klm13/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Kawasaki",
+      "model": "Ninja 650",
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "year": "2020",
+      "funFact": "La Ninja 650 est une sportive accessible et polyvalente."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=nop14",
+    "videoId": "nop14",
+    "audioFile": "/sounds/aprilia-rsv4.mp3",
+    "startSeconds": 10,
+    "endSeconds": 25,
+    "verified": true,
+    "meta": {
+      "title": "Aprilia RSV4 Factory",
+      "channel": "Aprilia WSBK",
+      "thumbnailUrl": "https://img.youtube.com/vi/nop14/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Aprilia",
+      "model": "RSV4 Factory",
+      "engine": "V4",
+      "cylinders": "4",
+      "year": "2021",
+      "funFact": "La RSV4 a remporté de nombreux titres en Superbike mondial."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=qrs15",
+    "videoId": "qrs15",
+    "audioFile": "/sounds/mv-agusta-brutale-800.mp3",
+    "startSeconds": 9,
+    "endSeconds": 24,
+    "verified": true,
+    "meta": {
+      "title": "MV Agusta Brutale 800",
+      "channel": "MV Agusta",
+      "thumbnailUrl": "https://img.youtube.com/vi/qrs15/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "MV Agusta",
+      "model": "Brutale 800",
+      "engine": "Inline-3",
+      "cylinders": "3",
+      "year": "2020",
+      "funFact": "La Brutale est réputée pour son design italien exceptionnel."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=tuv16",
+    "videoId": "tuv16",
+    "audioFile": "/sounds/triumph-tiger-900.mp3",
+    "startSeconds": 8,
+    "endSeconds": 23,
+    "verified": true,
+    "meta": {
+      "title": "Triumph Tiger 900",
+      "channel": "Triumph Adventure",
+      "thumbnailUrl": "https://img.youtube.com/vi/tuv16/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Triumph",
+      "model": "Tiger 900",
+      "engine": "Triple 888",
+      "cylinders": "3",
+      "year": "2020",
+      "funFact": "Le Tiger 900 offre plusieurs configurations pour route et tout-terrain."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=wxy17",
+    "videoId": "wxy17",
+    "audioFile": "/sounds/honda-cb500x.mp3",
+    "startSeconds": 6,
+    "endSeconds": 21,
+    "verified": true,
+    "meta": {
+      "title": "Honda CB500X",
+      "channel": "Honda Adventure",
+      "thumbnailUrl": "https://img.youtube.com/vi/wxy17/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Honda",
+      "model": "CB500X",
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "year": "2019",
+      "funFact": "La CB500X est une excellente moto d'aventure pour débuter."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=zab18",
+    "videoId": "zab18",
+    "audioFile": "/sounds/yamaha-xsr900.mp3",
+    "startSeconds": 10,
+    "endSeconds": 25,
+    "verified": true,
+    "meta": {
+      "title": "Yamaha XSR900",
+      "channel": "Yamaha Sport Heritage",
+      "thumbnailUrl": "https://img.youtube.com/vi/zab18/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Yamaha",
+      "model": "XSR900",
+      "engine": "CP3 Triple",
+      "cylinders": "3",
+      "year": "2020",
+      "funFact": "La XSR900 combine style rétro et technologie moderne."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=cde19",
+    "videoId": "cde19",
+    "audioFile": "/sounds/bmw-f900r.mp3",
+    "startSeconds": 7,
+    "endSeconds": 22,
+    "verified": true,
+    "meta": {
+      "title": "BMW F900R",
+      "channel": "BMW Roadster",
+      "thumbnailUrl": "https://img.youtube.com/vi/cde19/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "BMW",
+      "model": "F900R",
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "year": "2020",
+      "funFact": "Le F900R offre un excellent compromis entre performance et confort."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=fgh20",
+    "videoId": "fgh20",
+    "audioFile": "/sounds/kawasaki-w800.mp3",
+    "startSeconds": 9,
+    "endSeconds": 24,
+    "verified": true,
+    "meta": {
+      "title": "Kawasaki W800",
+      "channel": "Kawasaki Classic",
+      "thumbnailUrl": "https://img.youtube.com/vi/fgh20/hqdefault.jpg"
+    },
+    "fallback": {
+      "manufacturer": "Kawasaki",
+      "model": "W800",
+      "engine": "Parallel Twin",
+      "cylinders": "2",
+      "year": "2019",
+      "funFact": "La W800 est un hommage aux motos britanniques classiques des années 60."
+    }
+  }
+]

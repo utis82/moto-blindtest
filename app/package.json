@@ -1,4 +1,8 @@
 {
+  "name": "moto-blindtest",
+  "version": "1.0.0",
+  "description": "Blind test de sons de motos",
+  "author": "Moto Blindtest",
   "devDependencies": {
     "prisma": "^5.22.0"
   },

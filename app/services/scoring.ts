@@ -57,7 +57,15 @@ export const fuzzySimilarity = (expected: string, actual: string) => {
       return 1;
     }
   }
-  return similarity(cleanExpected, cleanActual);
+  const score = similarity(cleanExpected, cleanActual);
+
+  // Seuil minimum: si la similarité est < 50%, retourner 0
+  // Cela tolère les fautes de frappe mais refuse les réponses complètement fausses
+  if (score < 0.5) {
+    return 0;
+  }
+
+  return score;
 };
 
 export interface MotoAnswer {

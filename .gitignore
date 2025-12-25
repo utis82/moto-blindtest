@@ -13,3 +13,6 @@ app/db/dev.db
 # OS files
 .DS_Store
 Thumbs.db
+
+# Electron build artifacts
+release/

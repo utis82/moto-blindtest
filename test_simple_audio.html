@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Audio Simple</title></head>
+<body style="background: #000; color: #fff; padding: 40px; font-family: Arial;">
+    <h1>Test Audio Ducati</h1>
+    <button onclick="testPlay()" style="padding: 20px 40px; font-size: 20px; background: #f00; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+        ▶ PLAY DUCATI
+    </button>
+    <p id="status" style="margin-top: 20px; padding: 20px; background: #222;"></p>
+
+    <script>
+        function testPlay() {
+            const audio = new Audio('/sounds/ducati-panigale-v4s.mp3');
+            const status = document.getElementById('status');
+
+            audio.volume = 1.0; // Volume max
+
+            audio.addEventListener('loadeddata', () => {
+                status.innerHTML = `Chargé ! Durée: ${audio.duration}s`;
+            });
+
+            audio.addEventListener('playing', () => {
+                status.innerHTML = `🔊 EN LECTURE ! Volume: ${audio.volume}`;
+            });
+
+            audio.addEventListener('error', (e) => {
+                status.innerHTML = `❌ ERREUR: ${audio.error?.message}`;
+            });
+
+            audio.play()
+                .then(() => {
+                    status.innerHTML = `✅ Play() a réussi ! En cours de lecture...`;
+                })
+                .catch(err => {
+                    status.innerHTML = `❌ Play() a échoué: ${err.message}`;
+                });
+        }
+    </script>
+</body>
+</html>

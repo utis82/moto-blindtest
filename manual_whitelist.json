@@ -1,0 +1,69 @@
+[
+  {
+    "comment": "Vidéos VÉRIFIÉES manuellement comme embedables",
+    "note": "Ajoute ici les IDs de vidéos YouTube que tu as testées"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=6fVjQbtzICM",
+    "videoId": "6fVjQbtzICM",
+    "startSeconds": 24,
+    "endSeconds": 40,
+    "verified": true,
+    "tested": "2025-12-21",
+    "status": "✅ EMBEDABLE",
+    "meta": {
+      "title": "Ducati Panigale V4S Sound!",
+      "channel": "Bike World"
+    },
+    "fallback": {
+      "manufacturer": "Ducati",
+      "model": "Panigale V4S",
+      "engine": "V4",
+      "cylinders": "4",
+      "year": "2018",
+      "funFact": "Première superbike Ducati de série équipée d'un V4 issu du MotoGP."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=zsznxlIOov0",
+    "videoId": "zsznxlIOov0",
+    "startSeconds": 18,
+    "endSeconds": 34,
+    "verified": true,
+    "tested": "2025-12-21",
+    "status": "✅ EMBEDABLE",
+    "meta": {
+      "title": "Yamaha R1 Akrapovic Cold Start",
+      "channel": "AkraSound"
+    },
+    "fallback": {
+      "manufacturer": "Yamaha",
+      "model": "YZF-R1",
+      "engine": "Crossplane Inline-4",
+      "cylinders": "4",
+      "year": "2015",
+      "funFact": "Le 4-cylindres crossplane reprend l'ordre d'allumage de la M1 officielle."
+    }
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=bPBcVWI6Mi4",
+    "videoId": "bPBcVWI6Mi4",
+    "startSeconds": 38,
+    "endSeconds": 55,
+    "verified": true,
+    "tested": "2025-12-21",
+    "status": "✅ EMBEDABLE",
+    "meta": {
+      "title": "Harley-Davidson Breakout 114 Sound",
+      "channel": "V-Twin Channel"
+    },
+    "fallback": {
+      "manufacturer": "Harley-Davidson",
+      "model": "Breakout 114",
+      "engine": "Milwaukee-Eight V-Twin",
+      "cylinders": "2",
+      "year": "2018",
+      "funFact": "Le Milwaukee-Eight 114 délivre un couple massif à très bas régime."
+    }
+  }
+]

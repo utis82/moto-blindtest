@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Audio Player</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: Arial;
+            padding: 40px;
+        }
+        .player {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        button {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #cc0000;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 8px;
+        }
+        audio {
+            width: 100%;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="player">
+        <h1>🎵 Test Lecteur Audio</h1>
+
+        <div class="status" id="status">
+            Prêt à tester...
+        </div>
+
+        <h3>Test 1 : Lecteur HTML5 natif</h3>
+        <audio controls id="nativePlayer">
+            <source src="/sounds/ducati-panigale-v4s.mp3" type="audio/mpeg">
+            Votre navigateur ne supporte pas l'audio HTML5.
+        </audio>
+
+        <h3>Test 2 : JavaScript Audio API</h3>
+        <button onclick="testDucati()">▶ Ducati Panigale V4S</button>
+        <button onclick="testYamaha()">▶ Yamaha R1</button>
+        <button onclick="testHarley()">▶ Harley Breakout 114</button>
+        <button onclick="stopAll()">⏹ Stop</button>
+
+        <div id="info" style="margin-top: 20px; font-size: 12px; color: #888;"></div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+
+        function log(message) {
+            const status = document.getElementById('status');
+            const now = new Date().toLocaleTimeString();
+            status.innerHTML = `[${now}] ${message}`;
+            console.log(message);
+        }
+
+        function testAudio(src, name) {
+            stopAll();
+            log(`Chargement de ${name}...`);
+
+            currentAudio = new Audio(src);
+
+            currentAudio.addEventListener('loadeddata', () => {
+                log(`✅ ${name} chargé ! Durée: ${currentAudio.duration.toFixed(1)}s`);
+            });
+
+            currentAudio.addEventListener('playing', () => {
+                log(`🔊 ${name} en lecture...`);
+            });
+
+            currentAudio.addEventListener('ended', () => {
+                log(`✅ ${name} terminé`);
+            });
+
+            currentAudio.addEventListener('error', (e) => {
+                log(`❌ Erreur: ${e.type} - ${currentAudio.error?.message || 'Inconnue'}`);
+            });
+
+            currentAudio.play()
+                .then(() => {
+                    log(`🎵 Lecture de ${name} démarrée`);
+                })
+                .catch(err => {
+                    log(`❌ Erreur play(): ${err.message}`);
+                });
+        }
+
+        function testDucati() {
+            testAudio('/sounds/ducati-panigale-v4s.mp3', 'Ducati Panigale V4S');
+        }
+
+        function testYamaha() {
+            testAudio('/sounds/yamaha-yzf-r1.mp3', 'Yamaha R1');
+        }
+
+        function testHarley() {
+            testAudio('/sounds/harley-davidson-breakout-114.mp3', 'Harley Breakout 114');
+        }
+
+        function stopAll() {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+            }
+            const native = document.getElementById('nativePlayer');
+            native.pause();
+            native.currentTime = 0;
+            log('⏹ Arrêté');
+        }
+
+        // Test au chargement
+        window.addEventListener('load', () => {
+            log('Page chargée. Tests prêts.');
+            document.getElementById('info').innerHTML = `
+                <p>Fichiers audio disponibles:</p>
+                <ul>
+                    <li>/sounds/ducati-panigale-v4s.mp3</li>
+                    <li>/sounds/yamaha-yzf-r1.mp3</li>
+                    <li>/sounds/harley-davidson-breakout-114.mp3</li>
+                </ul>
+            `;
+        });
+    </script>
+</body>
+</html>

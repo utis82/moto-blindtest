@@ -315,6 +315,10 @@ export function MultiplayerGamePage() {
 
       const data = await response.json();
 
+      // Debug: vérifier les données reçues
+      console.log("📊 Résultats du tour:", data);
+      console.log("🏍️ Info moto:", data.moto);
+
       // Afficher le popup de résultats
       setRoundResults(data);
       setShowResultsModal(true);
@@ -579,13 +583,23 @@ export function MultiplayerGamePage() {
             </h2>
 
             {/* Photo/Info de la moto */}
-            {roundResults.moto && (
+            {roundResults?.moto ? (
               <div className="mb-4 relative overflow-hidden rounded-xl border-2 border-gold-500">
-                {/* Gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-racing-600/30 via-electric-600/30 to-neon-600/30"></div>
+                {/* Image de la moto (vignette YouTube) */}
+                {roundResults.moto.imageUrl && (
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-ink-900 to-ink-800">
+                    <img
+                      src={roundResults.moto.imageUrl}
+                      alt={`${roundResults.moto.manufacturer} ${roundResults.moto.name}`}
+                      className="w-full h-full object-cover opacity-90"
+                    />
+                    {/* Overlay gradient pour lisibilité du texte */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/50 to-transparent"></div>
+                  </div>
+                )}
 
                 {/* Moto info */}
-                <div className="relative p-6 text-center">
+                <div className="relative p-6 text-center bg-gradient-to-br from-ink-800 to-ink-900">
                   <div className="text-3xl font-black text-white mb-2">
                     {roundResults.moto.manufacturer}
                   </div>
@@ -596,6 +610,10 @@ export function MultiplayerGamePage() {
                     C'était cette moto! 🏍️
                   </div>
                 </div>
+              </div>
+            ) : (
+              <div className="mb-4 p-4 bg-red-900/20 border border-red-500 rounded text-red-400 text-sm">
+                DEBUG: Pas de données moto reçues
               </div>
             )}
 

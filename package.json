@@ -1,0 +1,55 @@
+{
+  "name": "moto-blindtest",
+  "version": "1.0.0",
+  "description": "Blind test complet dédié aux rugissements de moteurs de moto. Le backend Express/TypeScript auto-alimente la base depuis un catalogue YouTube, complète les fiches moto via une heuristique “mini IA” et expose les endpoints de manches/scoring/indices. Le frontend React/Vite/Tailwind propose une UI sombre exclusivement audio avec des champs séparés (marque, modèle, cylindres, architecture, année) et un breakdown détaillé des scores. Prisma + SQLite servent de couche de persistance (Postgres prêt pour plus tard). Le tout est structuré dans `/app` pour un futur déploiement Docker.",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:backend": "cd app/backend && npm run build",
+    "build:frontend": "cd app/frontend && npm run build",
+    "build:all": "npm run build:backend && npm run build:frontend",
+    "package:win": "electron-builder --win --x64",
+    "dist": "npm run build:all && npm run package:win"
+  },
+  "build": {
+    "appId": "com.moto.blindtest",
+    "productName": "Moto Blindtest",
+    "asar": false,
+    "extraMetadata": {
+      "main": "electron-main.js"
+    },
+    "directories": {
+      "output": "release",
+      "app": "."
+    },
+    "files": [
+      "electron-main.js",
+      "app/backend/dist/**/*",
+      "app/backend/node_modules/**/*",
+      "app/backend/public/**/*",
+      "app/backend/package.json",
+      "app/backend/.env",
+      "app/db/**/*",
+      "app/frontend/dist/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@yao-pkg/pkg": "^6.11.0",
+    "concurrently": "^9.2.1",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12"
+  }
+}
