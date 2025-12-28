@@ -30,6 +30,10 @@ RUN npm run prisma:generate
 # Build backend
 RUN npm run build
 
+# Compile seed.ts to seed.js
+WORKDIR /app/db
+RUN npx tsc --module commonjs --target es2022 --moduleResolution node --esModuleInterop true seed.ts
+
 # Stage 3: Production
 FROM node:22-slim AS production
 WORKDIR /app
@@ -52,6 +56,9 @@ COPY --from=frontend-build /app/frontend/dist ../frontend/dist
 
 # Copy database schema and migrations
 COPY app/db ../db
+
+# Copy compiled seed.js from backend build
+COPY --from=backend-build /app/db/seed.js ../db/seed.js
 
 # Copy Prisma generated client from backend build
 COPY --from=backend-build /app/backend/node_modules/.prisma ./node_modules/.prisma
