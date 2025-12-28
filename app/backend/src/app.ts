@@ -71,7 +71,7 @@ export const createServer = () => {
     app.use(express.static(frontendPath));
 
     // Fallback pour le routing React (SPA)
-    app.get("*", (_req, res) => {
+    app.get("/*", (_req, res) => {
       res.sendFile(path.join(frontendPath, "index.html"));
     });
   } else {
