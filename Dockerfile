@@ -31,7 +31,9 @@ RUN npm run prisma:generate
 RUN npm run build
 
 # Compile seed.ts to seed.js from backend directory with proper Prisma types
-RUN npx tsc ../db/seed.ts --outDir ../db --module commonjs --target es2022 --moduleResolution node --esModuleInterop true --skipLibCheck true
+RUN npx tsc ../db/seed.ts --outDir ../db --module commonjs --target es2022 --moduleResolution node --esModuleInterop true --skipLibCheck true && \
+    echo "✅ seed.js compiled successfully" && \
+    ls -la ../db/seed.js
 
 # Stage 3: Production
 FROM node:22-slim AS production
@@ -63,6 +65,11 @@ COPY --from=backend-build /app/db/seed.js ../db/seed.js
 
 # Copy package.json with correct seed command
 COPY app/db/package.json ../db/package.json
+
+# Verify seed.js and package.json are present
+RUN ls -la ../db/seed.js && \
+    cat ../db/package.json && \
+    echo "✅ Seed files verified"
 
 # Copy Prisma generated client from backend build
 COPY --from=backend-build /app/backend/node_modules/.prisma ./node_modules/.prisma
