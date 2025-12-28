@@ -32,8 +32,8 @@ RUN npm run build
 
 # Compile seed.ts to seed.js - use backend's node_modules for @prisma/client
 RUN cd ../db && \
-    echo '{"compilerOptions":{"module":"commonjs","target":"es2022","moduleResolution":"node","esModuleInterop":true,"skipLibCheck":true,"baseUrl":".","paths":{"@prisma/client":["../backend/node_modules/@prisma/client"]}}}' > tsconfig.temp.json && \
-    ../backend/node_modules/.bin/tsc seed.ts --outDir . --project tsconfig.temp.json && \
+    echo '{"compilerOptions":{"module":"commonjs","target":"es2022","moduleResolution":"node","esModuleInterop":true,"skipLibCheck":true,"baseUrl":".","paths":{"@prisma/client":["../backend/node_modules/@prisma/client"]}},"include":["seed.ts"]}' > tsconfig.temp.json && \
+    ../backend/node_modules/.bin/tsc --project tsconfig.temp.json && \
     rm tsconfig.temp.json && \
     echo "✅ seed.js compiled successfully" && \
     ls -la seed.js
