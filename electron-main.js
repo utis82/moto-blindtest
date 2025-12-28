@@ -55,8 +55,10 @@ function createWindow() {
   const frontendPath = path.join(__dirname, 'app', 'frontend', 'dist', 'index.html');
   mainWindow.loadFile(frontendPath);
 
-  // Ouvrir DevTools pour voir les erreurs
-  mainWindow.webContents.openDevTools();
+  // Ouvrir DevTools uniquement en mode développement
+  if (process.env.ELECTRON_DEV === 'true') {
+    mainWindow.webContents.openDevTools();
+  }
 
   mainWindow.on('closed', () => {
     mainWindow = null;

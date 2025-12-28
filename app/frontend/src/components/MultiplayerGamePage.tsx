@@ -107,7 +107,7 @@ export function MultiplayerGamePage() {
     if (!sessionId) return;
     try {
       const response = await fetch(
-        `http://localhost:4000/api/game-session/${sessionId}/current-turn`
+        `/api/game-session/${sessionId}/current-turn`
       );
       if (!response.ok) {
         const errorData = await response.json();
@@ -137,7 +137,7 @@ export function MultiplayerGamePage() {
 
       // Charger l'audio
       if (audioRef.current) {
-        audioRef.current.src = `http://localhost:4000${data.source.audioFile}`;
+        audioRef.current.src = `${data.source.audioFile}`;
         audioRef.current.load();
       }
     } catch (err) {
@@ -186,7 +186,7 @@ export function MultiplayerGamePage() {
       try {
         const count = mode === "qcm" ? 4 : 2;
         const response = await fetch(
-          `http://localhost:4000/api/game-session/${sessionId}/coherent-options?` +
+          `/api/game-session/${sessionId}/coherent-options?` +
             new URLSearchParams({
               sourceId: currentTurn!.source.id.toString(),
               count: count.toString(),
@@ -215,7 +215,7 @@ export function MultiplayerGamePage() {
       try {
         const count = mode === "qcm" ? 4 : 2;
         const response = await fetch(
-          `http://localhost:4000/api/game-session/${sessionId}/qcm-options?` +
+          `/api/game-session/${sessionId}/qcm-options?` +
             new URLSearchParams({
               fieldName,
               sourceId: currentTurn!.source.id.toString(),
@@ -295,7 +295,7 @@ export function MultiplayerGamePage() {
       const elapsedMs = startRef.current ? Date.now() - startRef.current : undefined;
 
       const response = await fetch(
-        "http://localhost:4000/api/game-session/submit-field-answers",
+        "/api/game-session/submit-field-answers",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -355,66 +355,66 @@ export function MultiplayerGamePage() {
     fieldAnswers.find((fa) => fa.fieldName === fieldName)?.answer || "";
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-4 sm:p-6 md:p-8">
       <audio ref={audioRef} />
 
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-6 gap-4">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 px-4 py-2 bg-ink-800 border border-gold-700 rounded-lg hover:border-gold-500 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 min-h-[44px] bg-ink-800 border border-gold-700 rounded-lg hover:border-gold-500 transition-colors"
           >
             <Home className="w-5 h-5 text-gold-300" />
             <span className="text-gold-300">Quitter</span>
           </button>
 
           <div className="text-center">
-            <h1 className="text-3xl font-black bg-gradient-to-r from-electric-400 to-neon-400 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl md:text-3xl font-black bg-gradient-to-r from-electric-400 to-neon-400 bg-clip-text text-transparent">
               Tour {currentTurn.session.currentRound}/{currentTurn.session.totalRounds}
             </h1>
-            <p className="text-gold-400 text-sm mt-1">
+            <p className="text-gold-400 text-xs sm:text-sm mt-1">
               C'est au tour de <span className="text-electric-400 font-bold">{currentTurn.player.name}</span>
             </p>
           </div>
 
-          <div className="w-28"></div>
+          <div className="hidden sm:block sm:w-28"></div>
         </div>
 
         {/* Leaderboard */}
-        <div className="mb-6 bg-gradient-to-br from-ink-800 to-ink-900 border border-gold-700 rounded-xl p-4">
+        <div className="mb-4 sm:mb-6 bg-gradient-to-br from-ink-800 to-ink-900 border border-gold-700 rounded-xl p-3 sm:p-4">
           <div className="flex items-center gap-2 mb-3">
-            <Trophy className="w-5 h-5 text-neon-400" />
-            <h2 className="text-lg font-bold text-white">Classement</h2>
+            <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-neon-400" />
+            <h2 className="text-base sm:text-lg font-bold text-white">Classement</h2>
           </div>
-          <div className="flex gap-3 overflow-x-auto">
+          <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2">
             {currentTurn.leaderboard.map((player, index) => (
               <div
                 key={player.id}
-                className={`flex-shrink-0 px-4 py-2 rounded-lg ${
+                className={`flex-shrink-0 px-3 sm:px-4 py-2 rounded-lg ${
                   player.id === currentTurn.player.id
                     ? "bg-electric-600/30 border border-electric-500"
                     : "bg-ink-950/50"
                 }`}
               >
                 <div className="text-xs text-gold-400">#{index + 1}</div>
-                <div className="text-white font-bold">{player.name}</div>
-                <div className="text-sm text-neon-400">{player.totalScore} pts</div>
+                <div className="text-sm sm:text-base text-white font-bold truncate max-w-[100px]">{player.name}</div>
+                <div className="text-xs sm:text-sm text-neon-400">{player.totalScore} pts</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* Lecteur Audio */}
-          <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-700 rounded-2xl p-6">
-            <h2 className="text-2xl font-bold text-white mb-4">Écoutez le son</h2>
+          <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-700 rounded-2xl p-4 sm:p-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Écoutez le son</h2>
 
             <button
               onClick={playAudio}
-              className="w-full flex items-center justify-center gap-3 px-8 py-6 bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 text-white text-xl font-bold rounded-xl transition-all mb-4"
+              className="w-full flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-4 sm:py-6 min-h-[60px] bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 text-white text-lg sm:text-xl font-bold rounded-xl transition-all mb-3 sm:mb-4"
             >
-              <Volume2 className="w-8 h-8" />
+              <Volume2 className="w-6 h-6 sm:w-8 sm:h-8" />
               Jouer le son
             </button>
 
@@ -427,24 +427,24 @@ export function MultiplayerGamePage() {
             </div>
 
             {/* Jokers */}
-            <div className="mt-6 space-y-3">
-              <h3 className="text-lg font-bold text-white">Jokers disponibles</h3>
+            <div className="mt-4 sm:mt-6 space-y-3">
+              <h3 className="text-base sm:text-lg font-bold text-white">Jokers disponibles</h3>
 
               <button
                 onClick={useHintJoker}
                 disabled={!!jokerUsed}
-                className="w-full flex items-center justify-between px-4 py-3 bg-neon-600/20 hover:bg-neon-600/30 disabled:bg-chrome-900 disabled:text-gold-600 text-neon-300 rounded-lg transition-colors disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-between px-3 sm:px-4 py-3 min-h-[48px] bg-neon-600/20 hover:bg-neon-600/30 disabled:bg-chrome-900 disabled:text-gold-600 text-neon-300 rounded-lg transition-colors disabled:cursor-not-allowed"
               >
                 <div className="flex items-center gap-2">
-                  <Lightbulb className="w-5 h-5" />
-                  <span className="font-semibold">Indice</span>
+                  <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="text-sm sm:text-base font-semibold">Indice</span>
                 </div>
-                <span className="text-sm">-10 pts</span>
+                <span className="text-xs sm:text-sm">-10 pts</span>
               </button>
 
               {hintText && (
                 <div className="p-3 bg-neon-600/10 border border-neon-600/30 rounded-lg">
-                  <p className="text-neon-300 text-sm">{hintText}</p>
+                  <p className="text-neon-300 text-xs sm:text-sm">{hintText}</p>
                 </div>
               )}
 
@@ -455,10 +455,10 @@ export function MultiplayerGamePage() {
           </div>
 
           {/* Formulaire de réponses */}
-          <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-700 rounded-2xl p-6">
-            <h2 className="text-2xl font-bold text-white mb-4">Vos réponses</h2>
+          <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-700 rounded-2xl p-4 sm:p-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Vos réponses</h2>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {FIELDS.map((fieldName) => {
                 const mode = responseModes[fieldName];
                 const isRevealed = revealedField === fieldName;
@@ -466,16 +466,16 @@ export function MultiplayerGamePage() {
 
                 return (
                   <div key={fieldName} className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <label className="text-white font-semibold">
+                    <div className="flex items-center justify-between gap-2">
+                      <label className="text-white text-sm sm:text-base font-semibold">
                         {FIELD_LABELS[fieldName]}
                       </label>
 
                       {!isRevealed && (
-                        <div className="flex gap-1">
+                        <div className="flex gap-1 flex-shrink-0">
                           <button
                             onClick={() => changeResponseMode(fieldName, "expert")}
-                            className={`px-2 py-1 text-xs rounded ${
+                            className={`px-2 py-1 text-xs rounded min-h-[32px] ${
                               mode === "expert"
                                 ? "bg-racing-600 text-white"
                                 : "bg-chrome-800 text-gold-400"
@@ -485,7 +485,7 @@ export function MultiplayerGamePage() {
                           </button>
                           <button
                             onClick={() => changeResponseMode(fieldName, "qcm")}
-                            className={`px-2 py-1 text-xs rounded ${
+                            className={`px-2 py-1 text-xs rounded min-h-[32px] ${
                               mode === "qcm"
                                 ? "bg-electric-600 text-white"
                                 : "bg-chrome-800 text-gold-400"
@@ -495,7 +495,7 @@ export function MultiplayerGamePage() {
                           </button>
                           <button
                             onClick={() => changeResponseMode(fieldName, "fifty_fifty")}
-                            className={`px-2 py-1 text-xs rounded ${
+                            className={`px-2 py-1 text-xs rounded min-h-[32px] ${
                               mode === "fifty_fifty"
                                 ? "bg-neon-600 text-white"
                                 : "bg-chrome-800 text-gold-400"
@@ -506,18 +506,18 @@ export function MultiplayerGamePage() {
                           <button
                             onClick={() => useRevealJoker(fieldName)}
                             disabled={!!jokerUsed}
-                            className="px-2 py-1 text-xs rounded bg-chrome-800 text-gold-400 hover:bg-chrome-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="px-2 py-1 text-xs rounded min-h-[32px] min-w-[32px] bg-chrome-800 text-gold-400 hover:bg-chrome-700 disabled:opacity-50 disabled:cursor-not-allowed"
                             title="Révéler (-15pts)"
                           >
-                            <Eye className="w-3 h-3" />
+                            <Eye className="w-3 h-3 mx-auto" />
                           </button>
                         </div>
                       )}
                     </div>
 
                     {isRevealed ? (
-                      <div className="px-4 py-3 bg-neon-600/20 border border-neon-600/50 rounded-lg">
-                        <p className="text-neon-300 font-bold">{currentAnswer(fieldName)}</p>
+                      <div className="px-3 sm:px-4 py-3 bg-neon-600/20 border border-neon-600/50 rounded-lg">
+                        <p className="text-neon-300 text-sm sm:text-base font-bold">{currentAnswer(fieldName)}</p>
                         <p className="text-xs text-neon-400 mt-1">Révélé (-15pts)</p>
                       </div>
                     ) : mode === "expert" ? (
@@ -525,7 +525,7 @@ export function MultiplayerGamePage() {
                         type="text"
                         value={currentAnswer(fieldName)}
                         onChange={(e) => updateAnswer(fieldName, e.target.value)}
-                        className="w-full px-4 py-2 bg-ink-950 border border-gold-700 rounded-lg text-white focus:border-racing-500 focus:outline-none"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 min-h-[44px] text-sm sm:text-base bg-ink-950 border border-gold-700 rounded-lg text-white focus:border-racing-500 focus:outline-none"
                         placeholder={`Entrez le ${FIELD_LABELS[fieldName].toLowerCase()}`}
                       />
                     ) : (
@@ -534,7 +534,7 @@ export function MultiplayerGamePage() {
                           <button
                             key={option}
                             onClick={() => updateAnswer(fieldName, option)}
-                            className={`w-full px-4 py-2 rounded-lg text-left transition-colors ${
+                            className={`w-full px-3 sm:px-4 py-2 sm:py-3 min-h-[44px] text-sm sm:text-base rounded-lg text-left transition-colors ${
                               currentAnswer(fieldName) === option
                                 ? "bg-electric-600 text-white"
                                 : "bg-ink-950 text-gold-300 hover:bg-ink-900"
@@ -551,15 +551,15 @@ export function MultiplayerGamePage() {
             </div>
 
             {error && (
-              <div className="mt-4 p-3 bg-red-600/20 border border-red-600/50 rounded-lg">
-                <p className="text-red-400 text-sm">{error}</p>
+              <div className="mt-3 sm:mt-4 p-3 bg-red-600/20 border border-red-600/50 rounded-lg">
+                <p className="text-red-400 text-xs sm:text-sm">{error}</p>
               </div>
             )}
 
             <button
               onClick={submitAnswers}
               disabled={isSubmitting || fieldAnswers.length === 0}
-              className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 disabled:from-chrome-800 disabled:to-chrome-800 disabled:text-gold-500 text-white font-bold rounded-xl transition-all disabled:cursor-not-allowed"
+              className="w-full mt-4 sm:mt-6 px-4 sm:px-6 py-3 min-h-[52px] text-base sm:text-lg bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 disabled:from-chrome-800 disabled:to-chrome-800 disabled:text-gold-500 text-white font-bold rounded-xl transition-all disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Envoi en cours..." : "Valider mes réponses"}
             </button>
@@ -577,17 +577,17 @@ export function MultiplayerGamePage() {
             loadCurrentTurn();
           }
         }}>
-          <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-600 rounded-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-2xl font-black text-center mb-4 bg-gradient-to-r from-neon-400 to-electric-400 bg-clip-text text-transparent">
+          <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-600 rounded-xl sm:rounded-2xl p-4 sm:p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-xl sm:text-2xl font-black text-center mb-3 sm:mb-4 bg-gradient-to-r from-neon-400 to-electric-400 bg-clip-text text-transparent">
               Résultats du tour
             </h2>
 
             {/* Photo/Info de la moto */}
             {roundResults?.moto ? (
-              <div className="mb-4 relative overflow-hidden rounded-xl border-2 border-gold-500">
+              <div className="mb-3 sm:mb-4 relative overflow-hidden rounded-lg sm:rounded-xl border-2 border-gold-500">
                 {/* Image de la moto (vignette YouTube) */}
                 {roundResults.moto.imageUrl && (
-                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-ink-900 to-ink-800">
+                  <div className="relative h-40 sm:h-48 overflow-hidden bg-gradient-to-br from-ink-900 to-ink-800">
                     <img
                       src={roundResults.moto.imageUrl}
                       alt={`${roundResults.moto.manufacturer} ${roundResults.moto.name}`}
@@ -599,65 +599,65 @@ export function MultiplayerGamePage() {
                 )}
 
                 {/* Moto info */}
-                <div className="relative p-6 text-center bg-gradient-to-br from-ink-800 to-ink-900">
-                  <div className="text-3xl font-black text-white mb-2">
+                <div className="relative p-4 sm:p-6 text-center bg-gradient-to-br from-ink-800 to-ink-900">
+                  <div className="text-2xl sm:text-3xl font-black text-white mb-2">
                     {roundResults.moto.manufacturer}
                   </div>
-                  <div className="text-xl font-bold text-gold-300">
+                  <div className="text-lg sm:text-xl font-bold text-gold-300">
                     {roundResults.moto.name}
                   </div>
-                  <div className="mt-3 text-sm text-gray-400 italic">
+                  <div className="mt-2 sm:mt-3 text-xs sm:text-sm text-gray-400 italic">
                     C'était cette moto! 🏍️
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="mb-4 p-4 bg-red-900/20 border border-red-500 rounded text-red-400 text-sm">
+              <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-red-900/20 border border-red-500 rounded text-red-400 text-xs sm:text-sm">
                 DEBUG: Pas de données moto reçues
               </div>
             )}
 
             {/* Score total */}
-            <div className="text-center mb-4">
-              <div className="text-4xl font-black text-neon-400 mb-1">
+            <div className="text-center mb-3 sm:mb-4">
+              <div className="text-3xl sm:text-4xl font-black text-neon-400 mb-1">
                 {roundResults.totalScore}
               </div>
-              <div className="text-gold-300">points gagnés</div>
+              <div className="text-sm sm:text-base text-gold-300">points gagnés</div>
               {roundResults.jokerPenalty > 0 && (
-                <div className="text-racing-400 text-sm mt-1">
+                <div className="text-racing-400 text-xs sm:text-sm mt-1">
                   (Pénalité joker: -{roundResults.jokerPenalty} pts)
                 </div>
               )}
             </div>
 
             {/* Détails par champ */}
-            <div className="space-y-2 mb-4">
+            <div className="space-y-2 mb-3 sm:mb-4">
               {roundResults.fieldResults?.map((field: any) => (
                 <div
                   key={field.fieldName}
-                  className={`p-3 rounded-lg border ${
+                  className={`p-2 sm:p-3 rounded-lg border ${
                     field.correct
                       ? "bg-green-900/20 border-green-500"
                       : "bg-red-900/20 border-red-500"
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <div className="font-semibold text-white text-sm mb-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold text-white text-xs sm:text-sm mb-1">
                         {FIELD_LABELS[field.fieldName as FieldName]}
                       </div>
                       <div className="text-xs space-y-1">
                         {!field.correct && field.userAnswer && (
-                          <div className="text-red-400">
+                          <div className="text-red-400 break-words">
                             Ta réponse: <span className="font-medium">{field.userAnswer}</span>
                           </div>
                         )}
-                        <div className={field.correct ? "text-green-400" : "text-gold-300"}>
+                        <div className={`${field.correct ? "text-green-400" : "text-gold-300"} break-words`}>
                           {field.correct ? "✓" : "→"} Bonne réponse: <span className="font-medium">{field.correctAnswer}</span>
                         </div>
                       </div>
                     </div>
-                    <div className="text-xl font-bold text-electric-400">
+                    <div className="text-lg sm:text-xl font-bold text-electric-400 flex-shrink-0">
                       +{field.points.toFixed(0)}
                     </div>
                   </div>
@@ -675,7 +675,7 @@ export function MultiplayerGamePage() {
                   loadCurrentTurn();
                 }
               }}
-              className="w-full px-6 py-3 bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 text-white font-bold rounded-xl transition-all"
+              className="w-full px-4 sm:px-6 py-3 min-h-[52px] text-base sm:text-lg bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 text-white font-bold rounded-xl transition-all"
             >
               {roundResults.sessionStatus === "COMPLETED" ? "Voir les résultats finaux" : "Tour suivant"}
             </button>

@@ -51,7 +51,7 @@ export function ResultsPage() {
       if (!sessionId) return;
       try {
         const response = await fetch(
-          `http://localhost:4000/api/game-session/${sessionId}/results`
+          `/api/game-session/${sessionId}/results`
         );
         if (!response.ok) {
           const errorData = await response.json();
@@ -82,12 +82,12 @@ export function ResultsPage() {
 
   if (error || !results) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="text-center">
-          <p className="text-red-400 mb-4">{error || "Résultats non disponibles"}</p>
+          <p className="text-red-400 mb-4 text-sm sm:text-base">{error || "Résultats non disponibles"}</p>
           <button
             onClick={() => navigate("/")}
-            className="px-6 py-3 bg-racing-600 hover:bg-racing-500 text-white rounded-lg transition-colors"
+            className="px-6 py-3 bg-racing-600 hover:bg-racing-500 text-white rounded-lg transition-colors min-h-[44px] active:scale-95"
           >
             Retour à l'accueil
           </button>
@@ -99,25 +99,25 @@ export function ResultsPage() {
   const sortedPlayers = [...results.players].sort((a, b) => b.totalScore - a.totalScore);
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-4 sm:p-6 md:p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <Trophy className="w-12 h-12 text-neon-400" />
-            <h1 className="text-5xl font-black bg-gradient-to-r from-neon-400 via-electric-400 to-racing-400 bg-clip-text text-transparent">
+        <div className="text-center mb-6 sm:mb-8 md:mb-12">
+          <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <Trophy className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-neon-400" />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-neon-400 via-electric-400 to-racing-400 bg-clip-text text-transparent">
               Résultats Finaux
             </h1>
-            <Trophy className="w-12 h-12 text-neon-400" />
+            <Trophy className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-neon-400" />
           </div>
-          <p className="text-gold-300 text-lg">
+          <p className="text-gold-300 text-base sm:text-lg">
             Partie terminée • {results.session.totalRounds} tours
           </p>
         </div>
 
         {/* Podium */}
-        <div className="mb-12">
-          <div className="grid md:grid-cols-3 gap-6">
+        <div className="mb-6 sm:mb-8 md:mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {sortedPlayers.slice(0, 3).map((player, index) => {
               const rank = index + 1;
               const medalColor = MEDAL_COLORS[rank as keyof typeof MEDAL_COLORS] || "from-chrome-600 to-chrome-800";
@@ -125,29 +125,29 @@ export function ResultsPage() {
               return (
                 <div
                   key={player.id}
-                  className={`relative bg-gradient-to-br from-ink-800 to-ink-900 border-2 rounded-2xl p-6 ${
+                  className={`relative bg-gradient-to-br from-ink-800 to-ink-900 border-2 rounded-2xl p-4 sm:p-5 md:p-6 ${
                     rank === 1
-                      ? "border-yellow-500 md:order-2 md:scale-110"
+                      ? "border-yellow-500 md:order-2 md:scale-110 sm:col-span-2 md:col-span-1"
                       : rank === 2
                       ? "border-gray-400 md:order-1"
                       : "border-orange-500 md:order-3"
                   } transition-all`}
                 >
                   {/* Medal */}
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2">
+                  <div className="absolute -top-4 sm:-top-5 md:-top-6 left-1/2 -translate-x-1/2">
                     <div
-                      className={`w-16 h-16 rounded-full bg-gradient-to-br ${medalColor} flex items-center justify-center text-3xl shadow-lg`}
+                      className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${medalColor} flex items-center justify-center text-2xl sm:text-3xl shadow-lg`}
                     >
                       {MEDAL_ICONS[rank as keyof typeof MEDAL_ICONS]}
                     </div>
                   </div>
 
-                  <div className="mt-8 text-center">
-                    <div className="text-6xl font-black bg-gradient-to-r from-neon-400 to-electric-400 bg-clip-text text-transparent mb-2">
+                  <div className="mt-6 sm:mt-7 md:mt-8 text-center">
+                    <div className="text-4xl sm:text-5xl md:text-6xl font-black bg-gradient-to-r from-neon-400 to-electric-400 bg-clip-text text-transparent mb-1 sm:mb-2">
                       #{rank}
                     </div>
-                    <h2 className="text-2xl font-bold text-white mb-3">{player.name}</h2>
-                    <div className="text-4xl font-black text-neon-400 mb-1">
+                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 truncate px-2">{player.name}</h2>
+                    <div className="text-3xl sm:text-4xl font-black text-neon-400 mb-1">
                       {player.totalScore}
                     </div>
                     <div className="text-gold-400 text-sm">points</div>
@@ -160,26 +160,26 @@ export function ResultsPage() {
 
         {/* Classement complet */}
         {sortedPlayers.length > 3 && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <Medal className="w-6 h-6 text-electric-400" />
+          <div className="mb-6 sm:mb-8 md:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
+              <Medal className="w-5 h-5 sm:w-6 sm:h-6 text-electric-400" />
               Classement complet
             </h2>
             <div className="bg-gradient-to-br from-ink-800 to-ink-900 border border-gold-700 rounded-xl overflow-hidden">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gold-700">
-                    <th className="px-6 py-3 text-left text-gold-400 font-semibold">Position</th>
-                    <th className="px-6 py-3 text-left text-gold-400 font-semibold">Joueur</th>
-                    <th className="px-6 py-3 text-right text-gold-400 font-semibold">Score</th>
+                    <th className="px-3 py-2 sm:px-4 sm:py-3 md:px-6 text-left text-gold-400 font-semibold text-sm sm:text-base">Position</th>
+                    <th className="px-3 py-2 sm:px-4 sm:py-3 md:px-6 text-left text-gold-400 font-semibold text-sm sm:text-base">Joueur</th>
+                    <th className="px-3 py-2 sm:px-4 sm:py-3 md:px-6 text-right text-gold-400 font-semibold text-sm sm:text-base">Score</th>
                   </tr>
                 </thead>
                 <tbody>
                   {sortedPlayers.slice(3).map((player, index) => (
                     <tr key={player.id} className="border-b border-chrome-800/50 last:border-0">
-                      <td className="px-6 py-4 text-gold-300">#{index + 4}</td>
-                      <td className="px-6 py-4 text-white font-semibold">{player.name}</td>
-                      <td className="px-6 py-4 text-right text-electric-400 font-bold">
+                      <td className="px-3 py-3 sm:px-4 sm:py-4 md:px-6 text-gold-300 text-sm sm:text-base">#{index + 4}</td>
+                      <td className="px-3 py-3 sm:px-4 sm:py-4 md:px-6 text-white font-semibold text-sm sm:text-base truncate max-w-[120px] sm:max-w-none">{player.name}</td>
+                      <td className="px-3 py-3 sm:px-4 sm:py-4 md:px-6 text-right text-electric-400 font-bold text-sm sm:text-base">
                         {player.totalScore} pts
                       </td>
                     </tr>
@@ -191,37 +191,37 @@ export function ResultsPage() {
         )}
 
         {/* Détails des tours */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-white mb-4">Détails des tours</h2>
-          <div className="space-y-3">
+        <div className="mb-6 sm:mb-8 md:mb-12">
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Détails des tours</h2>
+          <div className="space-y-2 sm:space-y-3">
             {results.rounds.map((round) => (
               <div
                 key={`${round.roundNumber}-${round.playerName}`}
-                className="bg-gradient-to-br from-ink-800 to-ink-900 border border-gold-700 rounded-lg p-4 flex items-center justify-between"
+                className="bg-gradient-to-br from-ink-800 to-ink-900 border border-gold-700 rounded-lg p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
               >
-                <div className="flex items-center gap-4">
-                  <div className="px-3 py-1 bg-racing-600/20 text-racing-300 rounded-lg font-bold">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                  <div className="px-3 py-1.5 sm:py-1 bg-racing-600/20 text-racing-300 rounded-lg font-bold text-sm sm:text-base self-start">
                     Tour {round.roundNumber}
                   </div>
-                  <div className="text-white font-semibold">{round.playerName}</div>
-                  <div className="text-gold-400 text-sm">{round.motorcycle}</div>
+                  <div className="text-white font-semibold text-sm sm:text-base truncate">{round.playerName}</div>
+                  <div className="text-gold-400 text-xs sm:text-sm truncate max-w-[250px] sm:max-w-none">{round.motorcycle}</div>
                   {round.jokerUsed && (
-                    <div className="px-2 py-1 bg-neon-600/20 text-neon-300 rounded text-xs">
+                    <div className="px-2 py-1 bg-neon-600/20 text-neon-300 rounded text-xs self-start">
                       Joker: {round.jokerUsed}
                     </div>
                   )}
                 </div>
-                <div className="text-electric-400 font-bold text-lg">{round.score} pts</div>
+                <div className="text-electric-400 font-bold text-base sm:text-lg self-end sm:self-auto">{round.score} pts</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <button
             onClick={() => navigate("/setup")}
-            className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 text-white text-lg font-bold rounded-xl transition-all"
+            className="flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 text-white text-base sm:text-lg font-bold rounded-xl transition-all min-h-[44px] active:scale-95"
           >
             <RotateCcw className="w-5 h-5" />
             Nouvelle partie
@@ -229,7 +229,7 @@ export function ResultsPage() {
 
           <button
             onClick={() => navigate("/")}
-            className="flex items-center justify-center gap-2 px-8 py-4 bg-ink-800 border-2 border-gold-700 hover:border-gold-500 text-gold-300 text-lg font-bold rounded-xl transition-all"
+            className="flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 bg-ink-800 border-2 border-gold-700 hover:border-gold-500 text-gold-300 text-base sm:text-lg font-bold rounded-xl transition-all min-h-[44px] active:scale-95"
           >
             <Home className="w-5 h-5" />
             Retour à l'accueil

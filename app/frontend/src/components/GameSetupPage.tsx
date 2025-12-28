@@ -76,7 +76,7 @@ export function GameSetupPage() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:4000/api/game-session/create", {
+      const response = await fetch("/api/game-session/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -94,7 +94,7 @@ export function GameSetupPage() {
 
       // Démarrer la session
       const startResponse = await fetch(
-        `http://localhost:4000/api/game-session/${data.sessionId}/start`,
+        `/api/game-session/${data.sessionId}/start`,
         { method: "POST" }
       );
 
@@ -113,10 +113,10 @@ export function GameSetupPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <div className="min-h-screen flex items-center justify-center p-4 sm:p-8">
       <div className="max-w-3xl w-full">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-4 sm:mb-8">
           <button
             onClick={() => navigate("/")}
             className="flex items-center gap-2 px-4 py-2 bg-ink-800 border border-gold-700 rounded-lg hover:border-gold-500 transition-colors"
@@ -125,7 +125,7 @@ export function GameSetupPage() {
             <span className="text-gold-300">Retour</span>
           </button>
 
-          <h1 className="text-4xl font-black bg-gradient-to-r from-electric-400 to-neon-400 bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black bg-gradient-to-r from-electric-400 to-neon-400 bg-clip-text text-transparent">
             Configuration de la partie
           </h1>
 
@@ -133,18 +133,18 @@ export function GameSetupPage() {
         </div>
 
         {/* Carte de configuration */}
-        <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-700 rounded-2xl p-8">
+        <div className="bg-gradient-to-br from-ink-800 to-ink-900 border-2 border-gold-700 rounded-2xl p-4 sm:p-6 md:p-8">
           {/* Section Joueurs */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
                 <UserPlus className="w-6 h-6 text-electric-400" />
                 Joueurs ({players.length}/{GAME_CONSTRAINTS.MAX_PLAYERS})
               </h2>
               <button
                 onClick={addPlayer}
                 disabled={players.length >= GAME_CONSTRAINTS.MAX_PLAYERS}
-                className="flex items-center gap-2 px-4 py-2 bg-electric-600 hover:bg-electric-500 disabled:bg-chrome-800 disabled:text-gold-500 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-3 py-2 text-sm sm:text-base bg-electric-600 hover:bg-electric-500 disabled:bg-chrome-800 disabled:text-gold-500 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
               >
                 <Plus className="w-4 h-4" />
                 Ajouter
@@ -190,7 +190,7 @@ export function GameSetupPage() {
               </button>
 
               <div className="text-center">
-                <div className="text-6xl font-black bg-gradient-to-r from-racing-400 to-electric-400 bg-clip-text text-transparent">
+                <div className="text-4xl sm:text-5xl md:text-6xl font-black bg-gradient-to-r from-racing-400 to-electric-400 bg-clip-text text-transparent">
                   {totalRounds}
                 </div>
                 <div className="text-gold-400 text-sm mt-1">

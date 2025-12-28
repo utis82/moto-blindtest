@@ -54,5 +54,20 @@ export const createServer = () => {
   });
   app.use("/api", apiRouter);
   app.use("/api/game-session", gameSessionRouter);
+
+  // Servir le frontend React (build en production)
+  const frontendPath = path.resolve(__dirname, "../../../frontend/dist");
+  if (fs.existsSync(frontendPath)) {
+    console.log("[Frontend] Serving React app from:", frontendPath);
+    app.use(express.static(frontendPath));
+
+    // Fallback pour le routing React (SPA)
+    app.get("*", (_req, res) => {
+      res.sendFile(path.join(frontendPath, "index.html"));
+    });
+  } else {
+    console.log("[Frontend] Build not found at:", frontendPath);
+  }
+
   return app;
 };
