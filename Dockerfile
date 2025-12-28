@@ -77,9 +77,10 @@ RUN ls -la ../db/seed.js && \
 # Copy Prisma generated client from backend build
 COPY --from=backend-build /app/backend/node_modules/.prisma ./node_modules/.prisma
 
-# Copy Prisma CLI and all dependencies from backend build (needed for migrations)
+# Copy Prisma CLI and all dependencies from backend build (needed for migrations and seeding)
 COPY --from=backend-build /app/backend/node_modules/prisma ../db/node_modules/prisma
 COPY --from=backend-build /app/backend/node_modules/@prisma ../db/node_modules/@prisma
+COPY --from=backend-build /app/backend/node_modules/.prisma ../db/node_modules/.prisma
 COPY --from=backend-build /app/backend/node_modules/.bin ../db/node_modules/.bin
 
 # Copy services and shared
