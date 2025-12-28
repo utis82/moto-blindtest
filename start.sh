@@ -9,31 +9,24 @@ mkdir -p /data
 # Database path
 DB_PATH="/data/dev.db"
 
-# Check if database exists
-if [ ! -f "$DB_PATH" ]; then
-    echo "📦 Database not found. Initializing..."
+# Set DATABASE_URL for all operations
+export DATABASE_URL="file:$DB_PATH"
 
-    # Set DATABASE_URL for migrations
-    export DATABASE_URL="file:$DB_PATH"
+# Navigate to db directory
+cd /app/db
 
-    # Navigate to db directory
-    cd /app/db
+# Always run migrations (idempotent - safe to run multiple times)
+echo "🔄 Running Prisma migrations..."
+npx prisma migrate deploy
 
-    # Run migrations to create database structure
-    echo "🔄 Running Prisma migrations..."
-    npx prisma migrate deploy
+# Always seed (upsert is idempotent - will update existing or create new)
+echo "🌱 Seeding database with motorcycles..."
+npx prisma db seed || echo "⚠️ Seeding failed but continuing..."
 
-    # Seed the database with motorcycles
-    echo "🌱 Seeding database with motorcycles..."
-    npx prisma db seed
+echo "✅ Database operations completed!"
 
-    echo "✅ Database initialized successfully!"
-
-    # Navigate back to backend
-    cd /app/backend
-else
-    echo "✅ Database already exists at $DB_PATH"
-fi
+# Navigate back to backend
+cd /app/backend
 
 # Start the application
 echo "🎮 Starting Node.js server..."
