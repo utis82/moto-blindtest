@@ -30,9 +30,9 @@ RUN npm run prisma:generate
 # Build backend
 RUN npm run build
 
-# Compile seed.ts to seed.js
+# Compile seed.ts to seed.js using the TypeScript compiler from backend node_modules
 WORKDIR /app/db
-RUN npx tsc --module commonjs --target es2022 --moduleResolution node --esModuleInterop true seed.ts
+RUN ../backend/node_modules/.bin/tsc --module commonjs --target es2022 --moduleResolution node --esModuleInterop true seed.ts
 
 # Stage 3: Production
 FROM node:22-slim AS production
