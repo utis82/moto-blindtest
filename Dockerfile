@@ -56,8 +56,9 @@ COPY app/db ../db
 # Copy Prisma generated client from backend build
 COPY --from=backend-build /app/backend/node_modules/.prisma ./node_modules/.prisma
 
-# Copy Prisma CLI from backend build (needed for migrations)
+# Copy Prisma CLI and dependencies from backend build (needed for migrations)
 COPY --from=backend-build /app/backend/node_modules/prisma ../db/node_modules/prisma
+COPY --from=backend-build /app/backend/node_modules/@prisma ../db/node_modules/@prisma
 COPY --from=backend-build /app/backend/node_modules/.bin/prisma ../db/node_modules/.bin/prisma
 
 # Copy services and shared
