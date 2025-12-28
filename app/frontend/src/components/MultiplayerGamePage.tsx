@@ -93,6 +93,7 @@ export function MultiplayerGamePage() {
   const [showResultsModal, setShowResultsModal] = useState(false);
   const [roundResults, setRoundResults] = useState<any>(null);
   const [progress, setProgress] = useState(0);
+  const [audioReady, setAudioReady] = useState(false);
   const startRef = useRef<number | null>(null);
   const timerRef = useRef<number | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -136,9 +137,16 @@ export function MultiplayerGamePage() {
       setRoundResults(null);
 
       // Charger l'audio
+      setAudioReady(false);
       if (audioRef.current) {
         audioRef.current.src = `${data.source.audioFile}`;
         audioRef.current.load();
+
+        // Attendre que l'audio soit prêt
+        const handleCanPlay = () => {
+          setAudioReady(true);
+        };
+        audioRef.current.addEventListener('canplaythrough', handleCanPlay, { once: true });
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur inconnue");
@@ -332,10 +340,14 @@ export function MultiplayerGamePage() {
     }
   };
 
-  const playAudio = () => {
+  const playAudio = async () => {
     if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
+      try {
+        audioRef.current.currentTime = 0;
+        await audioRef.current.play();
+      } catch (error) {
+        console.error("Erreur lors de la lecture audio:", error);
+      }
     }
   };
 
@@ -412,10 +424,15 @@ export function MultiplayerGamePage() {
 
             <button
               onClick={playAudio}
-              className="w-full flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-4 sm:py-6 min-h-[60px] bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 text-white text-lg sm:text-xl font-bold rounded-xl transition-all mb-3 sm:mb-4"
+              disabled={!audioReady}
+              className={`w-full flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-4 sm:py-6 min-h-[60px] text-white text-lg sm:text-xl font-bold rounded-xl transition-all mb-3 sm:mb-4 ${
+                audioReady
+                  ? "bg-gradient-to-r from-racing-600 to-electric-600 hover:from-racing-500 hover:to-electric-500 cursor-pointer"
+                  : "bg-gradient-to-r from-gray-600 to-gray-700 cursor-not-allowed opacity-60"
+              }`}
             >
               <Volume2 className="w-6 h-6 sm:w-8 sm:h-8" />
-              Jouer le son
+              {audioReady ? "Jouer le son" : "Chargement..."}
             </button>
 
             {/* Barre de progression */}
