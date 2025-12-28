@@ -135,32 +135,7 @@ export function MultiplayerGamePage() {
       setError(null);
       setShowResultsModal(false);
       setRoundResults(null);
-
-      // Charger l'audio
       setAudioReady(false);
-      if (audioRef.current) {
-        const audio = audioRef.current;
-
-        // Retirer tout ancien event listener
-        audio.onloadeddata = null;
-
-        // Attendre que l'audio soit prêt
-        const handleCanPlay = () => {
-          setAudioReady(true);
-        };
-
-        // Ajouter le listener AVANT de charger
-        audio.addEventListener('loadeddata', handleCanPlay, { once: true });
-
-        // Maintenant charger l'audio
-        audio.src = `${data.source.audioFile}`;
-        audio.load();
-
-        // Si l'audio est déjà chargé (readyState >= 2), déclencher immédiatement
-        if (audio.readyState >= 2) {
-          setAudioReady(true);
-        }
-      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur inconnue");
     }
@@ -171,6 +146,38 @@ export function MultiplayerGamePage() {
     loadCurrentTurn();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionId]);
+
+  // Charger l'audio quand currentTurn change
+  useEffect(() => {
+    if (!currentTurn?.source?.audioFile || !audioRef.current) return;
+
+    const audio = audioRef.current;
+
+    // Retirer tout ancien event listener
+    audio.onloadeddata = null;
+
+    // Attendre que l'audio soit prêt
+    const handleCanPlay = () => {
+      setAudioReady(true);
+    };
+
+    // Ajouter le listener AVANT de charger
+    audio.addEventListener('loadeddata', handleCanPlay, { once: true });
+
+    // Maintenant charger l'audio
+    audio.src = `${currentTurn.source.audioFile}`;
+    audio.load();
+
+    // Si l'audio est déjà chargé (readyState >= 2), déclencher immédiatement
+    if (audio.readyState >= 2) {
+      setAudioReady(true);
+    }
+
+    // Cleanup
+    return () => {
+      audio.onloadeddata = null;
+    };
+  }, [currentTurn?.source?.audioFile]);
 
   // Timer de progression
   useEffect(() => {
