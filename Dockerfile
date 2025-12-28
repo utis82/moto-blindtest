@@ -13,7 +13,7 @@ COPY app/frontend .
 COPY app/shared ../shared
 RUN npm run build
 
-# Stage 2: Build Backend
+# Stage 2: Build Backend with Prisma
 FROM base AS backend-build
 WORKDIR /app/backend
 COPY app/backend/package*.json ./
@@ -22,17 +22,13 @@ COPY app/backend/tsconfig.json .
 COPY app/backend/src ./src
 COPY app/services ../services
 COPY app/shared ../shared
+COPY app/db ../db
+# Generate Prisma client
+RUN npm run prisma:generate
+# Build backend
 RUN npm run build
 
-# Stage 3: Generate Prisma Client
-FROM base AS prisma-generate
-WORKDIR /app/db
-COPY app/db/schema.prisma .
-COPY app/db/package*.json ./
-RUN npm install
-RUN npx prisma generate
-
-# Stage 4: Production
+# Stage 3: Production
 FROM node:22-alpine AS production
 WORKDIR /app
 
@@ -50,15 +46,15 @@ COPY --from=frontend-build /app/frontend/dist ../frontend/dist
 # Copy database schema and migrations
 COPY app/db ../db
 
-# Copy Prisma generated client
-COPY --from=prisma-generate /app/db/node_modules/.prisma ../backend/node_modules/.prisma
+# Copy Prisma generated client from backend build
+COPY --from=backend-build /app/backend/node_modules/.prisma ./node_modules/.prisma
 
 # Copy services and shared
 COPY app/services ../services
 COPY app/shared ../shared
 
 # Copy audio files
-COPY app/backend/public ../backend/public
+COPY app/backend/public ./public
 
 # Set environment
 ENV NODE_ENV=production
