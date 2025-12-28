@@ -146,7 +146,7 @@ export function MultiplayerGamePage() {
         const handleCanPlay = () => {
           setAudioReady(true);
         };
-        audioRef.current.addEventListener('canplaythrough', handleCanPlay, { once: true });
+        audioRef.current.addEventListener('loadeddata', handleCanPlay, { once: true });
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur inconnue");
