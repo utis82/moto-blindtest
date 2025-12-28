@@ -54,11 +54,16 @@ COPY --from=backend-build /app/backend/dist ./dist
 # Copy built frontend to backend public directory
 COPY --from=frontend-build /app/frontend/dist ../frontend/dist
 
-# Copy database schema and migrations
-COPY app/db ../db
+# Copy database schema and migrations (without package.json yet)
+COPY app/db/schema.prisma ../db/schema.prisma
+COPY app/db/migrations ../db/migrations
+COPY app/db/.env.example ../db/.env.example
 
 # Copy compiled seed.js from backend build
 COPY --from=backend-build /app/db/seed.js ../db/seed.js
+
+# Copy package.json with correct seed command
+COPY app/db/package.json ../db/package.json
 
 # Copy Prisma generated client from backend build
 COPY --from=backend-build /app/backend/node_modules/.prisma ./node_modules/.prisma
