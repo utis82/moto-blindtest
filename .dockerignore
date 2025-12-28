@@ -52,7 +52,8 @@ __pycache__/
 electron-main.js
 package-lock.json
 
-# Scripts
+# Scripts (mais garde start.sh pour Railway)
+!start.sh
 *.sh
 *.py
 *.json.tmp
