@@ -1,8 +1,10 @@
 # Multi-stage build pour Moto Blindtest sur Railway
 # Build fullstack : Backend Express servant le Frontend React
 
-FROM node:22-alpine AS base
+FROM node:22-slim AS base
 WORKDIR /app
+# Install OpenSSL for Prisma
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 # Stage 1: Build Frontend
 FROM base AS frontend-build
@@ -29,8 +31,10 @@ RUN npm run prisma:generate
 RUN npm run build
 
 # Stage 3: Production
-FROM node:22-alpine AS production
+FROM node:22-slim AS production
 WORKDIR /app
+# Install OpenSSL for Prisma
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 # Install production dependencies for backend
 WORKDIR /app/backend
