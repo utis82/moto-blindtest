@@ -1,38 +1,70 @@
-FROM node:22-alpine AS backend-deps
-WORKDIR /app/backend
-COPY app/backend/package*.json ./
-RUN npm install
+# Multi-stage build pour Moto Blindtest sur Railway
+# Build fullstack : Backend Express servant le Frontend React
 
-FROM backend-deps AS backend-build
-COPY app/backend/tsconfig.json .
-COPY app/backend/src ./src
-COPY app/services ../services
-COPY app/db ../db
-RUN npm run build
+FROM node:22-alpine AS base
+WORKDIR /app
 
-FROM node:22-alpine AS backend
-WORKDIR /app/backend
-ENV NODE_ENV=production
-ENV PORT=4000
-COPY --from=backend-deps /app/backend/node_modules ./node_modules
-COPY --from=backend-build /app/backend/dist ./dist
-COPY app/backend/package.json ./
-COPY app/services ../services
-COPY app/db ../db
-EXPOSE 4000
-CMD ["sh", "-c", "npm run prisma:deploy && node dist/backend/src/index.js"]
-
-FROM node:22-alpine AS frontend-deps
+# Stage 1: Build Frontend
+FROM base AS frontend-build
 WORKDIR /app/frontend
 COPY app/frontend/package*.json ./
 RUN npm install
-
-FROM frontend-deps AS frontend-build
-ARG VITE_API_BASE=http://localhost:4000
-ENV VITE_API_BASE=$VITE_API_BASE
 COPY app/frontend .
+COPY app/shared ../shared
 RUN npm run build
 
-FROM nginx:1.27-alpine AS frontend
-COPY --from=frontend-build /app/frontend/dist /usr/share/nginx/html
-EXPOSE 80
+# Stage 2: Build Backend
+FROM base AS backend-build
+WORKDIR /app/backend
+COPY app/backend/package*.json ./
+RUN npm install
+COPY app/backend/tsconfig.json .
+COPY app/backend/src ./src
+COPY app/services ../services
+COPY app/shared ../shared
+RUN npm run build
+
+# Stage 3: Generate Prisma Client
+FROM base AS prisma-generate
+WORKDIR /app/db
+COPY app/db/schema.prisma .
+COPY app/db/package*.json ./
+RUN npm install
+RUN npx prisma generate
+
+# Stage 4: Production
+FROM node:22-alpine AS production
+WORKDIR /app
+
+# Install production dependencies for backend
+WORKDIR /app/backend
+COPY app/backend/package*.json ./
+RUN npm install --omit=dev
+
+# Copy built backend
+COPY --from=backend-build /app/backend/dist ./dist
+
+# Copy built frontend to backend public directory
+COPY --from=frontend-build /app/frontend/dist ../frontend/dist
+
+# Copy database schema and migrations
+COPY app/db ../db
+
+# Copy Prisma generated client
+COPY --from=prisma-generate /app/db/node_modules/.prisma ../backend/node_modules/.prisma
+
+# Copy services and shared
+COPY app/services ../services
+COPY app/shared ../shared
+
+# Copy audio files
+COPY app/backend/public ../backend/public
+
+# Set environment
+ENV NODE_ENV=production
+
+# Expose port (Railway will set PORT dynamically)
+EXPOSE ${PORT:-8080}
+
+# Start the backend (which serves the frontend)
+CMD ["node", "dist/backend/src/index.js"]
