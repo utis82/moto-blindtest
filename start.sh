@@ -12,21 +12,23 @@ DB_PATH="/data/dev.db"
 # Set DATABASE_URL for all operations
 export DATABASE_URL="file:$DB_PATH"
 
-# Navigate to db directory
+# Navigate to db directory for migrations
 cd /app/db
 
 # Always run migrations (idempotent - safe to run multiple times)
 echo "🔄 Running Prisma migrations..."
 npx prisma migrate deploy
 
+echo "✅ Migrations completed!"
+
+# Navigate to backend for seeding (has access to node_modules with Prisma client)
+cd /app/backend
+
 # Always seed (upsert is idempotent - will update existing or create new)
 echo "🌱 Seeding database with motorcycles..."
-npx prisma db seed || echo "⚠️ Seeding failed but continuing..."
+node ../db/seed.js || echo "⚠️ Seeding failed but continuing..."
 
 echo "✅ Database operations completed!"
-
-# Navigate back to backend
-cd /app/backend
 
 # Start the application
 echo "🎮 Starting Node.js server..."
