@@ -41,6 +41,9 @@ WORKDIR /app/backend
 COPY app/backend/package*.json ./
 RUN npm install --omit=dev
 
+# Install ts-node and @prisma/client for seeding
+RUN npm install --no-save ts-node @types/node
+
 # Copy built backend
 COPY --from=backend-build /app/backend/dist ./dist
 
@@ -53,6 +56,10 @@ COPY app/db ../db
 # Copy Prisma generated client from backend build
 COPY --from=backend-build /app/backend/node_modules/.prisma ./node_modules/.prisma
 
+# Copy Prisma CLI from backend build (needed for migrations)
+COPY --from=backend-build /app/backend/node_modules/prisma ../db/node_modules/prisma
+COPY --from=backend-build /app/backend/node_modules/.bin/prisma ../db/node_modules/.bin/prisma
+
 # Copy services and shared
 COPY app/services ../services
 COPY app/shared ../shared
@@ -60,11 +67,15 @@ COPY app/shared ../shared
 # Copy audio files
 COPY app/backend/public ./public
 
+# Copy startup script
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
 # Set environment
 ENV NODE_ENV=production
 
 # Expose port (Railway will set PORT dynamically)
 EXPOSE ${PORT:-8080}
 
-# Start the backend (which serves the frontend)
-CMD ["node", "dist/backend/src/index.js"]
+# Use startup script that initializes DB and starts the server
+CMD ["/app/start.sh"]
