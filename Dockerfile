@@ -30,10 +30,13 @@ RUN npm run prisma:generate
 # Build backend
 RUN npm run build
 
-# Compile seed.ts to seed.js from backend directory with proper Prisma types
-RUN npx tsc ../db/seed.ts --outDir ../db --module commonjs --target es2022 --moduleResolution node --esModuleInterop true --skipLibCheck true && \
+# Compile seed.ts to seed.js - use backend's node_modules for @prisma/client
+RUN cd ../db && \
+    echo '{"compilerOptions":{"module":"commonjs","target":"es2022","moduleResolution":"node","esModuleInterop":true,"skipLibCheck":true,"baseUrl":".","paths":{"@prisma/client":["../backend/node_modules/@prisma/client"]}}}' > tsconfig.temp.json && \
+    ../backend/node_modules/.bin/tsc seed.ts --outDir . --project tsconfig.temp.json && \
+    rm tsconfig.temp.json && \
     echo "✅ seed.js compiled successfully" && \
-    ls -la ../db/seed.js
+    ls -la seed.js
 
 # Stage 3: Production
 FROM node:22-slim AS production
