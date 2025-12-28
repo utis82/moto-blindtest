@@ -37,7 +37,11 @@ export const createServer = () => {
   app.use(express.json());
 
   // Servir les fichiers statiques (audio)
-  const publicPath = path.resolve(__dirname, "../../public");
+  // En production Docker: /app/backend/public
+  // En dev local: ../../public depuis dist/backend/src
+  const publicPath = process.env.NODE_ENV === 'production'
+    ? path.resolve("/app/backend/public")
+    : path.resolve(__dirname, "../../public");
   const fs = require('fs');
   console.log("[Static] Serving files from:", publicPath);
   console.log("[Static] Public path exists:", fs.existsSync(publicPath));
@@ -56,7 +60,12 @@ export const createServer = () => {
   app.use("/api/game-session", gameSessionRouter);
 
   // Servir le frontend React (build en production)
-  const frontendPath = path.resolve(__dirname, "../../../frontend/dist");
+  // En production Docker: /app/frontend/dist
+  // En dev local: ../../../frontend/dist depuis dist/backend/src
+  const frontendPath = process.env.NODE_ENV === 'production'
+    ? path.resolve("/app/frontend/dist")
+    : path.resolve(__dirname, "../../../frontend/dist");
+
   if (fs.existsSync(frontendPath)) {
     console.log("[Frontend] Serving React app from:", frontendPath);
     app.use(express.static(frontendPath));
@@ -67,6 +76,8 @@ export const createServer = () => {
     });
   } else {
     console.log("[Frontend] Build not found at:", frontendPath);
+    console.log("[Frontend] __dirname:", __dirname);
+    console.log("[Frontend] NODE_ENV:", process.env.NODE_ENV);
   }
 
   return app;
