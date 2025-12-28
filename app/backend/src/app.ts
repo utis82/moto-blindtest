@@ -70,8 +70,8 @@ export const createServer = () => {
     console.log("[Frontend] Serving React app from:", frontendPath);
     app.use(express.static(frontendPath));
 
-    // Fallback pour le routing React (SPA)
-    app.get("/*", (_req, res) => {
+    // Fallback pour le routing React (SPA) - doit être le dernier middleware
+    app.use((_req, res) => {
       res.sendFile(path.join(frontendPath, "index.html"));
     });
   } else {

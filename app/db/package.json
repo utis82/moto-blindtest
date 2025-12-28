@@ -1,0 +1,7 @@
+{
+  "name": "moto-blindtest-db",
+  "version": "1.0.0",
+  "prisma": {
+    "seed": "ts-node seed.ts"
+  }
+}
