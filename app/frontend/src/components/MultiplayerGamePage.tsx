@@ -139,14 +139,27 @@ export function MultiplayerGamePage() {
       // Charger l'audio
       setAudioReady(false);
       if (audioRef.current) {
-        audioRef.current.src = `${data.source.audioFile}`;
-        audioRef.current.load();
+        const audio = audioRef.current;
+
+        // Retirer tout ancien event listener
+        audio.onloadeddata = null;
 
         // Attendre que l'audio soit prêt
         const handleCanPlay = () => {
           setAudioReady(true);
         };
-        audioRef.current.addEventListener('loadeddata', handleCanPlay, { once: true });
+
+        // Ajouter le listener AVANT de charger
+        audio.addEventListener('loadeddata', handleCanPlay, { once: true });
+
+        // Maintenant charger l'audio
+        audio.src = `${data.source.audioFile}`;
+        audio.load();
+
+        // Si l'audio est déjà chargé (readyState >= 2), déclencher immédiatement
+        if (audio.readyState >= 2) {
+          setAudioReady(true);
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur inconnue");
@@ -368,7 +381,7 @@ export function MultiplayerGamePage() {
 
   return (
     <div className="min-h-screen p-4 sm:p-6 md:p-8">
-      <audio ref={audioRef} />
+      <audio ref={audioRef} preload="auto" />
 
       <div className="max-w-6xl mx-auto">
         {/* Header */}
